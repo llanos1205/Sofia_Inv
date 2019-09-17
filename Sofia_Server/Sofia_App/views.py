@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.contrib.auth.models import User, Group
+from Sofia_Server.Sofia_App.models import Equipo
 from rest_framework import viewsets
-from Sofia_Server.Sofia_App.serializers import UserSerializer, GroupSerializer
+from Sofia_Server.Sofia_App.serializers import UserSerializer, GroupSerializer,EquipoSerializer
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -18,3 +19,7 @@ class GroupViewSet(viewsets.ModelViewSet):
     """
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
+
+class EquipoViewSet(viewsets.ModelViewSet):
+    queryset=Equipo.objects.all().order_by('idequipo')
+    serializer_class=EquipoSerializer

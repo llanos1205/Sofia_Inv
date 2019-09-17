@@ -81,7 +81,7 @@ WSGI_APPLICATION = 'Sofia_Server.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'sofia_db',
+        'NAME': 'mydb',
         'USER':'root',
         'PASSWORD':'123456',
         'HOST':'localhost',
