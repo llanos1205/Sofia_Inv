@@ -21,10 +21,11 @@ from Sofia_Server.Sofia_App import views
 router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
 router.register(r'groups', views.GroupViewSet)
-router.register(r'Equipo',views.EquipoViewSet)
+# router.register(r'Equipo',views.EquipoViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(router.urls)),
+    path('',include('Sofia_Server.Sofia_App.urls')),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
