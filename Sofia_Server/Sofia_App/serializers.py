@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User, Group
-from Sofia_Server.Sofia_App.models import Equipo,UsuarioAd
+from Sofia_Server.Sofia_App.models import Equipo,UsuarioAd,Empresa
 from rest_framework import serializers
 
 
@@ -21,3 +21,7 @@ class EquipoSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model=Equipo
         fields=['idequipo','marca','modelo','nro_serie','nro_activo_fijo','ip','ultima_observacion']
+class EmpresaSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model=Empresa
+        fields=['idempresa','nombre','descripcion']
