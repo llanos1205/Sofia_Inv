@@ -9,6 +9,7 @@ from Sofia_Server.Sofia_App.serializers import UserSerializer, GroupSerializer,E
 class EmpresaList(generics.ListCreateAPIView):
     queryset=Empresa.objects.all()
     serializer_class=EmpresaSerializer
+
 class Empresa_Detail(generics.RetrieveUpdateDestroyAPIView):
     queryset=Empresa.objects.all()
     serializer_class=EmpresaSerializer
