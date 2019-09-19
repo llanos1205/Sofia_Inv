@@ -1,7 +1,14 @@
 # from django.shortcuts import render
 from django.contrib.auth.models import User, Group
-from Sofia_Server.Sofia_App.models import Equipo,Empresa,Area,Departamento,Regional,Ubicacion,Gerencia,Cargo,UsuarioAd,Cuenta
-from Sofia_Server.Sofia_App.serializers import  CuentaSerializer,GerenciaSerializer,UbicacionSerializer,RegionalSerializer,UserSerializer, GroupSerializer,EquipoSerializer,EmpresaSerializer,AreaSerializer,DepartamentoSerializer,CargoSerializer,UsuarioADSerializer
+from Sofia_Server.Sofia_App.models import (Equipo,Empresa,Area,Departamento,
+                                            Regional,Ubicacion,Gerencia,Cargo,
+                                            UsuarioAd,Cuenta,UsuarioCorreo,Equipo,
+                                            Permiso,UsuarioAdHasPermiso)
+from Sofia_Server.Sofia_App.serializers import  (CuentaSerializer,GerenciaSerializer,UbicacionSerializer,
+                                                RegionalSerializer,UserSerializer, GroupSerializer,EquipoSerializer,
+                                                EmpresaSerializer,AreaSerializer,DepartamentoSerializer,CargoSerializer,
+                                                UsuarioADSerializer,UsuarioCorreoSerializer,EquipoSerializer,
+                                                PermisoSerializer,Permiso_UsuarioADSerializer)
 from rest_framework import viewsets,status,generics
 
 
@@ -61,9 +68,38 @@ class UsuarioAD_List(generics.ListCreateAPIView):
 class UsuarioAD_Detail(generics.RetrieveUpdateDestroyAPIView):
     queryset=UsuarioAd.objects.all()
     serializer_class=UsuarioADSerializer
+
 class Cuenta_List(generics.ListCreateAPIView):
     queryset=Cuenta.objects.all()
     serializer_class=CuentaSerializer
 class Cuenta_Detail(generics.RetrieveUpdateDestroyAPIView):
     queryset=Cuenta.objects.all()
     serializer_class=CuentaSerializer
+
+class UsuarioCorreo_List(generics.ListCreateAPIView):
+    queryset=UsuarioCorreo.objects.all()
+    serializer_class=UsuarioCorreoSerializer
+class UsuarioCorreo_Detail(generics.RetrieveUpdateDestroyAPIView):
+    queryset=UsuarioCorreo.objects.all()
+    serializer_class=UsuarioCorreoSerializer
+
+class Equipo_List(generics.ListCreateAPIView):
+    queryset=Equipo.objects.all()
+    serializer_class=EquipoSerializer
+class Equipo_Detail(generics.RetrieveUpdateDestroyAPIView):
+    queryset=Equipo.objects.all()
+    serializer_class=EquipoSerializer
+
+class Permiso_List(generics.ListCreateAPIView):
+    queryset=Permiso.objects.all()
+    serializer_class=PermisoSerializer
+class Permiso_Detail(generics.RetrieveUpdateDestroyAPIView):
+    queryset=Permiso.objects.all()
+    serializer_class=PermisoSerializer
+
+class Usuario_Permiso_List(generics.ListCreateAPIView):
+    queryset=UsuarioAdHasPermiso
+    serializer_class=Permiso_UsuarioADSerializer
+class Usuario_Permiso_Detail(generics.RetrieveUpdateDestroyAPIView):
+    queryset=UsuarioAdHasPermiso
+    serializer_class=Permiso_UsuarioADSerializer
