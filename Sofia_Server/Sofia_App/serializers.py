@@ -24,4 +24,4 @@ class EquipoSerializer(serializers.HyperlinkedModelSerializer):
 class EmpresaSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model=Empresa
-        fields=['idempresa','nombre','descripcion']
+        fields=['idempresa','nombre','descripcion','estado']

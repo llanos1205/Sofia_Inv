@@ -124,6 +124,7 @@ class Area(models.Model):
     nombre = models.CharField(db_column='Nombre', max_length=45, blank=True, null=True)  # Field name made lowercase.
     descripcion = models.CharField(db_column='Descripcion', max_length=45, blank=True, null=True)  # Field name made lowercase.
     departamento_iddepartamento = models.ForeignKey('Departamento', models.DO_NOTHING, db_column='Departamento_idDepartamento')  # Field name made lowercase.
+    estado = models.IntegerField(db_column='Estado')  # Field name made lowercase.
 
     class Meta:
         managed = False
@@ -133,6 +134,7 @@ class Area(models.Model):
 class Atributo(models.Model):
     idatributo = models.AutoField(db_column='idAtributo', primary_key=True)  # Field name made lowercase.
     nombre = models.CharField(db_column='Nombre', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    estado = models.IntegerField(db_column='Estado')  # Field name made lowercase.
 
     class Meta:
         managed = False
@@ -146,7 +148,7 @@ class Auditoria(models.Model):
     accion = models.CharField(db_column='Accion', max_length=45, blank=True, null=True)  # Field name made lowercase.
     fecha = models.DateTimeField(db_column='Fecha', blank=True, null=True)  # Field name made lowercase.
     ip = models.CharField(db_column='Ip', max_length=18, blank=True, null=True)  # Field name made lowercase.
-    usuario_ad_idusuario_ad = models.IntegerField(db_column='Usuario_AD_idUsuario_AD')  # Field name made lowercase.
+    usuario_ad_idusuario_ad = models.ForeignKey('UsuarioAd', models.DO_NOTHING, db_column='Usuario_AD_idUsuario_AD')  # Field name made lowercase.
 
     class Meta:
         managed = False
@@ -157,6 +159,7 @@ class Cargo(models.Model):
     idcargo = models.AutoField(db_column='idCargo', primary_key=True)  # Field name made lowercase.
     nombre = models.CharField(db_column='Nombre', max_length=45, blank=True, null=True)  # Field name made lowercase.
     descripcion = models.CharField(db_column='Descripcion', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    estado = models.IntegerField(db_column='Estado')  # Field name made lowercase.
 
     class Meta:
         managed = False
@@ -167,6 +170,7 @@ class Cuenta(models.Model):
     idcuenta = models.AutoField(db_column='idCuenta', primary_key=True)  # Field name made lowercase.
     usuario = models.CharField(db_column='Usuario', max_length=45, blank=True, null=True)  # Field name made lowercase.
     contrasena = models.CharField(db_column='Contrasena', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    estado = models.IntegerField(db_column='Estado')  # Field name made lowercase.
 
     class Meta:
         managed = False
@@ -177,6 +181,7 @@ class Departamento(models.Model):
     iddepartamento = models.AutoField(db_column='idDepartamento', primary_key=True)  # Field name made lowercase.
     nombre = models.CharField(db_column='Nombre', max_length=45, blank=True, null=True)  # Field name made lowercase.
     descripcion = models.CharField(db_column='Descripcion', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    estado = models.IntegerField(db_column='Estado')  # Field name made lowercase.
 
     class Meta:
         managed = False
@@ -187,6 +192,7 @@ class Empresa(models.Model):
     idempresa = models.AutoField(db_column='idEmpresa', primary_key=True)  # Field name made lowercase.
     nombre = models.CharField(db_column='Nombre', max_length=45, blank=True, null=True)  # Field name made lowercase.
     descripcion = models.CharField(db_column='Descripcion', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    estado = models.IntegerField(db_column='Estado')  # Field name made lowercase.
 
     class Meta:
         managed = False
@@ -202,6 +208,7 @@ class Equipo(models.Model):
     ip = models.CharField(db_column='Ip', max_length=18, blank=True, null=True)  # Field name made lowercase.
     ultima_observacion = models.CharField(db_column='Ultima_Observacion', max_length=45, blank=True, null=True)  # Field name made lowercase.
     usuario_ad_idusuario_ad = models.ForeignKey('UsuarioAd', models.DO_NOTHING, db_column='Usuario_AD_idUsuario_AD', blank=True, null=True)  # Field name made lowercase.
+    estado = models.IntegerField(db_column='Estado')  # Field name made lowercase.
 
     class Meta:
         managed = False
@@ -223,6 +230,7 @@ class Gerencia(models.Model):
     idgerencia = models.AutoField(db_column='idGerencia', primary_key=True)  # Field name made lowercase.
     nombre = models.CharField(db_column='Nombre', max_length=45, blank=True, null=True)  # Field name made lowercase.
     descripcion = models.CharField(db_column='Descripcion', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    estado = models.IntegerField(db_column='Estado')  # Field name made lowercase.
 
     class Meta:
         managed = False
@@ -245,6 +253,7 @@ class Licencia(models.Model):
     llave_activacion = models.CharField(db_column='Llave_Activacion', max_length=45, blank=True, null=True)  # Field name made lowercase.
     version = models.CharField(db_column='Version', max_length=10, blank=True, null=True)  # Field name made lowercase.
     ordenador_idordenador = models.ForeignKey('Ordenador', models.DO_NOTHING, db_column='Ordenador_idOrdenador')  # Field name made lowercase.
+    estado = models.IntegerField(db_column='Estado')  # Field name made lowercase.
 
     class Meta:
         managed = False
@@ -270,6 +279,7 @@ class Os(models.Model):
     nombre = models.CharField(db_column='Nombre', max_length=25, blank=True, null=True)  # Field name made lowercase.
     servicio = models.CharField(db_column='Servicio', max_length=20, blank=True, null=True)  # Field name made lowercase.
     arquitectura = models.CharField(db_column='Arquitectura', max_length=5, blank=True, null=True)  # Field name made lowercase.
+    estado = models.IntegerField(db_column='Estado')  # Field name made lowercase.
 
     class Meta:
         managed = False
@@ -310,6 +320,7 @@ class Permiso(models.Model):
 class Regional(models.Model):
     idregional = models.AutoField(db_column='idRegional', primary_key=True)  # Field name made lowercase.
     nombre = models.CharField(db_column='Nombre', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    estado = models.IntegerField(db_column='Estado')  # Field name made lowercase.
 
     class Meta:
         managed = False
@@ -320,6 +331,7 @@ class Ubicacion(models.Model):
     idubicacion = models.AutoField(db_column='idUbicacion', primary_key=True)  # Field name made lowercase.
     direccion = models.CharField(db_column='Direccion', max_length=45, blank=True, null=True)  # Field name made lowercase.
     edificio = models.CharField(db_column='Edificio', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    estado = models.IntegerField(db_column='Estado')  # Field name made lowercase.
 
     class Meta:
         managed = False
@@ -330,7 +342,6 @@ class UsuarioAd(models.Model):
     idusuario_ad = models.AutoField(db_column='idUsuario_AD', primary_key=True)  # Field name made lowercase.
     nombre = models.CharField(db_column='Nombre', max_length=45, blank=True, null=True)  # Field name made lowercase.
     apellido = models.CharField(db_column='Apellido', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    estado = models.CharField(db_column='Estado', max_length=15, blank=True, null=True)  # Field name made lowercase.
     area_idarea = models.ForeignKey(Area, models.DO_NOTHING, db_column='Area_idArea')  # Field name made lowercase.
     empresa_idempresa = models.ForeignKey(Empresa, models.DO_NOTHING, db_column='Empresa_idEmpresa')  # Field name made lowercase.
     gerencia_idgerencia = models.ForeignKey(Gerencia, models.DO_NOTHING, db_column='Gerencia_idGerencia')  # Field name made lowercase.
@@ -338,6 +349,7 @@ class UsuarioAd(models.Model):
     ubicacion_idubicacion = models.ForeignKey(Ubicacion, models.DO_NOTHING, db_column='Ubicacion_idUbicacion')  # Field name made lowercase.
     cuenta_idcuenta = models.ForeignKey(Cuenta, models.DO_NOTHING, db_column='Cuenta_idCuenta')  # Field name made lowercase.
     cargo_idcargo = models.ForeignKey(Cargo, models.DO_NOTHING, db_column='Cargo_idCargo')  # Field name made lowercase.
+    estado = models.IntegerField(db_column='Estado')  # Field name made lowercase.
 
     class Meta:
         managed = False
@@ -350,21 +362,9 @@ class UsuarioCorreo(models.Model):
     contrasena = models.CharField(db_column='Contrasena', max_length=45, blank=True, null=True)  # Field name made lowercase.
     tipo = models.CharField(db_column='Tipo', max_length=45, blank=True, null=True)  # Field name made lowercase.
     usuario_ad_idusuario_ad1 = models.ForeignKey(UsuarioAd, models.DO_NOTHING, db_column='Usuario_AD_idUsuario_AD1')  # Field name made lowercase.
+    estado = models.IntegerField(db_column='Estado')  # Field name made lowercase.
 
     class Meta:
         managed = False
         db_table = 'usuario_correo'
 
-
-
-
-
-# class TestTable1(models.Model):
-#     idtest_table_1 = models.AutoField(primary_key=True)
-#     nombre = models.CharField(max_length=45, blank=True, null=True)
-#     edad = models.IntegerField(blank=True, null=True)
-#     fecha = models.DateTimeField(blank=True, null=True)
-
-#     class Meta:
-#         managed = False
-#         db_table = 'test_table_1'
