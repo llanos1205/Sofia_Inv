@@ -110,25 +110,19 @@ class DjangoSession(models.Model):
     class Meta:
         managed = False
         db_table = 'django_session'
-
-# This is an auto-generated Django model module.
-# You'll have to do the following manually to clean this up:
-#   * Rearrange models' order
-#   * Make sure each model has one field with primary_key=True
-#   * Make sure each ForeignKey has `on_delete` set to the desired behavior.
-#   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
-# Feel free to rename the models, but don't rename db_table values or field names.
-
+        
 class Area(models.Model):
     idarea = models.AutoField(db_column='idArea', primary_key=True)  # Field name made lowercase.
     nombre = models.CharField(db_column='Nombre', max_length=45, blank=True, null=True)  # Field name made lowercase.
     descripcion = models.CharField(db_column='Descripcion', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    departamento_iddepartamento = models.ForeignKey('Departamento', models.DO_NOTHING, db_column='Departamento_idDepartamento')  # Field name made lowercase.
+    departamento_iddepartamento = models.ForeignKey('Departamento', models.DO_NOTHING, db_column='Departamento_idDepartamento',related_name='areas')  # Field name made lowercase.
     estado = models.IntegerField(db_column='Estado')  # Field name made lowercase.
 
     class Meta:
         managed = False
         db_table = 'area'
+    def __str__(self):
+        return '%d: %s' % (self.idarea, self.nombre)
 
 
 class Atributo(models.Model):
@@ -186,6 +180,8 @@ class Departamento(models.Model):
     class Meta:
         managed = False
         db_table = 'departamento'
+    def __str__(self):
+        return '%d: %s' % (self.iddepartamento, self.nombre)
 
 
 class Empresa(models.Model):
@@ -197,6 +193,8 @@ class Empresa(models.Model):
     class Meta:
         managed = False
         db_table = 'empresa'
+    def __str__(self):
+        return '%d:%s'%(self.idempresa,self.nombre)
 
 
 class Equipo(models.Model):
