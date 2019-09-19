@@ -110,7 +110,7 @@ class DjangoSession(models.Model):
     class Meta:
         managed = False
         db_table = 'django_session'
-        
+        ########################3
 class Area(models.Model):
     idarea = models.AutoField(db_column='idArea', primary_key=True)  # Field name made lowercase.
     nombre = models.CharField(db_column='Nombre', max_length=45, blank=True, null=True)  # Field name made lowercase.
@@ -133,6 +133,9 @@ class Atributo(models.Model):
     class Meta:
         managed = False
         db_table = 'atributo'
+    def __str__(self):
+        return '%d: %s' % (self.idatributo, self.nombre)
+    
 
 
 class Auditoria(models.Model):
@@ -143,10 +146,11 @@ class Auditoria(models.Model):
     fecha = models.DateTimeField(db_column='Fecha', blank=True, null=True)  # Field name made lowercase.
     ip = models.CharField(db_column='Ip', max_length=18, blank=True, null=True)  # Field name made lowercase.
     usuario_ad_idusuario_ad = models.ForeignKey('UsuarioAd', models.DO_NOTHING, db_column='Usuario_AD_idUsuario_AD')  # Field name made lowercase.
-
     class Meta:
         managed = False
         db_table = 'auditoria'
+
+    
 
 
 class Cargo(models.Model):
@@ -158,7 +162,8 @@ class Cargo(models.Model):
     class Meta:
         managed = False
         db_table = 'cargo'
-
+    def __str__(self):
+        return '%d: %s' % (self.idcargo, self.nombre)
 
 class Cuenta(models.Model):
     idcuenta = models.AutoField(db_column='idCuenta', primary_key=True)  # Field name made lowercase.
@@ -169,6 +174,8 @@ class Cuenta(models.Model):
     class Meta:
         managed = False
         db_table = 'cuenta'
+    def __str__(self):
+        return '%d: %s' % (self.idcuenta, self.usuario)
 
 
 class Departamento(models.Model):
@@ -211,7 +218,7 @@ class Equipo(models.Model):
     class Meta:
         managed = False
         db_table = 'equipo'
-
+        
 
 class EquipoHasAtributo(models.Model):
     equipo_idequipo = models.ForeignKey(Equipo, models.DO_NOTHING, db_column='Equipo_idEquipo', primary_key=True)  # Field name made lowercase.
@@ -233,6 +240,8 @@ class Gerencia(models.Model):
     class Meta:
         managed = False
         db_table = 'gerencia'
+    def __str__(self):
+        return '%d: %s' % (self.idgerencia, self.nombre)
 
 
 class Impresora(models.Model):
@@ -243,6 +252,8 @@ class Impresora(models.Model):
     class Meta:
         managed = False
         db_table = 'impresora'
+    def __str__(self):
+        return '%d: %s' % (self.idcargo, self.tipo)
 
 
 class Licencia(models.Model):
@@ -256,6 +267,8 @@ class Licencia(models.Model):
     class Meta:
         managed = False
         db_table = 'licencia'
+    def __str__(self):
+        return '%d: %s' % (self.idlicencia, self.producto)
 
 
 class Ordenador(models.Model):
@@ -270,6 +283,8 @@ class Ordenador(models.Model):
     class Meta:
         managed = False
         db_table = 'ordenador'
+    def __str__(self):
+        return '%d: %s' % (self.idcargo, self.mac)
 
 
 class Os(models.Model):
@@ -282,6 +297,8 @@ class Os(models.Model):
     class Meta:
         managed = False
         db_table = 'os'
+    def __str__(self):
+        return '%d: %s' % (self.idos, self.nombre)
 
 
 class OsHasOrdenador(models.Model):
@@ -304,6 +321,8 @@ class OtroDispositivo(models.Model):
     class Meta:
         managed = False
         db_table = 'otro_dispositivo'
+    def __str__(self):
+        return '%d: %s' % (self.idotro_dispositivo, self.nombre)
 
 
 class Permiso(models.Model):
@@ -313,16 +332,20 @@ class Permiso(models.Model):
     class Meta:
         managed = False
         db_table = 'permiso'
+    def __str__(self):
+        return '%d: %s' % (self.idpermiso, self.nombre)
 
 
 class Regional(models.Model):
     idregional = models.AutoField(db_column='idRegional', primary_key=True)  # Field name made lowercase.
     nombre = models.CharField(db_column='Nombre', max_length=45, blank=True, null=True)  # Field name made lowercase.
     estado = models.IntegerField(db_column='Estado')  # Field name made lowercase.
-
     class Meta:
         managed = False
         db_table = 'regional'
+    def __str__(self):
+        return '%d: %s' % (self.idregional, self.nombre)
+
 
 
 class Ubicacion(models.Model):
@@ -334,6 +357,8 @@ class Ubicacion(models.Model):
     class Meta:
         managed = False
         db_table = 'ubicacion'
+    def __str__(self):
+        return '%d: %s' % (self.idubicacion, self.direccion)
 
 
 class UsuarioAd(models.Model):
@@ -345,13 +370,15 @@ class UsuarioAd(models.Model):
     gerencia_idgerencia = models.ForeignKey(Gerencia, models.DO_NOTHING, db_column='Gerencia_idGerencia')  # Field name made lowercase.
     regional_idregional = models.ForeignKey(Regional, models.DO_NOTHING, db_column='Regional_idRegional')  # Field name made lowercase.
     ubicacion_idubicacion = models.ForeignKey(Ubicacion, models.DO_NOTHING, db_column='Ubicacion_idUbicacion')  # Field name made lowercase.
-    cuenta_idcuenta = models.ForeignKey(Cuenta, models.DO_NOTHING, db_column='Cuenta_idCuenta')  # Field name made lowercase.
+    cuenta_idcuenta = models.ForeignKey(Cuenta, models.DO_NOTHING, db_column='Cuenta_idCuenta',null=True)  # Field name made lowercase.
     cargo_idcargo = models.ForeignKey(Cargo, models.DO_NOTHING, db_column='Cargo_idCargo')  # Field name made lowercase.
     estado = models.IntegerField(db_column='Estado')  # Field name made lowercase.
 
     class Meta:
         managed = False
         db_table = 'usuario_ad'
+    def __str__(self):
+        return '%d: %s' % (self.idusuario_ad, (self.nombre +"   "+ self.apellido))
 
 
 class UsuarioCorreo(models.Model):
@@ -365,4 +392,6 @@ class UsuarioCorreo(models.Model):
     class Meta:
         managed = False
         db_table = 'usuario_correo'
+    def __str__(self):
+        return '%d: %s' % (self.idusuario_correo, self.correo)
 

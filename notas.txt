@@ -1,0 +1,4 @@
+notas:
+    la cuenta en usuarioad deberia permitir nulos
+    me olvide poner "tipo" a los ordenadores
+    

@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User, Group
-from Sofia_Server.Sofia_App.models import Equipo,UsuarioAd,Empresa,Area,Departamento,Ubicacion,Gerencia,Regional
+from Sofia_Server.Sofia_App.models import Equipo,UsuarioAd,Empresa,Area,Departamento,Ubicacion,Gerencia,Regional,UsuarioAd,Cargo,Cuenta,UsuarioCorreo
 from rest_framework import serializers
 
 
@@ -48,3 +48,11 @@ class GerenciaSerializer(serializers.ModelSerializer):
     class Meta:
         model=Gerencia
         fields=['idgerencia','nombre','descripcion','estado']
+class CargoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=Cargo
+        fields=['idcargo','nombre','descripcion','estado']
+class UsuarioADSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=UsuarioAd
+        fields=['idusuario_ad','nombre','apellido','area_idarea','empresa_idempresa','gerencia_idgerencia','regional_idregional','ubicacion_idubicacion','cuenta_idcuenta','cargo_idcargo','estado']
