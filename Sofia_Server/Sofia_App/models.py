@@ -124,6 +124,18 @@ class Area(models.Model):
     def __str__(self):
         return '%d: %s' % (self.idarea, self.nombre)
 
+class Asociacion(models.Model):
+    idasociacion = models.IntegerField(db_column='idAsociacion', primary_key=True)  # Field name made lowercase.
+    fecha_alta = models.DateTimeField(db_column='Fecha_Alta', blank=True, null=True)  # Field name made lowercase.
+    fecha_baja = models.DateTimeField(db_column='Fecha_Baja', blank=True, null=True)  # Field name made lowercase.
+    motivo = models.CharField(db_column='Motivo', max_length=75, blank=True, null=True)  # Field name made lowercase.
+    equipo_idequipo = models.ForeignKey('Equipo', models.DO_NOTHING,db_column='Equipo_idEquipo')  # Field name made lowercase.
+    usuarioinicial = models.ForeignKey('UsuarioAd', models.DO_NOTHING,related_name='inicial', db_column='UsuarioInicial', blank=True, null=True)  # Field name made lowercase.
+    usuariofinal = models.ForeignKey('UsuarioAd', models.DO_NOTHING,related_name='final', db_column='UsuarioFInal', blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'asociacion'
 
 class Atributo(models.Model):
     idatributo = models.AutoField(db_column='idAtributo', primary_key=True)  # Field name made lowercase.
@@ -273,6 +285,7 @@ class Licencia(models.Model):
 
 class Ordenador(models.Model):
     idordenador = models.ForeignKey(Equipo, models.DO_NOTHING, db_column='idOrdenador', primary_key=True)  # Field name made lowercase.
+    tipo = models.CharField(db_column='Tipo', max_length=45, blank=True, null=True)  # Field name made lowercase.
     mac = models.CharField(db_column='MAC', max_length=25, blank=True, null=True)  # Field name made lowercase.
     hostname = models.CharField(db_column='HostName', max_length=25, blank=True, null=True)  # Field name made lowercase.
     procesador = models.CharField(db_column='Procesador', max_length=45, blank=True, null=True)  # Field name made lowercase.
@@ -328,6 +341,7 @@ class OtroDispositivo(models.Model):
 class Permiso(models.Model):
     idpermiso = models.AutoField(db_column='idPermiso', primary_key=True)  # Field name made lowercase.
     nombre = models.CharField(db_column='Nombre', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    estado = models.IntegerField(db_column='Estado')  # Field name made lowercase.
 
     class Meta:
         managed = False
@@ -379,6 +393,15 @@ class UsuarioAd(models.Model):
         db_table = 'usuario_ad'
     def __str__(self):
         return '%d: %s' % (self.idusuario_ad, (self.nombre +"   "+ self.apellido))
+
+class UsuarioAdHasPermiso(models.Model):
+    usuario_ad_idusuario_ad = models.ForeignKey(UsuarioAd, models.DO_NOTHING, db_column='Usuario_AD_idUsuario_AD', primary_key=True)  # Field name made lowercase.
+    permiso_idpermiso = models.ForeignKey(Permiso, models.DO_NOTHING, db_column='Permiso_idPermiso')  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'usuario_ad_has_permiso'
+        unique_together = (('usuario_ad_idusuario_ad', 'permiso_idpermiso'),)
 
 
 class UsuarioCorreo(models.Model):

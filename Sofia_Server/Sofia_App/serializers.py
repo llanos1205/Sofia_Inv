@@ -56,3 +56,7 @@ class UsuarioADSerializer(serializers.ModelSerializer):
     class Meta:
         model=UsuarioAd
         fields=['idusuario_ad','nombre','apellido','area_idarea','empresa_idempresa','gerencia_idgerencia','regional_idregional','ubicacion_idubicacion','cuenta_idcuenta','cargo_idcargo','estado']
+class CuentaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=Cuenta
+        fields=['idcuenta','usuario','contrasena','estado']

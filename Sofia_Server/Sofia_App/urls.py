@@ -27,6 +27,9 @@ urlpatterns = [
     path('Cargos/<int:pk>',views.Cargo_Detail.as_view()),
 
     path('UsuariosAD/',views.UsuarioAD_List.as_view()),
-    path('UsuariosAD/<int:pk>',views.UsuarioAD_Detail.as_view())
+    path('UsuariosAD/<int:pk>',views.UsuarioAD_Detail.as_view()),
+
+    path('Cuentas/',views.Cuenta_List.as_view()),
+    path('Cuentas/<int:pk>',views.Cuenta_Detail.as_view())
 ]
 urlpatterns=format_suffix_patterns(urlpatterns)

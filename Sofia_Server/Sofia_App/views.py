@@ -1,7 +1,7 @@
 # from django.shortcuts import render
 from django.contrib.auth.models import User, Group
-from Sofia_Server.Sofia_App.models import Equipo,Empresa,Area,Departamento,Regional,Ubicacion,Gerencia,Cargo,UsuarioAd
-from Sofia_Server.Sofia_App.serializers import  GerenciaSerializer,UbicacionSerializer,RegionalSerializer,UserSerializer, GroupSerializer,EquipoSerializer,EmpresaSerializer,AreaSerializer,DepartamentoSerializer,CargoSerializer,UsuarioADSerializer
+from Sofia_Server.Sofia_App.models import Equipo,Empresa,Area,Departamento,Regional,Ubicacion,Gerencia,Cargo,UsuarioAd,Cuenta
+from Sofia_Server.Sofia_App.serializers import  CuentaSerializer,GerenciaSerializer,UbicacionSerializer,RegionalSerializer,UserSerializer, GroupSerializer,EquipoSerializer,EmpresaSerializer,AreaSerializer,DepartamentoSerializer,CargoSerializer,UsuarioADSerializer
 from rest_framework import viewsets,status,generics
 
 
@@ -60,4 +60,10 @@ class UsuarioAD_List(generics.ListCreateAPIView):
     serializer_class=UsuarioADSerializer
 class UsuarioAD_Detail(generics.RetrieveUpdateDestroyAPIView):
     queryset=UsuarioAd.objects.all()
-    serializer_clas=UsuarioADSerializer
+    serializer_class=UsuarioADSerializer
+class Cuenta_List(generics.ListCreateAPIView):
+    queryset=Cuenta.objects.all()
+    serializer_class=CuentaSerializer
+class Cuenta_Detail(generics.RetrieveUpdateDestroyAPIView):
+    queryset=Cuenta.objects.all()
+    serializer_class=CuentaSerializer
