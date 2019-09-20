@@ -42,9 +42,21 @@ urlpatterns = [
     path('Permisos/<int:pk>/',views.Permiso_Detail.as_view()),
 
     path('Usuario_Permisos/',views.Usuario_Permiso_List.as_view()),
-    path('Usuario_Permisos/<int:pk>/',views.Usuario_Permiso_Detail.as_view()),
+    path('Usuario_Permisos/<int:pk>/<int:permiso_idpermiso>',views.Usuario_Permiso_Detail.as_view()),
 
     path('Ordenadores/',views.Ordenador_List.as_view()),
     path('Ordenadores/<int:pk>/',views.Ordenador_Detail.as_view()),
+
+    path('Otrodispositivos/',views.OtroDispositivo_List.as_view()),
+    path('Otrodispositivos/<int:pk>',views.OtroDispositivo_Detail.as_view()),
+
+    path('Impresoras/',views.Impresora_List.as_view()),
+    path('Impresoras/<int:pk>',views.Impresora_Detail.as_view()),
+
+    path('Licencias/',views.Licencia_List.as_view()),
+    path('Licencias/<int:pk>',views.Licencia_Detail.as_view()),
+
+    path('Atributos/',views.Atributo_List.as_view()),
+    path('Atributos/<int:pk>',views.Atributo_Detail.as_view())
 ]
 urlpatterns=format_suffix_patterns(urlpatterns)
