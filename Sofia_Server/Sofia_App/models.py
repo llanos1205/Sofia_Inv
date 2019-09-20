@@ -230,7 +230,8 @@ class Equipo(models.Model):
     class Meta:
         managed = False
         db_table = 'equipo'
-        
+    def __str__(self):
+        return '%d:%s'%(self.idequipo,self.nro_serie)    
 
 class EquipoHasAtributo(models.Model):
     equipo_idequipo = models.ForeignKey(Equipo, models.DO_NOTHING, db_column='Equipo_idEquipo', primary_key=True)  # Field name made lowercase.
@@ -297,7 +298,7 @@ class Ordenador(models.Model):
         managed = False
         db_table = 'ordenador'
     def __str__(self):
-        return '%d: %s' % (self.idordenador, self.tipo)
+        return '%s: %s' % (self.idordenador, self.tipo)
 
 
 class Os(models.Model):
@@ -329,7 +330,7 @@ class OsHasOrdenador(models.Model):
 class OtroDispositivo(models.Model):
     idotro_dispositivo = models.OneToOneField(Equipo, models.DO_NOTHING, db_column='idOtro_Dispositivo', primary_key=True)  # Field name made lowercase.
     nombre = models.CharField(db_column='Nombre', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    ordenador_idordenador = models.ForeignKey(Ordenador, models.DO_NOTHING, db_column='Ordenador_idOrdenador', blank=True, null=True)  # Field name made lowercase.
+    ordenador_idordenador = models.ForeignKey(Ordenador, models.DO_NOTHING, db_column='Ordenador_idOrdenador', blank=True, null=True,related_name='perifericos')  # Field name made lowercase.
 
     class Meta:
         managed = False
@@ -395,7 +396,7 @@ class UsuarioAd(models.Model):
         return '%d: %s' % (self.idusuario_ad, (self.nombre +"   "+ self.apellido))
 
 class UsuarioAdHasPermiso(models.Model):
-    usuario_ad_idusuario_ad = models.ForeignKey(UsuarioAd, models.DO_NOTHING, db_column='Usuario_AD_idUsuario_AD',blank=True,primary_key=True)  # Field name made lowercase.
+    usuario_ad_idusuario_ad = models.ForeignKey(UsuarioAd, models.DO_NOTHING, db_column='Usuario_AD_idUsuario_AD',blank=True,unique=False)  # Field name made lowercase.
     permiso_idpermiso = models.ForeignKey(Permiso, models.DO_NOTHING, db_column='Permiso_idPermiso')  # Field name made lowercase.
 
     class Meta:
