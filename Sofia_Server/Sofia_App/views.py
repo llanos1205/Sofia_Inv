@@ -3,12 +3,15 @@ from django.contrib.auth.models import User, Group
 from Sofia_Server.Sofia_App.models import (Equipo,Empresa,Area,Departamento,
                                             Regional,Ubicacion,Gerencia,Cargo,
                                             UsuarioAd,Cuenta,UsuarioCorreo,Equipo,
-                                            Permiso,UsuarioAdHasPermiso,Ordenador)
+                                            Permiso,UsuarioAdHasPermiso,Ordenador,OtroDispositivo,
+                                            Impresora,Licencia,Atributo)
 from Sofia_Server.Sofia_App.serializers import  (CuentaSerializer,GerenciaSerializer,UbicacionSerializer,
                                                 RegionalSerializer,UserSerializer, GroupSerializer,EquipoSerializer,
                                                 EmpresaSerializer,AreaSerializer,DepartamentoSerializer,CargoSerializer,
                                                 UsuarioADSerializer,UsuarioCorreoSerializer,EquipoSerializer,
-                                                PermisoSerializer,Permiso_UsuarioADSerializer,OrdenadorSerializer)
+                                                PermisoSerializer,Permiso_UsuarioADSerializer,OrdenadorSerializer,
+                                                OtroDispositivoSerializer,ImpresoraSerializer,LicenciaSerializer,
+                                                AtributoSerialzier)
 from rest_framework import viewsets,status,generics
 
 
@@ -117,3 +120,33 @@ class Ordenador_List(generics.ListCreateAPIView):
 class Ordenador_Detail(generics.RetrieveUpdateDestroyAPIView):
     queryset=Ordenador.objects.all()
     serializer_class=OrdenadorSerializer
+
+class OtroDispositivo_List(generics.ListCreateAPIView):
+    queryset=OtroDispositivo.objects.all()
+    serializer_class=OtroDispositivoSerializer
+class OtroDispositivo_Detail(generics.RetrieveUpdateDestroyAPIView):
+    queryset=OtroDispositivo.objects.all()
+    serializer_class=OtroDispositivoSerializer
+
+class Impresora_List(generics.ListCreateAPIView):
+    queryset=Impresora.objects.all()
+    serializer_class=ImpresoraSerializer
+class Impresora_Detail(generics.RetrieveUpdateDestroyAPIView):
+    queryset=Impresora.objects.all()
+    serializer_class=ImpresoraSerializer
+
+class Licencia_List(generics.ListCreateAPIView):
+    queryset=Licencia.objects.all()
+    serializer_class=LicenciaSerializer
+
+class Licencia_Detail(generics.RetrieveUpdateDestroyAPIView):
+    queryset=Licencia.objects.all()
+    serializer_class=LicenciaSerializer
+
+class Atributo_List(generics.ListCreateAPIView):
+    queryset=Atributo.objects.all()
+    serializer_class=AtributoSerialzier
+
+class Atributo_Detail(generics.RetrieveUpdateDestroyAPIView):
+    queryset=Atributo.objects.all()
+    serializer_class=AtributoSerialzier
