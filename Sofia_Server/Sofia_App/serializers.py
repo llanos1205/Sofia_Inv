@@ -4,7 +4,7 @@ from Sofia_Server.Sofia_App.models import (Equipo,UsuarioAd,
                                             Gerencia,Regional,UsuarioAd,Cargo,
                                             Cuenta,UsuarioCorreo,Equipo,Ordenador,
                                             Impresora,OtroDispositivo,Atributo,Permiso,
-                                            UsuarioAdHasPermiso)
+                                            UsuarioAdHasPermiso,Licencia,Os,Atributo)
 from rest_framework import serializers
 
 
@@ -62,6 +62,7 @@ class CargoSerializer(serializers.ModelSerializer):
         model=Cargo
         fields=['idcargo','nombre','descripcion','estado']
 class UsuarioADSerializer(serializers.ModelSerializer):
+    permisos= serializers.PrimaryKeyRelatedField(many=True, read_only=False, queryset=Permiso.objects.all())
     class Meta:
         model=UsuarioAd
         fields=['idusuario_ad','nombre','apellido','area_idarea',
@@ -74,6 +75,7 @@ class CuentaSerializer(serializers.ModelSerializer):
         model=Cuenta
         fields=['idcuenta','usuario','contrasena','estado']
 class UsuarioCorreoSerializer(serializers.ModelSerializer):
+    
     class Meta:
         model=UsuarioCorreo
         fields=['idusuario_correo','correo','contrasena',
@@ -90,11 +92,30 @@ class PermisoSerializer(serializers.ModelSerializer):
         fields=['idpermiso','nombre','estado']
 
 class Permiso_UsuarioADSerializer(serializers.ModelSerializer):
+    usuario_ad_idusuario_ad=serializers.PrimaryKeyRelatedField(many=False, read_only=False, queryset=UsuarioAd.objects.all())
     class Meta:
         model=UsuarioAdHasPermiso
         fields=['usuario_ad_idusuario_ad','permiso_idpermiso']
 class OrdenadorSerializer(serializers.ModelSerializer):
+    perifericos=serializers.PrimaryKeyRelatedField(many=True,read_only=True)
     class Meta:
         model=Ordenador
         fields=['idordenador','tipo','mac','hostname',
-                'procesador','ram','almacenamiento','tipo_almacenamiento']
+                'procesador','ram','almacenamiento','tipo_almacenamiento','perifericos']
+class ImpresoraSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=Impresora
+        fields=['idimpresora','tipo','tinta']
+class OtroDispositivoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=OtroDispositivo
+        fields=['idotro_dispositivo','nombre','ordenador_idordenador']
+class LicenciaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=Licencia
+        fields=['idlicencia','producto','llave_activacion',
+                'version','ordenador_idordenador','estado']
+class AtributoSerialzier(serializers.ModelSerializer):
+    class Meta:
+        model=Atributo
+        fields=['idatributo','nombre','estado']
