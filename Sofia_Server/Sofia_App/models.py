@@ -257,7 +257,7 @@ class Gerencia(models.Model):
 
 
 class Impresora(models.Model):
-    idimpresora = models.ForeignKey(Equipo, models.DO_NOTHING, db_column='idImpresora', primary_key=True)  # Field name made lowercase.
+    idimpresora = models.OneToOneField(Equipo, models.DO_NOTHING, db_column='idImpresora', primary_key=True)  # Field name made lowercase.
     tipo = models.CharField(db_column='Tipo', max_length=45, blank=True, null=True)  # Field name made lowercase.
     tinta = models.CharField(db_column='Tinta', max_length=45, blank=True, null=True)  # Field name made lowercase.
 
@@ -284,7 +284,7 @@ class Licencia(models.Model):
 
 
 class Ordenador(models.Model):
-    idordenador = models.ForeignKey(Equipo, models.DO_NOTHING, db_column='idOrdenador', primary_key=True)  # Field name made lowercase.
+    idordenador = models.OneToOneField(Equipo, models.DO_NOTHING, db_column='idOrdenador',primary_key=True)  # Field name made lowercase.
     tipo = models.CharField(db_column='Tipo', max_length=45, blank=True, null=True)  # Field name made lowercase.
     mac = models.CharField(db_column='MAC', max_length=25, blank=True, null=True)  # Field name made lowercase.
     hostname = models.CharField(db_column='HostName', max_length=25, blank=True, null=True)  # Field name made lowercase.
@@ -297,7 +297,7 @@ class Ordenador(models.Model):
         managed = False
         db_table = 'ordenador'
     def __str__(self):
-        return '%d: %s' % (self.idcargo, self.mac)
+        return '%d: %s' % (self.idordenador, self.tipo)
 
 
 class Os(models.Model):
@@ -327,7 +327,7 @@ class OsHasOrdenador(models.Model):
 
 
 class OtroDispositivo(models.Model):
-    idotro_dispositivo = models.ForeignKey(Equipo, models.DO_NOTHING, db_column='idOtro_Dispositivo', primary_key=True)  # Field name made lowercase.
+    idotro_dispositivo = models.OneToOneField(Equipo, models.DO_NOTHING, db_column='idOtro_Dispositivo', primary_key=True)  # Field name made lowercase.
     nombre = models.CharField(db_column='Nombre', max_length=45, blank=True, null=True)  # Field name made lowercase.
     ordenador_idordenador = models.ForeignKey(Ordenador, models.DO_NOTHING, db_column='Ordenador_idOrdenador', blank=True, null=True)  # Field name made lowercase.
 
@@ -387,7 +387,7 @@ class UsuarioAd(models.Model):
     cuenta_idcuenta = models.ForeignKey(Cuenta, models.DO_NOTHING, db_column='Cuenta_idCuenta',null=True)  # Field name made lowercase.
     cargo_idcargo = models.ForeignKey(Cargo, models.DO_NOTHING, db_column='Cargo_idCargo')  # Field name made lowercase.
     estado = models.IntegerField(db_column='Estado')  # Field name made lowercase.
-
+    permisos=models.ManyToManyField(Permiso,related_name='Permisos',through='UsuarioAdHasPermiso')
     class Meta:
         managed = False
         db_table = 'usuario_ad'
@@ -395,13 +395,13 @@ class UsuarioAd(models.Model):
         return '%d: %s' % (self.idusuario_ad, (self.nombre +"   "+ self.apellido))
 
 class UsuarioAdHasPermiso(models.Model):
-    usuario_ad_idusuario_ad = models.ForeignKey(UsuarioAd, models.DO_NOTHING, db_column='Usuario_AD_idUsuario_AD', primary_key=True)  # Field name made lowercase.
+    usuario_ad_idusuario_ad = models.ForeignKey(UsuarioAd, models.DO_NOTHING, db_column='Usuario_AD_idUsuario_AD',blank=True,primary_key=True)  # Field name made lowercase.
     permiso_idpermiso = models.ForeignKey(Permiso, models.DO_NOTHING, db_column='Permiso_idPermiso')  # Field name made lowercase.
 
     class Meta:
         managed = False
         db_table = 'usuario_ad_has_permiso'
-        unique_together = (('usuario_ad_idusuario_ad', 'permiso_idpermiso'),)
+        unique_together = (('usuario_ad_idusuario_ad', 'permiso_idpermiso'))
 
 
 class UsuarioCorreo(models.Model):

@@ -26,7 +26,8 @@ class EquipoSerializer(serializers.ModelSerializer):
     class Meta:
         model=Equipo
         fields=['idequipo','marca','modelo','nro_serie',
-                'nro_activo_fijo','ip','ultima_observacion']
+                'nro_activo_fijo','ip','ultima_observacion',
+                'usuario_ad_idusuario_ad','estado']
 class EmpresaSerializer(serializers.ModelSerializer):
     class Meta:
         model=Empresa
@@ -65,7 +66,9 @@ class UsuarioADSerializer(serializers.ModelSerializer):
         model=UsuarioAd
         fields=['idusuario_ad','nombre','apellido','area_idarea',
                 'empresa_idempresa','gerencia_idgerencia','regional_idregional',
-                'ubicacion_idubicacion','cuenta_idcuenta','cargo_idcargo','estado']
+                'ubicacion_idubicacion','cuenta_idcuenta','cargo_idcargo','permisos','estado']
+        depth=0
+        
 class CuentaSerializer(serializers.ModelSerializer):
     class Meta:
         model=Cuenta
@@ -90,3 +93,8 @@ class Permiso_UsuarioADSerializer(serializers.ModelSerializer):
     class Meta:
         model=UsuarioAdHasPermiso
         fields=['usuario_ad_idusuario_ad','permiso_idpermiso']
+class OrdenadorSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=Ordenador
+        fields=['idordenador','tipo','mac','hostname',
+                'procesador','ram','almacenamiento','tipo_almacenamiento']

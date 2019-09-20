@@ -3,12 +3,12 @@ from django.contrib.auth.models import User, Group
 from Sofia_Server.Sofia_App.models import (Equipo,Empresa,Area,Departamento,
                                             Regional,Ubicacion,Gerencia,Cargo,
                                             UsuarioAd,Cuenta,UsuarioCorreo,Equipo,
-                                            Permiso,UsuarioAdHasPermiso)
+                                            Permiso,UsuarioAdHasPermiso,Ordenador)
 from Sofia_Server.Sofia_App.serializers import  (CuentaSerializer,GerenciaSerializer,UbicacionSerializer,
                                                 RegionalSerializer,UserSerializer, GroupSerializer,EquipoSerializer,
                                                 EmpresaSerializer,AreaSerializer,DepartamentoSerializer,CargoSerializer,
                                                 UsuarioADSerializer,UsuarioCorreoSerializer,EquipoSerializer,
-                                                PermisoSerializer,Permiso_UsuarioADSerializer)
+                                                PermisoSerializer,Permiso_UsuarioADSerializer,OrdenadorSerializer)
 from rest_framework import viewsets,status,generics
 
 
@@ -98,8 +98,22 @@ class Permiso_Detail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class=PermisoSerializer
 
 class Usuario_Permiso_List(generics.ListCreateAPIView):
-    queryset=UsuarioAdHasPermiso
+    queryset=UsuarioAdHasPermiso.objects.all()
     serializer_class=Permiso_UsuarioADSerializer
 class Usuario_Permiso_Detail(generics.RetrieveUpdateDestroyAPIView):
-    queryset=UsuarioAdHasPermiso
+    queryset=UsuarioAdHasPermiso.objects.all()
     serializer_class=Permiso_UsuarioADSerializer
+
+class Equio_List(generics.ListCreateAPIView):
+    queryset=Equipo.objects.all()
+    serializer_class=EquipoSerializer
+class Equio_List(generics.RetrieveUpdateDestroyAPIView):
+    queryset=Equipo.objects.all()
+    serializer_class=EquipoSerializer
+
+class Ordenador_List(generics.ListCreateAPIView):
+    queryset=Ordenador.objects.all()
+    serializer_class=OrdenadorSerializer
+class Ordenador_Detail(generics.RetrieveUpdateDestroyAPIView):
+    queryset=Ordenador.objects.all()
+    serializer_class=OrdenadorSerializer

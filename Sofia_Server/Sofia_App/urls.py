@@ -43,5 +43,8 @@ urlpatterns = [
 
     path('Usuario_Permisos/',views.Usuario_Permiso_List.as_view()),
     path('Usuario_Permisos/<int:pk>/',views.Usuario_Permiso_Detail.as_view()),
+
+    path('Ordenadores/',views.Ordenador_List.as_view()),
+    path('Ordenadores/<int:pk>/',views.Ordenador_Detail.as_view()),
 ]
 urlpatterns=format_suffix_patterns(urlpatterns)
