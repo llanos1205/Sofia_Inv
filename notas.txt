@@ -1,4 +1,3 @@
 notas:
-    la cuenta en usuarioad deberia permitir nulos
-    me olvide poner "tipo" a los ordenadores
-    
+    agregar CI a usuario
+    averiguar como llenar campos en tablas intermedias de relaciones many to many
