@@ -226,7 +226,8 @@ class Equipo(models.Model):
     ultima_observacion = models.CharField(db_column='Ultima_Observacion', max_length=45, blank=True, null=True)  # Field name made lowercase.
     usuario_ad_idusuario_ad = models.ForeignKey('UsuarioAd', models.DO_NOTHING, db_column='Usuario_AD_idUsuario_AD', blank=True, null=True)  # Field name made lowercase.
     estado = models.IntegerField(db_column='Estado')  # Field name made lowercase.
-
+    atributos=models.ManyToManyField(Atributo,related_name='atributos',through='EquipoHasAtributo')
+  
     class Meta:
         managed = False
         db_table = 'equipo'
@@ -396,7 +397,7 @@ class UsuarioAd(models.Model):
         return '%d: %s' % (self.idusuario_ad, (self.nombre +"   "+ self.apellido))
 
 class UsuarioAdHasPermiso(models.Model):
-    usuario_ad_idusuario_ad = models.ForeignKey(UsuarioAd, models.DO_NOTHING, db_column='Usuario_AD_idUsuario_AD',blank=True,unique=False)  # Field name made lowercase.
+    usuario_ad_idusuario_ad = models.ForeignKey(UsuarioAd, models.DO_NOTHING, db_column='Usuario_AD_idUsuario_AD',primary_key=True)  # Field name made lowercase.
     permiso_idpermiso = models.ForeignKey(Permiso, models.DO_NOTHING, db_column='Permiso_idPermiso')  # Field name made lowercase.
 
     class Meta:

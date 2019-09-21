@@ -4,14 +4,14 @@ from Sofia_Server.Sofia_App.models import (Equipo,Empresa,Area,Departamento,
                                             Regional,Ubicacion,Gerencia,Cargo,
                                             UsuarioAd,Cuenta,UsuarioCorreo,Equipo,
                                             Permiso,UsuarioAdHasPermiso,Ordenador,OtroDispositivo,
-                                            Impresora,Licencia,Atributo)
+                                            Impresora,Licencia,Atributo,EquipoHasAtributo)
 from Sofia_Server.Sofia_App.serializers import  (CuentaSerializer,GerenciaSerializer,UbicacionSerializer,
                                                 RegionalSerializer,UserSerializer, GroupSerializer,EquipoSerializer,
                                                 EmpresaSerializer,AreaSerializer,DepartamentoSerializer,CargoSerializer,
                                                 UsuarioADSerializer,UsuarioCorreoSerializer,EquipoSerializer,
                                                 PermisoSerializer,Permiso_UsuarioADSerializer,OrdenadorSerializer,
                                                 OtroDispositivoSerializer,ImpresoraSerializer,LicenciaSerializer,
-                                                AtributoSerialzier)
+                                                AtributoSerialzier,EquipoHasAtributoSerializer)
 from rest_framework import viewsets,status,generics
 
 
@@ -103,6 +103,8 @@ class Permiso_Detail(generics.RetrieveUpdateDestroyAPIView):
 class Usuario_Permiso_List(generics.ListCreateAPIView):
     queryset=UsuarioAdHasPermiso.objects.all()
     serializer_class=Permiso_UsuarioADSerializer
+    # def get_queryset(self):
+    #     return self.queryset.filter(pk=('usuario_ad_idusuario_ad','permiso_idpermiso'))
 class Usuario_Permiso_Detail(generics.RetrieveUpdateDestroyAPIView):
     queryset=UsuarioAdHasPermiso.objects.all()
     serializer_class=Permiso_UsuarioADSerializer
@@ -138,7 +140,6 @@ class Impresora_Detail(generics.RetrieveUpdateDestroyAPIView):
 class Licencia_List(generics.ListCreateAPIView):
     queryset=Licencia.objects.all()
     serializer_class=LicenciaSerializer
-
 class Licencia_Detail(generics.RetrieveUpdateDestroyAPIView):
     queryset=Licencia.objects.all()
     serializer_class=LicenciaSerializer
@@ -146,7 +147,13 @@ class Licencia_Detail(generics.RetrieveUpdateDestroyAPIView):
 class Atributo_List(generics.ListCreateAPIView):
     queryset=Atributo.objects.all()
     serializer_class=AtributoSerialzier
-
 class Atributo_Detail(generics.RetrieveUpdateDestroyAPIView):
     queryset=Atributo.objects.all()
     serializer_class=AtributoSerialzier
+
+class Equipo_Atributo_List(generics.ListCreateAPIView):
+    queryset=EquipoHasAtributo.objects.all()
+    serializer_class=EquipoHasAtributoSerializer    
+class Equipo_Atributo_Detail(generics.RetrieveUpdateDestroyAPIView):
+    queryset=EquipoHasAtributo.objects.all()
+    serializer_class=EquipoHasAtributoSerializer

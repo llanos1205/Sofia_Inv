@@ -57,6 +57,9 @@ urlpatterns = [
     path('Licencias/<int:pk>',views.Licencia_Detail.as_view()),
 
     path('Atributos/',views.Atributo_List.as_view()),
-    path('Atributos/<int:pk>',views.Atributo_Detail.as_view())
+    path('Atributos/<int:pk>',views.Atributo_Detail.as_view()),
+
+    path('Equipo_Atributos/',views.Equipo_Atributo_List.as_view()),
+    #
 ]
 urlpatterns=format_suffix_patterns(urlpatterns)

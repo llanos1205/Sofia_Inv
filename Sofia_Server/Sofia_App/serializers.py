@@ -4,7 +4,8 @@ from Sofia_Server.Sofia_App.models import (Equipo,UsuarioAd,
                                             Gerencia,Regional,UsuarioAd,Cargo,
                                             Cuenta,UsuarioCorreo,Equipo,Ordenador,
                                             Impresora,OtroDispositivo,Atributo,Permiso,
-                                            UsuarioAdHasPermiso,Licencia,Os,Atributo)
+                                            UsuarioAdHasPermiso,Licencia,Os,Atributo,
+                                            EquipoHasAtributo)
 from rest_framework import serializers
 
 
@@ -80,12 +81,17 @@ class UsuarioCorreoSerializer(serializers.ModelSerializer):
         model=UsuarioCorreo
         fields=['idusuario_correo','correo','contrasena',
                 'tipo','usuario_ad_idusuario_ad1','estado']
+class AtributoSerialzier(serializers.ModelSerializer):
+    class Meta:
+        model=Atributo
+        fields=['idatributo','nombre','estado']
 class EquipoSerializer(serializers.ModelSerializer):
+    atributos= serializers.PrimaryKeyRelatedField(many=True, read_only=False, queryset=Atributo.objects.all())
     class Meta:
         model=Equipo
         fields=['idequipo','marca','modelo','nro_serie',
                 'nro_activo_fijo','ip','ultima_observacion',
-                'usuario_ad_idusuario_ad','estado']
+                'usuario_ad_idusuario_ad','atributos','estado']
 class PermisoSerializer(serializers.ModelSerializer):
     class Meta:
         model=Permiso
@@ -115,7 +121,8 @@ class LicenciaSerializer(serializers.ModelSerializer):
         model=Licencia
         fields=['idlicencia','producto','llave_activacion',
                 'version','ordenador_idordenador','estado']
-class AtributoSerialzier(serializers.ModelSerializer):
+class EquipoHasAtributoSerializer(serializers.ModelSerializer):
+    equipo_idequipo=serializers.PrimaryKeyRelatedField(many=False, read_only=False, queryset=Equipo.objects.all())
     class Meta:
-        model=Atributo
-        fields=['idatributo','nombre','estado']
+        model=EquipoHasAtributo
+        fields=['equipo_idequipo','atributo_idatributo','descripcion']
