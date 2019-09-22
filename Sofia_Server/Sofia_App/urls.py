@@ -42,7 +42,7 @@ urlpatterns = [
     path('Permisos/<int:pk>/',views.Permiso_Detail.as_view()),
 
     path('Usuario_Permisos/',views.Usuario_Permiso_List.as_view()),
-    path('Usuario_Permisos/<int:pk>/<int:permiso_idpermiso>',views.Usuario_Permiso_Detail.as_view()),
+    path('Usuario_Permisos/{UsuarioAd: usuario_ad_idusuario_ad, Permiso: permiso_idpermiso}',views.Usuario_Permiso_Detail.as_view()),
 
     path('Ordenadores/',views.Ordenador_List.as_view()),
     path('Ordenadores/<int:pk>/',views.Ordenador_Detail.as_view()),

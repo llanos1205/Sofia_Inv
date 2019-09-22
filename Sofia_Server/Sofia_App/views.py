@@ -105,12 +105,11 @@ class Permiso_Detail(generics.RetrieveUpdateDestroyAPIView):
 class Usuario_Permiso_List(generics.ListCreateAPIView):
     queryset=UsuarioAdHasPermiso.objects.all()
     serializer_class=Permiso_UsuarioADSerializer
-    # def get_queryset(self):
-    #     return self.queryset.filter(pk=('usuario_ad_idusuario_ad','permiso_idpermiso'))
+    
 class Usuario_Permiso_Detail(generics.RetrieveUpdateDestroyAPIView):
     queryset=UsuarioAdHasPermiso.objects.all()
     serializer_class=Permiso_UsuarioADSerializer
-
+    
 class Equio_List(generics.ListCreateAPIView):
     queryset=Equipo.objects.all()
     serializer_class=EquipoSerializer
@@ -187,3 +186,4 @@ class Asociacion_List(generics.ListCreateAPIView):
 class Asociacion_Detail(generics.RetrieveUpdateDestroyAPIView):
     queryset=Asociacion.objects.all()
     serializer_class=AsociacionSerializer
+    
