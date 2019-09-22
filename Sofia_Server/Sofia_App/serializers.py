@@ -5,7 +5,7 @@ from Sofia_Server.Sofia_App.models import (Equipo,UsuarioAd,
                                             Cuenta,UsuarioCorreo,Equipo,Ordenador,
                                             Impresora,OtroDispositivo,Atributo,Permiso,
                                             UsuarioAdHasPermiso,Licencia,Os,Atributo,
-                                            EquipoHasAtributo,Auditoria,OsHasOrdenador,Asociacion)
+                                            EquipoHasAtributo,Auditoria,Asociacion)
 from rest_framework import serializers
 
 
@@ -66,7 +66,7 @@ class UsuarioADSerializer(serializers.ModelSerializer):
     permisos= serializers.PrimaryKeyRelatedField(many=True, read_only=False, queryset=Permiso.objects.all())
     class Meta:
         model=UsuarioAd
-        fields=['idusuario_ad','nombre','apellido','area_idarea',
+        fields=['idusuario_ad','nombre','apellido','ci','area_idarea',
                 'empresa_idempresa','gerencia_idgerencia','regional_idregional',
                 'ubicacion_idubicacion','cuenta_idcuenta','cargo_idcargo','permisos','estado']
         depth=0
@@ -107,7 +107,7 @@ class OrdenadorSerializer(serializers.ModelSerializer):
     class Meta:
         model=Ordenador
         fields=['idordenador','tipo','mac','hostname',
-                'procesador','ram','almacenamiento','tipo_almacenamiento','perifericos']
+                'procesador','ram','almacenamiento','tipo_almacenamiento','perifericos','os_idos']
 class ImpresoraSerializer(serializers.ModelSerializer):
     class Meta:
         model=Impresora
@@ -131,11 +131,6 @@ class OsSerializer(serializers.ModelSerializer):
     class Meta:
         model=Os
         fields=['idos','nombre','servicio','arquitectura','estado']
-
-class OsHasOrdenadorSerialzier(serializers.ModelSerializer):
-    class Meta:
-        model=OsHasOrdenador
-        fields=['os_idos','ordenador_idordenador','fecha_inicio','fecha_fin']
 
 class AuditoriaSerializer(serializers.ModelSerializer):
     class Meta:

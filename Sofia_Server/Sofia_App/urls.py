@@ -64,10 +64,7 @@ urlpatterns = [
 
     path('Oss/',views.Os_List.as_view()),
     path('Oss/<int:pk>',views.Os_Detail.as_view()),
-
-    path('Ordenador_Oss/',views.OsHasOrdenador_List.as_view()),
-    #    
-
+  
     path('Auditorias/',views.Auditoria_List.as_view()),
     path('Auditorias/<int:pk>/',views.Auditoria_Detail.as_view()),
 

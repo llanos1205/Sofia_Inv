@@ -5,7 +5,7 @@ from Sofia_Server.Sofia_App.models import (Equipo,Empresa,Area,Departamento,
                                             UsuarioAd,Cuenta,UsuarioCorreo,Equipo,
                                             Permiso,UsuarioAdHasPermiso,Ordenador,OtroDispositivo,
                                             Impresora,Licencia,Atributo,EquipoHasAtributo,Os,
-                                            OsHasOrdenador,Auditoria,Asociacion)
+                                            Auditoria,Asociacion)
 from Sofia_Server.Sofia_App.serializers import  (CuentaSerializer,GerenciaSerializer,UbicacionSerializer,
                                                 RegionalSerializer,UserSerializer, GroupSerializer,EquipoSerializer,
                                                 EmpresaSerializer,AreaSerializer,DepartamentoSerializer,CargoSerializer,
@@ -13,7 +13,7 @@ from Sofia_Server.Sofia_App.serializers import  (CuentaSerializer,GerenciaSerial
                                                 PermisoSerializer,Permiso_UsuarioADSerializer,OrdenadorSerializer,
                                                 OtroDispositivoSerializer,ImpresoraSerializer,LicenciaSerializer,
                                                 AtributoSerialzier,EquipoHasAtributoSerializer,OsSerializer,
-                                                OsHasOrdenadorSerialzier,AuditoriaSerializer,AsociacionSerializer)
+                                                AuditoriaSerializer,AsociacionSerializer)
 from rest_framework import viewsets,status,generics
 
 
@@ -165,13 +165,6 @@ class Os_List(generics.ListCreateAPIView):
 class Os_Detail(generics.RetrieveUpdateDestroyAPIView):
     queryset=Os.objects.all()
     serializer_class=OsSerializer
-
-class OsHasOrdenador_List(generics.ListCreateAPIView):
-    queryset=OsHasOrdenador.objects.all()
-    serializer_class=OsHasOrdenadorSerialzier
-class OsHasOrdenador_Detail(generics.RetrieveUpdateDestroyAPIView):
-    queryset=OsHasOrdenador.objects.all()
-    serializer_class=OsHasOrdenadorSerialzier
 
 class Auditoria_List(generics.ListCreateAPIView):
     queryset=Auditoria.objects.all()
