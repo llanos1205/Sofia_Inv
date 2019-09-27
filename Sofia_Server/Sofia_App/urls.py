@@ -70,5 +70,7 @@ urlpatterns = [
 
     path('Asociaciones/',views.Asociacion_List.as_view()),
     path('Asociaciones/<int:pk>',views.Asociacion_Detail.as_view()),
+    
+    path('Equipos_Atributos/',views.Equipo_Atributo_List.as_view()),
 ]
 urlpatterns=format_suffix_patterns(urlpatterns)
