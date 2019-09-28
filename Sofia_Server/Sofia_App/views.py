@@ -159,6 +159,7 @@ class Equipo_Atributo_Detail(generics.RetrieveUpdateDestroyAPIView):
     queryset=EquipoHasAtributo.objects.all()
     serializer_class=EquipoHasAtributoSerializer
 
+
 class Os_List(generics.ListCreateAPIView):
     queryset=Os.objects.all()
     serializer_class=OsSerializer

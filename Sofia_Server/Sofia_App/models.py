@@ -126,8 +126,8 @@ class Area(models.Model):
 
 class Asociacion(models.Model):
     idasociacion = models.AutoField(db_column='idAsociacion', primary_key=True)  # Field name made lowercase.
-    fecha_alta = models.DateFields(db_column='Fecha_Alta', blank=True, null=True)  # Field name made lowercase.
-    fecha_baja = models.DateFields(db_column='Fecha_Baja', blank=True, null=True)  # Field name made lowercase.
+    fecha_alta = models.DateField(db_column='Fecha_Alta', blank=True, null=True)  # Field name made lowercase.
+    fecha_baja = models.DateField(db_column='Fecha_Baja', blank=True, null=True)  # Field name made lowercase.
     motivo = models.CharField(db_column='Motivo', max_length=75, blank=True, null=True)  # Field name made lowercase.
     equipo_idequipo = models.ForeignKey('Equipo', models.DO_NOTHING,db_column='Equipo_idEquipo')  # Field name made lowercase.
     usuarioinicial = models.ForeignKey('UsuarioAd', models.DO_NOTHING,related_name='inicial', db_column='UsuarioInicial', blank=True, null=True)  # Field name made lowercase.
