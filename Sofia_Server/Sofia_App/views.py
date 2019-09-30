@@ -5,7 +5,7 @@ from Sofia_Server.Sofia_App.models import (Equipo,Empresa,Area,Departamento,
                                             UsuarioAd,Cuenta,UsuarioCorreo,Equipo,
                                             Permiso,UsuarioAdHasPermiso,Ordenador,OtroDispositivo,
                                             Impresora,Licencia,Atributo,EquipoHasAtributo,Os,
-                                            Auditoria,Asociacion)
+                                            Auditoria,Asociacion,OrdenadorHasLicencia)
 from Sofia_Server.Sofia_App.serializers import  (CuentaSerializer,GerenciaSerializer,UbicacionSerializer,
                                                 RegionalSerializer,UserSerializer, GroupSerializer,EquipoSerializer,
                                                 EmpresaSerializer,AreaSerializer,DepartamentoSerializer,CargoSerializer,
@@ -13,7 +13,7 @@ from Sofia_Server.Sofia_App.serializers import  (CuentaSerializer,GerenciaSerial
                                                 PermisoSerializer,Permiso_UsuarioADSerializer,OrdenadorSerializer,
                                                 OtroDispositivoSerializer,ImpresoraSerializer,LicenciaSerializer,
                                                 AtributoSerialzier,EquipoHasAtributoSerializer,OsSerializer,
-                                                AuditoriaSerializer,AsociacionSerializer)
+                                                AuditoriaSerializer,AsociacionSerializer,OrdenadorHasLicenciaSerializer)
 from rest_framework import viewsets,status,generics
 
 
@@ -109,6 +109,11 @@ class Usuario_Permiso_List(generics.ListCreateAPIView):
 class Usuario_Permiso_Detail(generics.RetrieveUpdateDestroyAPIView):
     queryset=UsuarioAdHasPermiso.objects.all()
     serializer_class=Permiso_UsuarioADSerializer
+    lookup_url_kwarg=['pk,pk2']
+    def get_object(self):
+        pk=self.kwargs['pk']
+        pk2=self.kwargs['pk2']
+        return UsuarioAdHasPermiso.objects.get(usuario_ad_idusuario_ad=pk,permiso_idpermiso=pk2)
     
 class Equio_List(generics.ListCreateAPIView):
     queryset=Equipo.objects.all()
@@ -158,6 +163,11 @@ class Equipo_Atributo_List(generics.ListCreateAPIView):
 class Equipo_Atributo_Detail(generics.RetrieveUpdateDestroyAPIView):
     queryset=EquipoHasAtributo.objects.all()
     serializer_class=EquipoHasAtributoSerializer
+    lookup_url_kwarg=['pk,pk2']
+    def get_object(self):
+        pk=self.kwargs['pk']
+        pk2=self.kwargs['pk2']
+        return EquipoHasAtributo.objects.get(equipo_idequipo=pk,atributo_idatributo=pk2)
 
 
 class Os_List(generics.ListCreateAPIView):
@@ -180,4 +190,15 @@ class Asociacion_List(generics.ListCreateAPIView):
 class Asociacion_Detail(generics.RetrieveUpdateDestroyAPIView):
     queryset=Asociacion.objects.all()
     serializer_class=AsociacionSerializer
-    
+
+class OrdenadorHasLicencia_List(generics.ListCreateAPIView):
+    queryset=OrdenadorHasLicencia.objects.all()
+    serializer_class=OrdenadorHasLicenciaSerializer
+class OrdenadorHasLicencia_Detail(generics.RetrieveUpdateDestroyAPIView):
+    queryset=OrdenadorHasLicencia.objects.all()
+    serializer_class=OrdenadorHasLicenciaSerializer
+    lookup_url_kwarg=['pk2,pk3']
+    def get_object(self):
+        pk2=self.kwargs['pk2']
+        pk3=self.kwargs['pk3']
+        return OrdenadorHasLicencia.objects.get(ordenador_idordenador=pk2,licencia_idlicencia=pk3)

@@ -5,7 +5,7 @@ from Sofia_Server.Sofia_App.models import (Equipo,UsuarioAd,
                                             Cuenta,UsuarioCorreo,Equipo,Ordenador,
                                             Impresora,OtroDispositivo,Atributo,Permiso,
                                             UsuarioAdHasPermiso,Licencia,Os,Atributo,
-                                            EquipoHasAtributo,Auditoria,Asociacion)
+                                            EquipoHasAtributo,Auditoria,Asociacion,OrdenadorHasLicencia)
 from rest_framework import serializers
 
 
@@ -119,8 +119,7 @@ class OtroDispositivoSerializer(serializers.ModelSerializer):
 class LicenciaSerializer(serializers.ModelSerializer):
     class Meta:
         model=Licencia
-        fields=['idlicencia','producto','llave_activacion',
-                'version','ordenador_idordenador','estado']
+        fields=['idlicencia','producto','estado']
 class EquipoHasAtributoSerializer(serializers.ModelSerializer):
     equipo_idequipo=serializers.PrimaryKeyRelatedField(many=False, read_only=False, queryset=Equipo.objects.all())
     class Meta:
@@ -141,3 +140,7 @@ class AsociacionSerializer(serializers.ModelSerializer):
     class Meta:
         model=Asociacion
         fields=['idasociacion','fecha_alta','fecha_baja','motivo','equipo_idequipo','usuarioinicial','usuariofinal']
+class OrdenadorHasLicenciaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=OrdenadorHasLicencia
+        fields=['idordenador_has_licencia','llave','version','fecha_instalacion','licencia_idlicencia','ordenador_idordenador']

@@ -42,7 +42,7 @@ urlpatterns = [
     path('Permisos/<int:pk>/',views.Permiso_Detail.as_view()),
 
     path('Usuario_Permisos/',views.Usuario_Permiso_List.as_view()),
-    path('Usuario_Permisos/{UsuarioAd: usuario_ad_idusuario_ad, Permiso: permiso_idpermiso}',views.Usuario_Permiso_Detail.as_view()),
+    path('Usuario_Permisos/<int:pk>/<int:pk2>/',views.Usuario_Permiso_Detail.as_view()),
 
     path('Ordenadores/',views.Ordenador_List.as_view()),
     path('Ordenadores/<int:pk>/',views.Ordenador_Detail.as_view()),
@@ -72,5 +72,9 @@ urlpatterns = [
     path('Asociaciones/<int:pk>',views.Asociacion_Detail.as_view()),
     
     path('Equipos_Atributos/',views.Equipo_Atributo_List.as_view()),
+    path('Equipos_Atributos/<int:pk>/<int:pk2>/',views.Equipo_Atributo_Detail.as_view()),
+
+    path('Ordenador_Licencias/',views.OrdenadorHasLicencia_List.as_view()),
+    path('Ordenador_Licencias/<int:pk2>/<int:pk3>/',views.OrdenadorHasLicencia_Detail.as_view()),
 ]
 urlpatterns=format_suffix_patterns(urlpatterns)
