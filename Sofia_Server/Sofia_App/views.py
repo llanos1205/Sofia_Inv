@@ -63,7 +63,7 @@ class Ubicacion_Detail(generics.RetrieveUpdateDestroyAPIView):
 class Cargo_List(generics.ListCreateAPIView):
     queryset=Cargo.objects.all()
     serializer_class=CargoSerializer
-class Cargo_Detail(generics.RetrieveDestroyAPIView):
+class Cargo_Detail(generics.RetrieveUpdateDestroyAPIView):
     queryset=Cargo.objects.all()
     serializer_class=CargoSerializer  
 
