@@ -1,4 +1,4 @@
 {
-    "python.pythonPath": "c:\\Users\\dell\\source\\repos\\llanos1205\\Sofia_Inv\\myenv\\Scripts\\python.exe",
+    "python.pythonPath": "myenv\\Scripts\\python.exe",
     "git.ignoreLimitWarning": true
 }
