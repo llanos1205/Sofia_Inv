@@ -1,0 +1,5 @@
+notas:
+    FormUsers-> hacer la aprte de modificacion de permisos
+    Form Equipos-> hacer todo, pensar en las sigueintes subepstañas
+    Reportes->Pensar metodo de filtrada y estructura de la work sheet
+    
