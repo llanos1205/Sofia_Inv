@@ -25,7 +25,7 @@ SECRET_KEY = '6h3w%^$69td_#xdwbj%$*o7o)#_40sm1=ixjnb*g-)!t1dt+=u'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 #insertar la ip propida del equipo
-ALLOWED_HOSTS = ['127.0.0.1','.pythonanywhere.com','0.0.0.0']
+ALLOWED_HOSTS = ['127.0.0.1','.pythonanywhere.com','0.0.0.0','localhost']
 
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
