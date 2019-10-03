@@ -8,3 +8,4 @@ notas:
     hacer control de auditorias ante modificaciones/deleciones
     user manager interno
     django side buscar un solo registro x otro parametro distinto al pk
+    https://github.com/carltongibson/django-filter
