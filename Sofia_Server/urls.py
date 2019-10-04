@@ -27,5 +27,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(router.urls)),
     path('',include('Sofia_Server.Sofia_App.urls')),
+    path('',include('Sofia_Server.core.urls')),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
