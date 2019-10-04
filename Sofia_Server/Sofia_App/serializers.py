@@ -62,6 +62,10 @@ class CargoSerializer(serializers.ModelSerializer):
     class Meta:
         model=Cargo
         fields=['idcargo','nombre','descripcion','estado']
+class PermisoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=Permiso
+        fields=['idpermiso','nombre']
 class UsuarioADSerializer(serializers.ModelSerializer):
     permisos= serializers.PrimaryKeyRelatedField(many=True, read_only=False, queryset=Permiso.objects.all())
     class Meta:
@@ -71,6 +75,14 @@ class UsuarioADSerializer(serializers.ModelSerializer):
                 'ubicacion_idubicacion','cuenta_idcuenta','cargo_idcargo','permisos','estado']
         depth=0
         
+class UsuarioADSerializerFull(serializers.ModelSerializer):
+    permisos=PermisoSerializer(many=True,read_only=True)
+    class Meta:
+        model=UsuarioAd
+        fields=['idusuario_ad','nombre','apellido','ci','area_idarea',
+                'empresa_idempresa','gerencia_idgerencia','regional_idregional',
+                'ubicacion_idubicacion','cuenta_idcuenta','cargo_idcargo','permisos','estado']
+        depth=2
 class CuentaSerializer(serializers.ModelSerializer):
     class Meta:
         model=Cuenta
@@ -92,10 +104,7 @@ class EquipoSerializer(serializers.ModelSerializer):
         fields=['idequipo','marca','modelo','nro_serie',
                 'nro_activo_fijo','ip','ultima_observacion',
                 'usuario_ad_idusuario_ad','atributos','estado']
-class PermisoSerializer(serializers.ModelSerializer):
-    class Meta:
-        model=Permiso
-        fields=['idpermiso','nombre','estado']
+
 
 class Permiso_UsuarioADSerializer(serializers.ModelSerializer):
     usuario_ad_idusuario_ad=serializers.PrimaryKeyRelatedField(many=False, read_only=False, queryset=UsuarioAd.objects.all())
@@ -108,6 +117,7 @@ class OrdenadorSerializer(serializers.ModelSerializer):
         model=Ordenador
         fields=['idordenador','tipo','mac','hostname',
                 'procesador','ram','almacenamiento','tipo_almacenamiento','perifericos','os_idos']
+        
 class ImpresoraSerializer(serializers.ModelSerializer):
     class Meta:
         model=Impresora

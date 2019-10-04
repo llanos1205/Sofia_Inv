@@ -13,7 +13,7 @@ from Sofia_Server.Sofia_App.serializers import  (CuentaSerializer,GerenciaSerial
                                                 PermisoSerializer,Permiso_UsuarioADSerializer,OrdenadorSerializer,
                                                 OtroDispositivoSerializer,ImpresoraSerializer,LicenciaSerializer,
                                                 AtributoSerialzier,EquipoHasAtributoSerializer,OsSerializer,
-                                                AuditoriaSerializer,AsociacionSerializer,OrdenadorHasLicenciaSerializer)
+                                                AuditoriaSerializer,AsociacionSerializer,OrdenadorHasLicenciaSerializer,UsuarioADSerializerFull)
 from rest_framework import viewsets,status,generics
 
 
@@ -70,6 +70,11 @@ class Cargo_Detail(generics.RetrieveUpdateDestroyAPIView):
 class UsuarioAD_List(generics.ListCreateAPIView):
     queryset=UsuarioAd.objects.all()
     serializer_class=UsuarioADSerializer
+class UsuarioAD_Nested_List(generics.ListAPIView):
+    queryset=UsuarioAd.objects.all()
+    serializer_class=UsuarioADSerializerFull
+    
+
 class UsuarioAD_Detail(generics.RetrieveUpdateDestroyAPIView):
     queryset=UsuarioAd.objects.all()
     serializer_class=UsuarioADSerializer

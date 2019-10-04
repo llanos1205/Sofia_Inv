@@ -1,10 +1,12 @@
 notas:
     FormUsers-> hacer la parte de modificacion de permisos
-    Form Equipos-> hacer todo, pensar en las sigueintes subepstañas
-    Reportes->Pensar metodo de filtrada y estructura de la work sheet
+
+    
     filtrado por nro serie
     hostname hyperlink a cuenta
     hacer vistas de queries por lotes
     hacer control de auditorias ante modificaciones/deleciones
     user manager interno
     django side buscar un solo registro x otro parametro distinto al pk
+    agregar rutas nested
+    hacer prrubas con herencia de datos

@@ -27,6 +27,7 @@ urlpatterns = [
     path('Cargos/<int:pk>/',views.Cargo_Detail.as_view()),
 
     path('UsuariosAD/',views.UsuarioAD_List.as_view()),
+    path('UsuariosAD/Nested/',views.UsuarioAD_Nested_List.as_view()),
     path('UsuariosAD/<int:pk>/',views.UsuarioAD_Detail.as_view()),
 
     path('Cuentas/',views.Cuenta_List.as_view()),
