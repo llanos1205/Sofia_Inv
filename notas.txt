@@ -10,3 +10,5 @@ notas:
     django side buscar un solo registro x otro parametro distinto al pk
     agregar rutas nested
     hacer prrubas con herencia de datos
+    https://github.com/carltongibson/django-filter
+    https://github.com/ossu/computer-science
