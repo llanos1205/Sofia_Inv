@@ -111,6 +111,7 @@ class DjangoSession(models.Model):
         managed = False
         db_table = 'django_session'
         ########################3
+
 class Area(models.Model):
     idarea = models.AutoField(db_column='idArea', primary_key=True)  # Field name made lowercase.
     nombre = models.CharField(db_column='Nombre', max_length=45, blank=True, null=True)  # Field name made lowercase.
@@ -148,8 +149,6 @@ class Atributo(models.Model):
     def __str__(self):
         return '%d: %s' % (self.idatributo, self.nombre)
     
-
-
 class Auditoria(models.Model):
     idauditoria = models.AutoField(db_column='idAuditoria', primary_key=True)  # Field name made lowercase.
     id_registro_afectado = models.IntegerField(db_column='Id_Registro_Afectado', blank=True, null=True)  # Field name made lowercase.
@@ -161,9 +160,6 @@ class Auditoria(models.Model):
     class Meta:
         managed = False
         db_table = 'auditoria'
-
-    
-
 
 class Cargo(models.Model):
     idcargo = models.AutoField(db_column='idCargo', primary_key=True)  # Field name made lowercase.
@@ -189,7 +185,6 @@ class Cuenta(models.Model):
     def __str__(self):
         return '%d: %s' % (self.idcuenta, self.usuario)
 
-
 class Departamento(models.Model):
     iddepartamento = models.AutoField(db_column='idDepartamento', primary_key=True)  # Field name made lowercase.
     nombre = models.CharField(db_column='Nombre', max_length=45, blank=True, null=True)  # Field name made lowercase.
@@ -202,7 +197,6 @@ class Departamento(models.Model):
     def __str__(self):
         return '%d: %s' % (self.iddepartamento, self.nombre)
 
-
 class Empresa(models.Model):
     idempresa = models.AutoField(db_column='idEmpresa', primary_key=True)  # Field name made lowercase.
     nombre = models.CharField(db_column='Nombre', max_length=45, blank=True, null=True)  # Field name made lowercase.
@@ -214,7 +208,6 @@ class Empresa(models.Model):
         db_table = 'empresa'
     def __str__(self):
         return '%d:%s'%(self.idempresa,self.nombre)
-
 
 class Equipo(models.Model):
     idequipo = models.AutoField(db_column='idEquipo', primary_key=True)  # Field name made lowercase.
@@ -244,7 +237,6 @@ class EquipoHasAtributo(models.Model):
         db_table = 'equipo_has_atributo'
         unique_together = (('equipo_idequipo', 'atributo_idatributo'),)
 
-
 class Gerencia(models.Model):
     idgerencia = models.AutoField(db_column='idGerencia', primary_key=True)  # Field name made lowercase.
     nombre = models.CharField(db_column='Nombre', max_length=45, blank=True, null=True)  # Field name made lowercase.
@@ -257,7 +249,6 @@ class Gerencia(models.Model):
     def __str__(self):
         return '%d: %s' % (self.idgerencia, self.nombre)
 
-
 class Impresora(models.Model):
     idimpresora = models.OneToOneField(Equipo, models.DO_NOTHING, db_column='idImpresora', primary_key=True)  # Field name made lowercase.
     tipo = models.CharField(db_column='Tipo', max_length=45, blank=True, null=True)  # Field name made lowercase.
@@ -269,7 +260,6 @@ class Impresora(models.Model):
     def __str__(self):
         return '%d: %s' % (self.idcargo, self.tipo)
 
-
 class Licencia(models.Model):
     idlicencia = models.AutoField(db_column='idLicencia', primary_key=True)  # Field name made lowercase.
     producto = models.CharField(db_column='Producto', max_length=45, blank=True, null=True)  # Field name made lowercase.
@@ -280,7 +270,6 @@ class Licencia(models.Model):
         db_table = 'licencia'
     def __str__(self):
         return '%d: %s' % (self.idlicencia, self.producto)
-
 
 class Ordenador(models.Model):
     idordenador = models.OneToOneField(Equipo, models.DO_NOTHING, db_column='idOrdenador',primary_key=True)  # Field name made lowercase.
@@ -299,6 +288,7 @@ class Ordenador(models.Model):
         db_table = 'ordenador'
     def __str__(self):
         return '%s: %s' % (self.idordenador, self.tipo)
+
 class OrdenadorHasLicencia(models.Model):
     idordenador_has_licencia = models.AutoField(db_column='idOrdenador_Has_Licencia', primary_key=True)  # Field name made lowercase.
     llave = models.CharField(db_column='Llave', max_length=100, blank=True, null=True)  # Field name made lowercase.
@@ -310,7 +300,6 @@ class OrdenadorHasLicencia(models.Model):
     class Meta:
         managed = False
         db_table = 'ordenador_has_licencia'
-
 
 class Os(models.Model):
     idos = models.AutoField(db_column='idOS', primary_key=True)  # Field name made lowercase.
@@ -325,7 +314,6 @@ class Os(models.Model):
     def __str__(self):
         return '%d: %s' % (self.idos, self.nombre)
 
-
 class OtroDispositivo(models.Model):
     idotro_dispositivo = models.OneToOneField(Equipo, models.DO_NOTHING, db_column='idOtro_Dispositivo', primary_key=True)  # Field name made lowercase.
     nombre = models.CharField(db_column='Nombre', max_length=45, blank=True, null=True)  # Field name made lowercase.
@@ -336,7 +324,6 @@ class OtroDispositivo(models.Model):
         db_table = 'otro_dispositivo'
     def __str__(self):
         return '%d: %s' % (self.idotro_dispositivo, self.nombre)
-
 
 class Permiso(models.Model):
     idpermiso = models.AutoField(db_column='idPermiso', primary_key=True)  # Field name made lowercase.
@@ -349,7 +336,6 @@ class Permiso(models.Model):
     def __str__(self):
         return '%d: %s' % (self.idpermiso, self.nombre)
 
-
 class Regional(models.Model):
     idregional = models.AutoField(db_column='idRegional', primary_key=True)  # Field name made lowercase.
     nombre = models.CharField(db_column='Nombre', max_length=45, blank=True, null=True)  # Field name made lowercase.
@@ -359,8 +345,6 @@ class Regional(models.Model):
         db_table = 'regional'
     def __str__(self):
         return '%d: %s' % (self.idregional, self.nombre)
-
-
 
 class Ubicacion(models.Model):
     idubicacion = models.AutoField(db_column='idUbicacion', primary_key=True)  # Field name made lowercase.
@@ -373,7 +357,6 @@ class Ubicacion(models.Model):
         db_table = 'ubicacion'
     def __str__(self):
         return '%d: %s' % (self.idubicacion, self.direccion)
-
 
 class UsuarioAd(models.Model):
     idusuario_ad = models.AutoField(db_column='idUsuario_AD', primary_key=True)  # Field name made lowercase.
@@ -403,7 +386,6 @@ class UsuarioAdHasPermiso(models.Model):
         managed = False
         db_table = 'usuario_ad_has_permiso'
         unique_together = (('usuario_ad_idusuario_ad', 'permiso_idpermiso'))
-
 
 class UsuarioCorreo(models.Model):
     idusuario_correo = models.AutoField(db_column='idUsuario_Correo', primary_key=True)  # Field name made lowercase.

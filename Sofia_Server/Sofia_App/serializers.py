@@ -65,7 +65,7 @@ class CargoSerializer(serializers.ModelSerializer):
 class PermisoSerializer(serializers.ModelSerializer):
     class Meta:
         model=Permiso
-        fields=['idpermiso','nombre']
+        fields=['idpermiso','nombre','estado']
 class UsuarioADSerializer(serializers.ModelSerializer):
     permisos= serializers.PrimaryKeyRelatedField(many=True, read_only=False, queryset=Permiso.objects.all())
     class Meta:
