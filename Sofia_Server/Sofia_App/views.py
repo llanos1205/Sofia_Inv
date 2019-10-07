@@ -13,11 +13,19 @@ from Sofia_Server.Sofia_App.serializers import  (CuentaSerializer,GerenciaSerial
                                                 PermisoSerializer,Permiso_UsuarioADSerializer,OrdenadorSerializer,
                                                 OtroDispositivoSerializer,ImpresoraSerializer,LicenciaSerializer,
                                                 AtributoSerialzier,EquipoHasAtributoSerializer,OsSerializer,
-                                                AuditoriaSerializer,AsociacionSerializer,OrdenadorHasLicenciaSerializer,UsuarioADSerializerFull)
+                                                AuditoriaSerializer,CorreoNestedSerializer,
+                                                AsociacionSerializer,OrdenadorHasLicenciaSerializer,
+                                                AsociacionesNestedSerializer,UsuarioADSerializerFull,EquipoNestedSerializer)
 from rest_framework import viewsets,status,generics
-
-
-
+class EquipoNested_List(generics.ListAPIView):
+    queryset=Equipo.objects.all()
+    serializer_class=EquipoNestedSerializer  
+class AsociacionNested_List(generics.ListAPIView):
+    queryset=Asociacion.objects.all()
+    serializer_class=AsociacionesNestedSerializer
+class CorreosNested_List(generics.ListAPIView):
+    queryset=UsuarioCorreo.objects.all()
+    serializer_class=CorreoNestedSerializer
 class EmpresaList(generics.ListCreateAPIView):
     queryset=Empresa.objects.all()
     serializer_class=EmpresaSerializer

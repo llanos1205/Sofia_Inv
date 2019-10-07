@@ -35,9 +35,11 @@ urlpatterns = [
 
     path('UsuarioCorreos/',views.UsuarioCorreo_List.as_view()),
     path('UsuarioCorreos/<int:pk>/',views.UsuarioCorreo_Detail.as_view()),
+    path('UsuarioCorreos/Nested/',views.CorreosNested_List.as_view()),
 
     path('Equipos/',views.Equipo_List.as_view()),
     path('Equipos/<int:pk>/',views.Equipo_Detail.as_view()),
+    path('Equipos/Nested/',views.EquipoNested_List.as_view()),
 
     path('Permisos/',views.Permiso_List.as_view()),
     path('Permisos/<int:pk>/',views.Permiso_Detail.as_view()),
@@ -71,11 +73,14 @@ urlpatterns = [
 
     path('Asociaciones/',views.Asociacion_List.as_view()),
     path('Asociaciones/<int:pk>',views.Asociacion_Detail.as_view()),
-    
+    path('Asociaciones/Nested/',views.AsociacionNested_List.as_view()),
+
     path('Equipos_Atributos/',views.Equipo_Atributo_List.as_view()),
     path('Equipos_Atributos/<int:pk>/<int:pk2>/',views.Equipo_Atributo_Detail.as_view()),
 
     path('Ordenador_Licencias/',views.OrdenadorHasLicencia_List.as_view()),
     path('Ordenador_Licencias/<int:pk2>/<int:pk3>/',views.OrdenadorHasLicencia_Detail.as_view()),
+
+    
 ]
 urlpatterns=format_suffix_patterns(urlpatterns)

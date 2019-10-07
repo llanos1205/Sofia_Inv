@@ -272,7 +272,7 @@ class Licencia(models.Model):
         return '%d: %s' % (self.idlicencia, self.producto)
 
 class Ordenador(models.Model):
-    idordenador = models.OneToOneField(Equipo, models.DO_NOTHING, db_column='idOrdenador',primary_key=True)  # Field name made lowercase.
+    idordenador = models.OneToOneField(Equipo, models.CASCADE, db_column='idOrdenador',primary_key=True)  # Field name made lowercase.
     tipo = models.CharField(db_column='Tipo', max_length=45, blank=True, null=True)  # Field name made lowercase.
     mac = models.CharField(db_column='MAC', max_length=100, blank=True, null=True)  # Field name made lowercase.
     hostname = models.CharField(db_column='HostName', max_length=100, blank=True, null=True)  # Field name made lowercase.

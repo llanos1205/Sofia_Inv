@@ -113,10 +113,12 @@ class Permiso_UsuarioADSerializer(serializers.ModelSerializer):
         fields=['usuario_ad_idusuario_ad','permiso_idpermiso']
 class OrdenadorSerializer(serializers.ModelSerializer):
     perifericos=serializers.PrimaryKeyRelatedField(many=True,read_only=True)
+   
     class Meta:
         model=Ordenador
         fields=['idordenador','tipo','mac','hostname',
                 'procesador','ram','almacenamiento','tipo_almacenamiento','perifericos','os_idos']
+        depth=2
         
 class ImpresoraSerializer(serializers.ModelSerializer):
     class Meta:
@@ -154,3 +156,23 @@ class OrdenadorHasLicenciaSerializer(serializers.ModelSerializer):
     class Meta:
         model=OrdenadorHasLicencia
         fields=['idordenador_has_licencia','llave','version','fecha_instalacion','licencia_idlicencia','ordenador_idordenador']
+class AsociacionesNestedSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=Asociacion
+        fields="__all__"
+        depth=1
+
+class CorreoNestedSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=UsuarioCorreo
+        fields="__all__"
+        depth=1
+
+class EquipoNestedSerializer(serializers.ModelSerializer):
+    atributos=AtributoSerialzier(many=True,read_only=True)
+    class Meta:
+        model=Equipo
+        fields="__all__"
+        depth=1
+
+
