@@ -49,12 +49,16 @@ urlpatterns = [
 
     path('Ordenadores/',views.Ordenador_List.as_view()),
     path('Ordenadores/<int:pk>/',views.Ordenador_Detail.as_view()),
+    path('Ordenadores/Nested/',views.OrdenadorNested_List.as_view()),
 
     path('Otrodispositivos/',views.OtroDispositivo_List.as_view()),
     path('Otrodispositivos/<int:pk>',views.OtroDispositivo_Detail.as_view()),
+    path('Otrodispositivos/Nested/',views.OtroDispositivosNested_List.as_view()),
 
     path('Impresoras/',views.Impresora_List.as_view()),
     path('Impresoras/<int:pk>',views.Impresora_Detail.as_view()),
+    path('Impresoras/Nested/',views.ImpresoraNested_List.as_view()),
+
 
     path('Licencias/',views.Licencia_List.as_view()),
     path('Licencias/<int:pk>',views.Licencia_Detail.as_view()),

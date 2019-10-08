@@ -210,7 +210,7 @@ class Empresa(models.Model):
         return '%d:%s'%(self.idempresa,self.nombre)
 
 class Equipo(models.Model):
-    idequipo = models.AutoField(db_column='idEquipo', primary_key=True)  # Field name made lowercase.
+    idequipo = models.AutoField(db_column='idEquipo',primary_key=True)  # Field name made lowercase.
     marca = models.CharField(db_column='Marca', max_length=100, blank=True, null=True)  # Field name made lowercase.
     modelo = models.CharField(db_column='Modelo', max_length=100, blank=True, null=True)  # Field name made lowercase.
     nro_serie = models.CharField(db_column='Nro_Serie', max_length=100, blank=True, null=True)  # Field name made lowercase.
@@ -272,7 +272,7 @@ class Licencia(models.Model):
         return '%d: %s' % (self.idlicencia, self.producto)
 
 class Ordenador(models.Model):
-    idordenador = models.OneToOneField(Equipo, models.CASCADE, db_column='idOrdenador',primary_key=True)  # Field name made lowercase.
+    idordenador = models.OneToOneField(Equipo, models.CASCADE, db_column='idOrdenador',primary_key=True,related_name='ordenadores')  # Field name made lowercase.
     tipo = models.CharField(db_column='Tipo', max_length=45, blank=True, null=True)  # Field name made lowercase.
     mac = models.CharField(db_column='MAC', max_length=100, blank=True, null=True)  # Field name made lowercase.
     hostname = models.CharField(db_column='HostName', max_length=100, blank=True, null=True)  # Field name made lowercase.

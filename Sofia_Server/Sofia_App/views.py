@@ -15,8 +15,19 @@ from Sofia_Server.Sofia_App.serializers import  (CuentaSerializer,GerenciaSerial
                                                 AtributoSerialzier,EquipoHasAtributoSerializer,OsSerializer,
                                                 AuditoriaSerializer,CorreoNestedSerializer,
                                                 AsociacionSerializer,OrdenadorHasLicenciaSerializer,
-                                                AsociacionesNestedSerializer,UsuarioADSerializerFull,EquipoNestedSerializer)
+                                                AsociacionesNestedSerializer,UsuarioADSerializerFull,EquipoNestedSerializer,
+                                                OrdenadorNestedSerializer,ImpresoraNestedSerializer,OtrosDispositivosNestedSerializer)
 from rest_framework import viewsets,status,generics
+class OrdenadorNested_List(generics.ListAPIView):
+    queryset=Ordenador.objects.all()
+    serializer_class=OrdenadorNestedSerializer
+class ImpresoraNested_List(generics.ListAPIView):
+    queryset=Impresora.objects.all()
+    serializer_class=ImpresoraNestedSerializer
+class OtroDispositivosNested_List(generics.ListAPIView):
+    queryset=OtroDispositivo.objects.all()
+    serializer_class=OtrosDispositivosNestedSerializer   
+
 class EquipoNested_List(generics.ListAPIView):
     queryset=Equipo.objects.all()
     serializer_class=EquipoNestedSerializer  
@@ -137,6 +148,7 @@ class Equio_List(generics.RetrieveUpdateDestroyAPIView):
 
 class Ordenador_List(generics.ListCreateAPIView):
     queryset=Ordenador.objects.all()
+    
     serializer_class=OrdenadorSerializer
 class Ordenador_Detail(generics.RetrieveUpdateDestroyAPIView):
     queryset=Ordenador.objects.all()
