@@ -1,5 +1,6 @@
 
-from Sofia_Server.Sofia_App.Modulos.Equipos.models import OrdenadorHasLicencia,Atributo,Equipo,Ordenador,Impresora,OtroDispositivo,EquipoHasAtributo,Licencia,Os
+from Sofia_Server.Sofia_App.Modulos.Equipos.models import (OrdenadorHasLicencia,Atributo,Tablet,
+Equipo,Ordenador,Impresora,OtroDispositivo,OtroDispositivoHasAtributo,Licencia,Os)
 from rest_framework import serializers
 class AtributoSerialzier(serializers.ModelSerializer):
     class Meta:
@@ -32,12 +33,11 @@ class LicenciaSerializer(serializers.ModelSerializer):
     class Meta:
         model=Licencia
         fields=['idlicencia','producto','estado']
-class EquipoHasAtributoSerializer(serializers.ModelSerializer):
-    equipo_idequipo=serializers.PrimaryKeyRelatedField(many=False, read_only=False, queryset=Equipo.objects.all())
+class OtroDispositivoHasAtributoSerializer(serializers.ModelSerializer):
+    otro_dispositivo_idotro_dispositivo= serializers.PrimaryKeyRelatedField(many=False,read_only=False,queryset=OtroDispositivo.objects.all())
     class Meta:
-        model=EquipoHasAtributo
-        fields=['equipo_idequipo','atributo_idatributo','descripcion']
-
+        model=OtroDispositivoHasAtributo
+        fields="__all__"
 class OsSerializer(serializers.ModelSerializer):
     class Meta:
         model=Os
@@ -75,3 +75,7 @@ class OrdenadorHasLicenciaSerializer(serializers.ModelSerializer):
     class Meta:
         model=OrdenadorHasLicencia
         fields=['idordenador_has_licencia','llave','version','fecha_instalacion','licencia_idlicencia','ordenador_idordenador']
+class TabletSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=Tablet
+        fields="__all__"

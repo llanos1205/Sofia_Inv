@@ -1,14 +1,14 @@
 from rest_framework import viewsets,status,generics
 from Sofia_Server.Sofia_App.Modulos.Equipos.models import (
     Equipo,Ordenador,Impresora,OtroDispositivo,
-    EquipoHasAtributo,Os,OrdenadorHasLicencia,Licencia,Atributo
+    OtroDispositivoHasAtributo,Os,OrdenadorHasLicencia,Licencia,Atributo,Tablet
 )
 from Sofia_Server.Sofia_App.Modulos.Equipos.serializers import (
-    OrdenadorHasLicenciaSerializer,OsSerializer,EquipoHasAtributoSerializer,
+    OrdenadorHasLicenciaSerializer,OsSerializer,
     EquipoNestedSerializer,OrdenadorNestedSerializer,ImpresoraNestedSerializer,
     OtrosDispositivosNestedSerializer,EquipoSerializer,OrdenadorSerializer,
     LicenciaSerializer,AtributoSerialzier,OtroDispositivoSerializer,
-    ImpresoraSerializer
+    ImpresoraSerializer,OtroDispositivoHasAtributoSerializer,TabletSerializer
 
 )
 class OrdenadorNested_List(generics.ListAPIView):
@@ -78,16 +78,16 @@ class Atributo_Detail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class=AtributoSerialzier
 
 class Equipo_Atributo_List(generics.ListCreateAPIView):
-    queryset=EquipoHasAtributo.objects.all()
-    serializer_class=EquipoHasAtributoSerializer    
+    queryset=OtroDispositivoHasAtributo.objects.all()
+    serializer_class=OtroDispositivoHasAtributoSerializer
 class Equipo_Atributo_Detail(generics.RetrieveUpdateDestroyAPIView):
-    queryset=EquipoHasAtributo.objects.all()
-    serializer_class=EquipoHasAtributoSerializer
+    queryset=OtroDispositivoHasAtributo.objects.all()
+    serializer_class=OtroDispositivoHasAtributoSerializer
     lookup_url_kwarg=['pk,pk2']
     def get_object(self):
         pk=self.kwargs['pk']
         pk2=self.kwargs['pk2']
-        return EquipoHasAtributo.objects.get(equipo_idequipo=pk,atributo_idatributo=pk2)
+        return OtroDispositivoHasAtributo.objects.get(otro_dispositivo_idotro_dispositivo=pk,atributo_idatributo=pk2)
 
 
 class Os_List(generics.ListCreateAPIView):
@@ -108,3 +108,7 @@ class OrdenadorHasLicencia_Detail(generics.RetrieveUpdateDestroyAPIView):
         pk2=self.kwargs['pk2']
         pk3=self.kwargs['pk3']
         return OrdenadorHasLicencia.objects.get(ordenador_idordenador=pk2,licencia_idlicencia=pk3)
+
+class Tablet_List(generics.ListCreateAPIView):
+    queryset=Tablet.objects.all().order_by("imei")
+    serializer_class=TabletSerializer
