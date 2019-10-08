@@ -26,7 +26,10 @@ router = routers.DefaultRouter()
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(router.urls)),
-    path('',include('Sofia_Server.Sofia_App.urls')),
+      path('',include("Sofia_Server.Sofia_App.Modulos.Equipos.urls")),
+    path('',include("Sofia_Server.Sofia_App.Modulos.InfoUser.urls")),
+    path('',include("Sofia_Server.Sofia_App.Modulos.Usuarios.urls")),
+    path('',include("Sofia_Server.Sofia_App.Modulos.Transacciones.urls")),
     path('',include('Sofia_Server.core.urls')),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
