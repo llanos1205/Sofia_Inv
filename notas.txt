@@ -19,3 +19,9 @@ notas:
     3874dac8cffa9154f07671436fdc937f11909b7e
 http://127.0.0.1:8000/hello/ 'Authorization: Token 3874dac8cffa9154f07671436fdc937f11909b7e'
 https://medium.com/@yerkebulan199/django-rest-framework-drf-token-authentication-with-expires-in-a05c1d2b7e05
+
+NOTA IMPORTANTE:
+ SI PIERDEN LA INTERFAZ PUEDEN ENTRAR A LA SIGUIENTE RUTA DESDE UN NAVEGADOR:
+    http://"ip donde correl el server":"puerto donde corre el server"/admin
+    ej:
+    http://127.0.0.1:8000/admin
