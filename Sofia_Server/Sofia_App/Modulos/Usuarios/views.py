@@ -9,23 +9,24 @@ from Sofia_Server.Sofia_App.Modulos.Usuarios.serializers import(
 class CorreosNested_List(generics.ListAPIView):
     queryset=UsuarioCorreo.objects.all()
     serializer_class=CorreoNestedSerializer
-
+    filterset_fields = ('__all__')
 class UsuarioAD_List(generics.ListCreateAPIView):
     queryset=UsuarioAd.objects.all()
     serializer_class=UsuarioADSerializer
-    filterset_fields = ('area_idarea', 'ci')
+    filterset_fields = ('__all__')
 class UsuarioAD_Nested_List(generics.ListAPIView):
     queryset=UsuarioAd.objects.all()
     serializer_class=UsuarioADSerializerFull
-    
+    filterset_fields = ('__all__')
 
 class UsuarioAD_Detail(generics.RetrieveUpdateDestroyAPIView):
     queryset=UsuarioAd.objects.all()
     serializer_class=UsuarioADSerializer
-
+    
 class Cuenta_List(generics.ListCreateAPIView):
     queryset=Cuenta.objects.all()
     serializer_class=CuentaSerializer
+    filterset_fields = ('__all__')
 class Cuenta_Detail(generics.RetrieveUpdateDestroyAPIView):
     queryset=Cuenta.objects.all()
     serializer_class=CuentaSerializer
@@ -33,12 +34,14 @@ class Cuenta_Detail(generics.RetrieveUpdateDestroyAPIView):
 class UsuarioCorreo_List(generics.ListCreateAPIView):
     queryset=UsuarioCorreo.objects.all()
     serializer_class=UsuarioCorreoSerializer
+    filterset_fields = ('__all__')
 class UsuarioCorreo_Detail(generics.RetrieveUpdateDestroyAPIView):
     queryset=UsuarioCorreo.objects.all()
     serializer_class=UsuarioCorreoSerializer
 class Usuario_Permiso_List(generics.ListCreateAPIView):
     queryset=UsuarioAdHasPermiso.objects.all()
     serializer_class=Permiso_UsuarioADSerializer
+    filterset_fields = ('__all__')
     
 class Usuario_Permiso_Detail(generics.RetrieveUpdateDestroyAPIView):
     queryset=UsuarioAdHasPermiso.objects.all()
