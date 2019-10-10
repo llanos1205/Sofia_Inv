@@ -25,3 +25,9 @@ NOTA IMPORTANTE:
     http://"ip donde correl el server":"puerto donde corre el server"/admin
     ej:
     http://127.0.0.1:8000/admin
+
+
+    http://example.com/api/products/4675/?category=clothing&max_price=10.00
+    https://pypi.org/project/djangorestframework-filters/
+
+    agregar filter_fileds o algo x el estilo a TODOS los modelos

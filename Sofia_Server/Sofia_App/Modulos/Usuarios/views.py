@@ -13,6 +13,7 @@ class CorreosNested_List(generics.ListAPIView):
 class UsuarioAD_List(generics.ListCreateAPIView):
     queryset=UsuarioAd.objects.all()
     serializer_class=UsuarioADSerializer
+    filterset_fields = ('area_idarea', 'ci')
 class UsuarioAD_Nested_List(generics.ListAPIView):
     queryset=UsuarioAd.objects.all()
     serializer_class=UsuarioADSerializerFull
