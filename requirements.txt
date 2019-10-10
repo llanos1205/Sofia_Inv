@@ -1,6 +1,4 @@
 Django>=2.2.4
 djangorestframework>=3.10.3
-mysqlclient~=1.4.4
-django-filter~=2.0
 djangorestframework-filters>=1.0.0.dev0
 pip>=19.2.3
