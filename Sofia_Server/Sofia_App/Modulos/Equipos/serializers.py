@@ -2,9 +2,16 @@
 from Sofia_Server.Sofia_App.Modulos.Equipos.models import (OrdenadorHasLicencia,Atributo,Tablet,
 Equipo,Ordenador,Impresora,OtroDispositivo,OtroDispositivoHasAtributo,Licencia,Os)
 from rest_framework import serializers
+class FilteredListSerializer(serializers.ListSerializer):
+
+    def to_representation(self, data):
+        data = data.filter(user=self.request.user, edition__hide=False)
+        return super(FilteredListSerializer, self).to_representation(data)
+
 class AtributoSerialzier(serializers.ModelSerializer):
     class Meta:
         model=Atributo
+
         fields=['idatributo','nombre','estado']
 class EquipoSerializer(serializers.ModelSerializer):
 
@@ -45,7 +52,7 @@ class OsSerializer(serializers.ModelSerializer):
         fields=['idos','nombre','servicio','arquitectura','estado']
 
 class EquipoNestedSerializer(serializers.ModelSerializer):
-    atributos=AtributoSerialzier(many=True,read_only=True)
+    
 
     class Meta:
         model=Equipo
@@ -68,6 +75,7 @@ class ImpresoraNestedSerializer(serializers.ModelSerializer):
 
 class OtrosDispositivosNestedSerializer(serializers.ModelSerializer):
     idotro_dispositivo=EquipoSerializer()
+    atributos=AtributoSerialzier(many=True,read_only=True)
     class Meta:
         model=OtroDispositivo
         fields="__all__"

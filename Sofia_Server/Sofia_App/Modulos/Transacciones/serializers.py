@@ -3,7 +3,7 @@ from rest_framework import serializers
 class AuditoriaSerializer(serializers.ModelSerializer):
     class Meta:
         model=Auditoria
-        fields=['idauditoria','id_registro_afectado','tabla_afectada','accion','fecha','ip','usuario_ad_idusuario_ad']
+        fields="__all__"
 
 class AsociacionSerializer(serializers.ModelSerializer):
     class Meta:

@@ -11,10 +11,13 @@ from Sofia_Server.Sofia_App.Modulos.Equipos.serializers import (
     ImpresoraSerializer,OtroDispositivoHasAtributoSerializer,TabletSerializer
 
 )
+import Sofia_Server.Sofia_App.Modulos.Equipos.filters as EquiposFilter
+from rest_framework.renderers import AdminRenderer
 class OrdenadorNested_List(generics.ListAPIView):
     queryset=Ordenador.objects.all()
     serializer_class=OrdenadorNestedSerializer
-    filterset_fields = ('__all__')
+    #renderer_classes=[AdminRenderer]
+    filter_class=EquiposFilter.OrdenadorFilter
 class ImpresoraNested_List(generics.ListAPIView):
     queryset=Impresora.objects.all()
     serializer_class=ImpresoraNestedSerializer

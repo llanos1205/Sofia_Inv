@@ -6,6 +6,7 @@ from Sofia_Server.Sofia_App.Modulos.Transacciones.models import(
 from Sofia_Server.Sofia_App.Modulos.Transacciones.serializers import(
     AsociacionSerializer,AsociacionesNestedSerializer,AuditoriaSerializer
 )
+from rest_framework.renderers import AdminRenderer,JSONRenderer
 class AsociacionNested_List(generics.ListAPIView):
     queryset=Asociacion.objects.all()
     serializer_class=AsociacionesNestedSerializer
@@ -13,6 +14,7 @@ class AsociacionNested_List(generics.ListAPIView):
 class Auditoria_List(generics.ListCreateAPIView):
     queryset=Auditoria.objects.all()
     serializer_class=AuditoriaSerializer
+    #renderer_classes = [AdminRenderer,JSONRenderer]
     filterset_fields = ('__all__')
 class Auditoria_Detail(generics.RetrieveUpdateDestroyAPIView):
     queryset=Auditoria.objects.all()

@@ -102,7 +102,7 @@ class OtroDispositivo(models.Model):
         managed = False
         db_table = 'otro_dispositivo'
     def __str__(self):
-        return '%d: %s' % (self.idotro_dispositivo, self.nombre)
+        return '%s: %s' % (self.idotro_dispositivo, self.nombre)
 
 class OtroDispositivoHasAtributo(models.Model):
     otro_dispositivo_idotro_dispositivo = models.ForeignKey(OtroDispositivo, models.DO_NOTHING, db_column='Otro_Dispositivo_idOtro_Dispositivo', primary_key=True)  # Field name made lowercase.

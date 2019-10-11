@@ -35,6 +35,7 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_FILTER_BACKENDS': (
         'rest_framework_filters.backends.RestFrameworkFilterBackend',
+        
     ),
 }
 # Application definition
@@ -49,7 +50,7 @@ INSTALLED_APPS = [
     'Sofia_Server.Sofia_App',
     'rest_framework',
     'Sofia_Server.core',
-    'django_filters',
+    #'django_filters',
     'rest_framework.authtoken',
     'rest_framework_filters',
 ]
