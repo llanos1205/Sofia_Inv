@@ -6,6 +6,8 @@ from Sofia_Server.Sofia_App.Modulos.Usuarios.serializers import(
     CorreoNestedSerializer,UsuarioADSerializer,CuentaSerializer,
     UsuarioCorreoSerializer,UsuarioADSerializerFull,Permiso_UsuarioADSerializer
 )
+from rest_framework.renderers import AdminRenderer
+from ..Usuarios import filters
 class CorreosNested_List(generics.ListAPIView):
     queryset=UsuarioCorreo.objects.all()
     serializer_class=CorreoNestedSerializer
@@ -13,12 +15,11 @@ class CorreosNested_List(generics.ListAPIView):
 class UsuarioAD_List(generics.ListCreateAPIView):
     queryset=UsuarioAd.objects.all()
     serializer_class=UsuarioADSerializer
-    filterset_fields = ('__all__')
 class UsuarioAD_Nested_List(generics.ListAPIView):
-    queryset=UsuarioAd.objects.all()
+    queryset=UsuarioAd.objects.all().order_by("pk")
     serializer_class=UsuarioADSerializerFull
-    filterset_fields = ('__all__')
-
+    filter_class=filters.UsuarioADFilter
+    renderer_classes=[AdminRenderer]
 class UsuarioAD_Detail(generics.RetrieveUpdateDestroyAPIView):
     queryset=UsuarioAd.objects.all()
     serializer_class=UsuarioADSerializer
