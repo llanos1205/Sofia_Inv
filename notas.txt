@@ -31,3 +31,7 @@ NOTA IMPORTANTE:
     https://pypi.org/project/djangorestframework-filters/
 
     agregar filter_fileds o algo x el estilo a TODOS los modelos
+
+    aunque el nivel de profundidad de filtrado en la interfaz grafica es de 2
+    el nivel de profundidad de filtrado usando el url parece ser infinito (probado hasta nivel 4) lo que es bastante intenso la dvd
+    https://github.com/iMakedonsky/drf-autodocs

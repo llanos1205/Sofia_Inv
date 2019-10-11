@@ -52,16 +52,14 @@ class OsSerializer(serializers.ModelSerializer):
         fields=['idos','nombre','servicio','arquitectura','estado']
 
 class EquipoNestedSerializer(serializers.ModelSerializer):
-    
-
     class Meta:
         model=Equipo
         fields="__all__"
-        depth=1
+        depth=2
 
 class OrdenadorNestedSerializer(serializers.ModelSerializer):
     perifericos=serializers.PrimaryKeyRelatedField(many=True,read_only=True)
-    idordenador=EquipoSerializer()
+    idordenador=EquipoNestedSerializer()
     class Meta:
         model=Ordenador
         fields="__all__"
@@ -74,12 +72,12 @@ class ImpresoraNestedSerializer(serializers.ModelSerializer):
         depth=2
 
 class OtrosDispositivosNestedSerializer(serializers.ModelSerializer):
-    idotro_dispositivo=EquipoSerializer()
+    idotro_dispositivo=EquipoNestedSerializer()
     atributos=AtributoSerialzier(many=True,read_only=True)
     class Meta:
         model=OtroDispositivo
         fields="__all__"
-        depth=3
+        depth=2
 class OrdenadorHasLicenciaSerializer(serializers.ModelSerializer):
     class Meta:
         model=OrdenadorHasLicencia

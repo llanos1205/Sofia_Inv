@@ -36,7 +36,7 @@ class Impresora(models.Model):
         managed = False
         db_table = 'impresora'
     def __str__(self):
-        return '%d: %s' % (self.idcargo, self.tipo)
+        return '%s: %s' % (self.idimpresora, self.tipo)
 
 class Licencia(models.Model):
     idlicencia = models.AutoField(db_column='idLicencia', primary_key=True)  # Field name made lowercase.

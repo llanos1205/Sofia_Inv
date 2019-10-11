@@ -21,15 +21,15 @@ class OrdenadorNested_List(generics.ListAPIView):
 class ImpresoraNested_List(generics.ListAPIView):
     queryset=Impresora.objects.all()
     serializer_class=ImpresoraNestedSerializer
-    filterset_fields = ('__all__')
+    filter_class=EquiposFilter.ImpresoraFilter
 class OtroDispositivosNested_List(generics.ListAPIView):
     queryset=OtroDispositivo.objects.all()
-    serializer_class=OtrosDispositivosNestedSerializer   
-    filterset_fields = ('__all__')
+    serializer_class=OtrosDispositivosNestedSerializer  
+    filter_class=EquiposFilter.OtroDispositivoFilter 
 class EquipoNested_List(generics.ListAPIView):
     queryset=Equipo.objects.all()
     serializer_class=EquipoNestedSerializer  
-    filterset_fields = ('__all__')
+    filter_class=EquiposFilter.EquipoFilter
 class Equipo_List(generics.ListCreateAPIView):
     queryset=Equipo.objects.all()
     serializer_class=EquipoSerializer
