@@ -24,7 +24,7 @@ class UsuarioAd(models.Model):
     gerencia_idgerencia = models.ForeignKey(Gerencia, models.DO_NOTHING, db_column='Gerencia_idGerencia')  # Field name made lowercase.
     regional_idregional = models.ForeignKey(Regional, models.DO_NOTHING, db_column='Regional_idRegional')  # Field name made lowercase.
     ubicacion_idubicacion = models.ForeignKey(Ubicacion, models.DO_NOTHING, db_column='Ubicacion_idUbicacion')  # Field name made lowercase.
-    cuenta_idcuenta = models.ForeignKey(Cuenta, models.DO_NOTHING, db_column='Cuenta_idCuenta',null=True)  # Field name made lowercase.
+    cuenta_idcuenta = models.ForeignKey(Cuenta, models.DO_NOTHING, db_column='Cuenta_idCuenta',null=True,related_name="Usuarios")  # Field name made lowercase.
     cargo_idcargo = models.ForeignKey(Cargo, models.DO_NOTHING, db_column='Cargo_idCargo')  # Field name made lowercase.
     estado = models.IntegerField(db_column='Estado')  # Field name made lowercase.
     permisos=models.ManyToManyField(Permiso,related_name='Permisos',through='UsuarioAdHasPermiso')

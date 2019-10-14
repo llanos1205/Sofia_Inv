@@ -11,7 +11,7 @@ from ..Usuarios import filters
 class CorreosNested_List(generics.ListAPIView):
     queryset=UsuarioCorreo.objects.all()
     serializer_class=CorreoNestedSerializer
-    filterset_fields = ('__all__')
+    filter_class=filters.CorreoFilter
 class UsuarioAD_List(generics.ListCreateAPIView):
     queryset=UsuarioAd.objects.all()
     serializer_class=UsuarioADSerializer
@@ -19,7 +19,6 @@ class UsuarioAD_Nested_List(generics.ListAPIView):
     queryset=UsuarioAd.objects.all().order_by("pk")
     serializer_class=UsuarioADSerializerFull
     filter_class=filters.UsuarioADFilter
-    renderer_classes=[AdminRenderer]
 class UsuarioAD_Detail(generics.RetrieveUpdateDestroyAPIView):
     queryset=UsuarioAd.objects.all()
     serializer_class=UsuarioADSerializer
@@ -27,7 +26,7 @@ class UsuarioAD_Detail(generics.RetrieveUpdateDestroyAPIView):
 class Cuenta_List(generics.ListCreateAPIView):
     queryset=Cuenta.objects.all()
     serializer_class=CuentaSerializer
-    filterset_fields = ('__all__')
+    filter_class=filters.CuentaFilter
 class Cuenta_Detail(generics.RetrieveUpdateDestroyAPIView):
     queryset=Cuenta.objects.all()
     serializer_class=CuentaSerializer
@@ -35,7 +34,7 @@ class Cuenta_Detail(generics.RetrieveUpdateDestroyAPIView):
 class UsuarioCorreo_List(generics.ListCreateAPIView):
     queryset=UsuarioCorreo.objects.all()
     serializer_class=UsuarioCorreoSerializer
-    filterset_fields = ('__all__')
+    filter_class=filters.CorreoFilter
 class UsuarioCorreo_Detail(generics.RetrieveUpdateDestroyAPIView):
     queryset=UsuarioCorreo.objects.all()
     serializer_class=UsuarioCorreoSerializer

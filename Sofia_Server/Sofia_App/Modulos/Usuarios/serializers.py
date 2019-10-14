@@ -19,9 +19,10 @@ class UsuarioADSerializerFull(serializers.ModelSerializer):
                 'ubicacion_idubicacion','cuenta_idcuenta','cargo_idcargo','permisos','estado']
         depth=2
 class CuentaSerializer(serializers.ModelSerializer):
+    Usuarios=UsuarioADSerializer(many=True,read_only=True)
     class Meta:
         model=Cuenta
-        fields=['idcuenta','usuario','contrasena','estado']
+        fields="__all__"
 class UsuarioCorreoSerializer(serializers.ModelSerializer):
     
     class Meta:
