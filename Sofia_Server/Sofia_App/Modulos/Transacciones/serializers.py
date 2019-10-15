@@ -8,7 +8,7 @@ class AuditoriaSerializer(serializers.ModelSerializer):
 class AsociacionSerializer(serializers.ModelSerializer):
     class Meta:
         model=Asociacion
-        fields=['idasociacion','fecha_alta','fecha_baja','motivo','equipo_idequipo','usuarioinicial','usuariofinal']
+        fields="__all__"
 class AsociacionesNestedSerializer(serializers.ModelSerializer):
     class Meta:
         model=Asociacion

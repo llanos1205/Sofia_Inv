@@ -14,12 +14,9 @@ class AtributoSerialzier(serializers.ModelSerializer):
 
         fields=['idatributo','nombre','estado']
 class EquipoSerializer(serializers.ModelSerializer):
-
     class Meta:
         model=Equipo
-        fields=['idequipo','marca','modelo','nro_serie',
-                'nro_activo_fijo','ip','ultima_observacion',
-                'usuario_ad_idusuario_ad','estado']
+        fields="__all__"
 class OrdenadorSerializer(serializers.ModelSerializer):
     perifericos=serializers.PrimaryKeyRelatedField(many=True,read_only=True)
     os_idos=serializers.PrimaryKeyRelatedField(many=False,read_only=False,queryset=Os.objects.all())
@@ -31,12 +28,12 @@ class OrdenadorSerializer(serializers.ModelSerializer):
 class ImpresoraSerializer(serializers.ModelSerializer):
     class Meta:
         model=Impresora
-        fields=['idimpresora','tipo','tinta']
+        fields="__all__"
 class OtroDispositivoSerializer(serializers.ModelSerializer):
     atributos= serializers.PrimaryKeyRelatedField(many=True, read_only=False, queryset=Atributo.objects.all())
     class Meta:
         model=OtroDispositivo
-        fields=['idotro_dispositivo','nombre','atributos','ordenador_idordenador']
+        fields="__all__"
 class LicenciaSerializer(serializers.ModelSerializer):
     class Meta:
         model=Licencia

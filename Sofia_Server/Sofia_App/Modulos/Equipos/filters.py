@@ -10,7 +10,7 @@ class LicenciaFilter(filters.FilterSet):
         model=models.Licencia
         fields="__all__"
 class EquipoFilter(filters.FilterSet):
-    usuario=filters.RelatedFilter(UserFilters.UsuarioADFilter,field_name="usuario_ad_idusuario_ad",queryset=UserFilters.models.UsuarioAd.objects.all())
+    usuario=filters.RelatedFilter(UserFilters.UsuarioADFilter,field_name="usuarios",queryset=UserFilters.models.UsuarioAd.objects.all())
     class Meta:
         model=models.Equipo
         fields='__all__'

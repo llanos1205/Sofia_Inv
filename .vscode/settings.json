@@ -1,5 +1,5 @@
 {
-    "python.pythonPath": "myenv\\Scripts\\python.exe",
+    "python.pythonPath": "e:\\WIN10\\Repos\\Sofia_Inv\\myenv\\Scripts\\python.exe",
     "git.ignoreLimitWarning": true,
     "python.linting.enabled": false
 }
