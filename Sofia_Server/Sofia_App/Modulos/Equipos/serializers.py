@@ -3,7 +3,6 @@ from Sofia_Server.Sofia_App.Modulos.Equipos.models import (OrdenadorHasLicencia,
 Equipo,Ordenador,Impresora,OtroDispositivo,OtroDispositivoHasAtributo,Licencia,Os)
 from rest_framework import serializers
 class FilteredListSerializer(serializers.ListSerializer):
-
     def to_representation(self, data):
         data = data.filter(user=self.request.user, edition__hide=False)
         return super(FilteredListSerializer, self).to_representation(data)
@@ -11,8 +10,7 @@ class FilteredListSerializer(serializers.ListSerializer):
 class AtributoSerialzier(serializers.ModelSerializer):
     class Meta:
         model=Atributo
-
-        fields=['idatributo','nombre','estado']
+        fields="__all__"
 class EquipoSerializer(serializers.ModelSerializer):
     class Meta:
         model=Equipo
@@ -37,7 +35,7 @@ class OtroDispositivoSerializer(serializers.ModelSerializer):
 class LicenciaSerializer(serializers.ModelSerializer):
     class Meta:
         model=Licencia
-        fields=['idlicencia','producto','estado']
+        fields="__all__"
 class OtroDispositivoHasAtributoSerializer(serializers.ModelSerializer):
     otro_dispositivo_idotro_dispositivo= serializers.PrimaryKeyRelatedField(many=False,read_only=False,queryset=OtroDispositivo.objects.all())
     class Meta:
@@ -46,30 +44,25 @@ class OtroDispositivoHasAtributoSerializer(serializers.ModelSerializer):
 class OsSerializer(serializers.ModelSerializer):
     class Meta:
         model=Os
-        fields=['idos','nombre','servicio','arquitectura','estado']
-
+        fields="__all__"
 class EquipoNestedSerializer(serializers.ModelSerializer):
     class Meta:
         model=Equipo
         fields="__all__"
         depth=2
-
 class OrdenadorNestedSerializer(serializers.ModelSerializer):
     perifericos=serializers.PrimaryKeyRelatedField(many=True,read_only=True)
-    idordenador=EquipoNestedSerializer()
     class Meta:
         model=Ordenador
         fields="__all__"
         depth=2
 class ImpresoraNestedSerializer(serializers.ModelSerializer):
-    idimpresora=EquipoNestedSerializer()
     class Meta:
         model=Impresora
         fields="__all__"
         depth=2
 
 class OtrosDispositivosNestedSerializer(serializers.ModelSerializer):
-    idotro_dispositivo=EquipoNestedSerializer()
     atributos=AtributoSerialzier(many=True,read_only=True)
     class Meta:
         model=OtroDispositivo
@@ -78,7 +71,7 @@ class OtrosDispositivosNestedSerializer(serializers.ModelSerializer):
 class OrdenadorHasLicenciaSerializer(serializers.ModelSerializer):
     class Meta:
         model=OrdenadorHasLicencia
-        fields=['idordenador_has_licencia','llave','version','fecha_instalacion','licencia_idlicencia','ordenador_idordenador']
+        fields="__all__"
 class TabletSerializer(serializers.ModelSerializer):
     class Meta:
         model=Tablet
