@@ -3,13 +3,11 @@ notas:
 
     hacer control de auditorias ante modificaciones/deleciones
     user manager interno
-    hacer prrubas con herencia de datos
+
     https://github.com/carltongibson/django-filter
     https://github.com/ossu/computer-science
-    tabla asociaciones
-        cambiar datetime a date
-        hace id autoincrement
-    no se me duele el cerebros
+
+ 
 
     3874dac8cffa9154f07671436fdc937f11909b7e
 http://127.0.0.1:8000/hello/ 'Authorization: Token 3874dac8cffa9154f07671436fdc937f11909b7e'

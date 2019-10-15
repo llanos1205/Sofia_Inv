@@ -63,7 +63,7 @@ class OrdenadorHasLicencia(models.Model):
     version = models.CharField(max_length=45, blank=True, null=True)
     licencia_idlicencia = models.ForeignKey(Licencia, models.DO_NOTHING, db_column='Licencia_idLicencia')  # Field name made lowercase.
     ordenador_idordenador = models.ForeignKey(Ordenador, models.DO_NOTHING, db_column='Ordenador_idOrdenador',blank=True,null=True)  # Field name made lowercase.
-    fecha_instalacion = models.DateTimeField(db_column='Fecha_Instalacion', blank=True, null=True)  # Field name made lowercase.
+    fecha_instalacion = models.DateField(db_column='Fecha_Instalacion', blank=True, null=True)  # Field name made lowercase.
     class Meta:
         managed = False
         db_table = 'ordenador_has_licencia'

@@ -41,6 +41,7 @@ class OtroDispositivoHasAtributoSerializer(serializers.ModelSerializer):
     class Meta:
         model=OtroDispositivoHasAtributo
         fields="__all__"
+        depth=0
 class OsSerializer(serializers.ModelSerializer):
     class Meta:
         model=Os
@@ -52,10 +53,11 @@ class EquipoNestedSerializer(serializers.ModelSerializer):
         depth=2
 class OrdenadorNestedSerializer(serializers.ModelSerializer):
     perifericos=serializers.PrimaryKeyRelatedField(many=True,read_only=True)
+
     class Meta:
         model=Ordenador
         fields="__all__"
-        depth=2
+        depth=3
 class ImpresoraNestedSerializer(serializers.ModelSerializer):
     class Meta:
         model=Impresora
@@ -63,7 +65,7 @@ class ImpresoraNestedSerializer(serializers.ModelSerializer):
         depth=2
 
 class OtrosDispositivosNestedSerializer(serializers.ModelSerializer):
-    atributos=AtributoSerialzier(many=True,read_only=True)
+    atributos=OtroDispositivoHasAtributoSerializer(many=True,source="otrodispositivohasatributo_set",read_only=True)
     class Meta:
         model=OtroDispositivo
         fields="__all__"
@@ -76,3 +78,9 @@ class TabletSerializer(serializers.ModelSerializer):
     class Meta:
         model=Tablet
         fields="__all__"
+
+class OrdenadorHasLicenciaNestedSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=OrdenadorHasLicencia
+        fields="__all__"
+        depth=2
