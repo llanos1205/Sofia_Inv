@@ -29,3 +29,7 @@ NOTA IMPORTANTE:
     el nivel de profundidad de filtrado usando el url parece ser infinito (probado hasta nivel 4) lo que es bastante intenso la dvd
     https://github.com/iMakedonsky/drf-autodocs
     https://sunscrapers.com/blog/the-ultimate-tutorial-for-django-rest-framework-filtering-part-5/
+    https://www.thesmallman.com/link-hyperlink-to-excel-macro
+
+
+    por ahora solo faltan interfaces en vba, aplicar auditoria en todas aprtes, aplicar usuarios en todos los equipos

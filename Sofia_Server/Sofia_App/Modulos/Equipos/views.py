@@ -8,7 +8,7 @@ from Sofia_Server.Sofia_App.Modulos.Equipos.serializers import (
     EquipoNestedSerializer,OrdenadorNestedSerializer,ImpresoraNestedSerializer,
     OtrosDispositivosNestedSerializer,EquipoSerializer,OrdenadorSerializer,
     LicenciaSerializer,AtributoSerialzier,OtroDispositivoSerializer,
-    ImpresoraSerializer,OtroDispositivoHasAtributoSerializer,TabletSerializer
+    ImpresoraSerializer,OtroDispositivoHasAtributoSerializer,TabletSerializer,OrdenadorHasLicenciaNestedSerializer
 
 )
 import Sofia_Server.Sofia_App.Modulos.Equipos.filters as EquiposFilter
@@ -46,6 +46,7 @@ class Ordenador_List(generics.ListCreateAPIView):
 class Ordenador_Detail(generics.RetrieveUpdateDestroyAPIView):
     queryset=Ordenador.objects.all()
     serializer_class=OrdenadorSerializer
+    
 
 class OtroDispositivo_List(generics.ListCreateAPIView):
     queryset=OtroDispositivo.objects.all()
@@ -102,10 +103,12 @@ class OrdenadorHasLicencia_List(generics.ListCreateAPIView):
     queryset=OrdenadorHasLicencia.objects.all()
     serializer_class=OrdenadorHasLicenciaSerializer
     filterset_fields = ('__all__')
+   
 class OrdenadorHasLicencia_Detail(generics.RetrieveUpdateDestroyAPIView):
     queryset=OrdenadorHasLicencia.objects.all()
     serializer_class=OrdenadorHasLicenciaSerializer
     lookup_url_kwarg=['pk2,pk3']
+   
     def get_object(self):
         pk2=self.kwargs['pk2']
         pk3=self.kwargs['pk3']
@@ -114,3 +117,11 @@ class Tablet_List(generics.ListCreateAPIView):
     queryset=Tablet.objects.all().order_by("imei")
     serializer_class=TabletSerializer
     filterset_fields = ('__all__')
+class Tablet_Detail(generics.RetrieveUpdateDestroyAPIView):
+    queryset=Tablet.objects.all()
+    serializer_class=TabletSerializer
+
+class OrdenadorHasLicenciaNested_List(generics.ListAPIView):
+    queryset=OrdenadorHasLicencia.objects.all()
+    serializer_class=OrdenadorHasLicenciaNestedSerializer
+    filter_class=EquiposFilter.OrdenadorHasLicenciaFilter

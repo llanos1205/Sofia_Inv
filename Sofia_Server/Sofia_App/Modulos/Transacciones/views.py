@@ -4,11 +4,15 @@ from Sofia_Server.Sofia_App.Modulos.Transacciones.models import(
     Asociacion,Auditoria
 )
 from Sofia_Server.Sofia_App.Modulos.Transacciones.serializers import(
-    AsociacionSerializer,AsociacionesNestedSerializer,AuditoriaSerializer
+    AsociacionSerializer,AsociacionesNestedSerializer,AuditoriaSerializer,AuditoriaNestedSerializer
 )
 from rest_framework.renderers import AdminRenderer,JSONRenderer
 
 from Sofia_Server.Sofia_App.Modulos.Transacciones import filters
+class AuditoriaNested_List(generics.ListAPIView):
+    queryset=Auditoria.objects.all()
+    serializer_class=AuditoriaNestedSerializer
+    filter_class=filters.AuditoriaFilter
 class AsociacionNested_List(generics.ListAPIView):
     queryset=Asociacion.objects.all()
     serializer_class=AsociacionesNestedSerializer

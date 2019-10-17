@@ -37,3 +37,9 @@ class OtroDispositivoFilter(filters.FilterSet):
     class Meta:
         model=models.OtroDispositivo
         fields="__all__"
+class OrdenadorHasLicenciaFilter(filters.FilterSet):
+    equipo=filters.RelatedFilter(OrdenadorFilter ,field_name="ordenador_idordenador",queryset=models.Ordenador.objects.all())
+    licencia=filters.RelatedFilter(LicenciaFilter,field_name="licencia_idlicencia",queryset=models.Licencia.objects.all())
+    class Meta:
+        model=models.OrdenadorHasLicencia
+        fields="__all__"

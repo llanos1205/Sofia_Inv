@@ -83,4 +83,4 @@ class OrdenadorHasLicenciaNestedSerializer(serializers.ModelSerializer):
     class Meta:
         model=OrdenadorHasLicencia
         fields="__all__"
-        depth=2
+        depth=1
