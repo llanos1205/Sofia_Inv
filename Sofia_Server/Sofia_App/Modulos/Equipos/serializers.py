@@ -2,6 +2,8 @@
 from Sofia_Server.Sofia_App.Modulos.Equipos.models import (OrdenadorHasLicencia,Atributo,Tablet,
 Equipo,Ordenador,Impresora,OtroDispositivo,OtroDispositivoHasAtributo,Licencia,Os)
 from rest_framework import serializers
+from Sofia_Server.Sofia_App.Modulos.Usuarios import serializers as Userser
+from Sofia_Server.Sofia_App.Modulos.Transacciones import serializers as transer
 class FilteredListSerializer(serializers.ListSerializer):
     def to_representation(self, data):
         data = data.filter(user=self.request.user, edition__hide=False)
@@ -53,12 +55,14 @@ class EquipoNestedSerializer(serializers.ModelSerializer):
         depth=2
 class OrdenadorNestedSerializer(serializers.ModelSerializer):
     perifericos=serializers.PrimaryKeyRelatedField(many=True,read_only=True)
-
+    usuarios=transer.AsociacionSerializer(many=True,source="asociacion_set",read_only=True)
+    #usuarios=Userser.UsuarioMinisSerializer(many=True,read_only=True)
     class Meta:
         model=Ordenador
         fields="__all__"
-        depth=3
+        depth=2
 class ImpresoraNestedSerializer(serializers.ModelSerializer):
+    usuarios=transer.AsociacionSerializer(many=True,source="asociacion_set",read_only=True)
     class Meta:
         model=Impresora
         fields="__all__"
@@ -66,6 +70,7 @@ class ImpresoraNestedSerializer(serializers.ModelSerializer):
 
 class OtrosDispositivosNestedSerializer(serializers.ModelSerializer):
     atributos=OtroDispositivoHasAtributoSerializer(many=True,source="otrodispositivohasatributo_set",read_only=True)
+    usuarios=transer.AsociacionSerializer(many=True,source="asociacion_set",read_only=True)
     class Meta:
         model=OtroDispositivo
         fields="__all__"
@@ -75,6 +80,7 @@ class OrdenadorHasLicenciaSerializer(serializers.ModelSerializer):
         model=OrdenadorHasLicencia
         fields="__all__"
 class TabletSerializer(serializers.ModelSerializer):
+    usuarios=transer.AsociacionSerializer(many=True,source="asociacion_set",read_only=True)
     class Meta:
         model=Tablet
         fields="__all__"

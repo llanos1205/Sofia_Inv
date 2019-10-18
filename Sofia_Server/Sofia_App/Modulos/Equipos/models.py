@@ -32,7 +32,7 @@ class Impresora(Equipo):
         managed = False
         db_table = 'impresora'
     def __str__(self):
-        return '%s: %s' % (self.idimpresora, self.tipo)
+        return '(Impresora) %s: %s' % (self.idimpresora, self.tipo)
 class Licencia(models.Model):
     idlicencia = models.AutoField(db_column='idLicencia', primary_key=True)  # Field name made lowercase.
     producto = models.CharField(db_column='Producto', max_length=45, blank=True, null=True)  # Field name made lowercase.
@@ -56,7 +56,7 @@ class Ordenador(Equipo):
         managed = False
         db_table = 'ordenador'
     def __str__(self):
-        return '%s: %s' % (self.idordenador, self.tipo)
+        return '(ordenador) %s: %s' % (self.idordenador, self.tipo)
 class OrdenadorHasLicencia(models.Model):
     idordenador_has_licencia = models.AutoField(db_column='idOrdenador_Has_Licencia', primary_key=True)  # Field name made lowercase.
     llave = models.CharField(db_column='Llave', max_length=100, blank=True, null=True)  # Field name made lowercase.
@@ -87,7 +87,7 @@ class OtroDispositivo(Equipo):
         managed = False
         db_table = 'otro_dispositivo'
     def __str__(self):
-        return '%s: %s' % (self.idotro_dispositivo, self.nombre)
+        return '(otro dispositivo) %s: %s' % (self.idotro_dispositivo, self.nombre)
 class OtroDispositivoHasAtributo(models.Model):
     otro_dispositivo_idotro_dispositivo = models.ForeignKey(OtroDispositivo, models.DO_NOTHING, db_column='Otro_Dispositivo_idOtro_Dispositivo', primary_key=True)  # Field name made lowercase.
     atributo_idatributo = models.ForeignKey(Atributo, models.DO_NOTHING, db_column='Atributo_idAtributo')  # Field name made lowercase.
@@ -109,4 +109,4 @@ class Tablet(Equipo):
         managed = False
         db_table = 'tablet'
     def __str__(self):
-        return '%d: %s' % (self.idtablet, self.imei)
+        return '(tablet  )%d: %s' % (self.idtablet, self.imei)
