@@ -59,13 +59,11 @@ class Permiso(models.Model):
     idpermiso = models.AutoField(db_column='idPermiso', primary_key=True)  # Field name made lowercase.
     nombre = models.CharField(db_column='Nombre', max_length=100, blank=True, null=True)  # Field name made lowercase.
     estado = models.IntegerField(db_column='Estado')  # Field name made lowercase.
-
     class Meta:
         managed = False
         db_table = 'permiso'
     def __str__(self):
         return '%d: %s' % (self.idpermiso, self.nombre)
-
 class Regional(models.Model):
     idregional = models.AutoField(db_column='idRegional', primary_key=True)  # Field name made lowercase.
     nombre = models.CharField(db_column='Nombre', max_length=45, blank=True, null=True)  # Field name made lowercase.
@@ -75,7 +73,6 @@ class Regional(models.Model):
         db_table = 'regional'
     def __str__(self):
         return '%d: %s' % (self.idregional, self.nombre)
-
 class Ubicacion(models.Model):
     idubicacion = models.AutoField(db_column='idUbicacion', primary_key=True)  # Field name made lowercase.
     direccion = models.CharField(db_column='Direccion', max_length=200, blank=True, null=True)  # Field name made lowercase.

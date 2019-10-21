@@ -4,7 +4,8 @@ from Sofia_Server.Sofia_App.Modulos.InfoUser.serializers import PermisoSerialize
 class UsuarioMinisSerializer(serializers.ModelSerializer):
     class Meta:
         model=UsuarioAd
-        fields=['idusuario_ad','nombre','apellido','ci']
+        fields=['idusuario_ad','nombre','apellido','ci','cuenta_idcuenta']
+        depth=1
 
 class UsuarioADSerializer(serializers.ModelSerializer):
     permisos= serializers.PrimaryKeyRelatedField(many=True, read_only=False, queryset=Permiso.objects.all())

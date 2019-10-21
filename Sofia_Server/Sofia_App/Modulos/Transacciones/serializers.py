@@ -6,6 +6,7 @@ class AuditoriaSerializer(serializers.ModelSerializer):
         model=Auditoria
         fields="__all__"
 class AuditoriaNestedSerializer(serializers.ModelSerializer):
+    usuario_ad_idusuario_ad=userser.UsuarioMinisSerializer()
     class Meta:
         model=Auditoria
         fields="__all__"
@@ -17,6 +18,7 @@ class AsociacionSerializer(serializers.ModelSerializer):
         fields=['idasociacion','usuariofinal','resposable']
         
 class AsociacionesNestedSerializer(serializers.ModelSerializer):
+    usuariofinal=userser.UsuarioMinisSerializer()
     class Meta:
         model=Asociacion
         fields="__all__"

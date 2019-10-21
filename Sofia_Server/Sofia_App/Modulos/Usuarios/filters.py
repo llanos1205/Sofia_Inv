@@ -1,11 +1,15 @@
 import rest_framework_filters as filters
 import Sofia_Server.Sofia_App.Modulos.Usuarios.models as models
 import Sofia_Server.Sofia_App.Modulos.InfoUser.filters as infofilters
+from rest_framework import viewsets
 class CuentaFilter(filters.FilterSet):
     user=filters.RelatedFilter('UsuarioADFilter',field_name="Usuarios",queryset=models.UsuarioAd.objects.all())
     class Meta:
         model=models.Cuenta
-        fields="__all__"
+        fields= {
+             'usuario': ['exact', 'in', 'startswith','contains'],
+             'contrasena': ['exact', 'in', 'startswith','contains'],
+        }
 
 class UsuarioADFilter(filters.FilterSet):
     area=filters.RelatedFilter(infofilters.AreaFilter,field_name="area_idarea",queryset=infofilters.models.Area.objects.all())
@@ -16,12 +20,21 @@ class UsuarioADFilter(filters.FilterSet):
     cuenta=filters.RelatedFilter(CuentaFilter, field_name="cuenta_idcuenta", queryset=models.Cuenta.objects.all())
     cargo=filters.RelatedFilter(infofilters.CargoFilter,field_name="cargo_idcargo",queryset=infofilters.models.Cargo.objects.all())
     permiso=filters.RelatedFilter(infofilters.PermisoFilter,field_name="permisos",queryset=infofilters.models.Permiso.objects.all())
-  
+    
     class Meta:
         model=models.UsuarioAd
-        fields="__all__"
+        fields= {
+             'nombre': ['exact', 'in', 'startswith','contains'],
+             'apellido': ['exact', 'in', 'startswith','contains'],
+             'ci': ['exact', 'in', 'startswith','contains'],
+        }
+       
 class CorreoFilter(filters.FilterSet):
     user=filters.RelatedFilter(UsuarioADFilter,field_name="usuario_ad_idusuario_ad1",queryset=models.UsuarioAd.objects.all())
     class Meta:
         model=models.UsuarioCorreo
-        fields="__all__"
+        fields= {
+             'correo': ['exact', 'in', 'startswith','contains'],
+             'contrasena': ['exact', 'in', 'startswith','contains'],
+             'tipo': ['exact', 'in', 'startswith','contains'],
+        }

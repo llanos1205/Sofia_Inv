@@ -7,9 +7,20 @@ class AsociacionFilter(filters.FilterSet):
     user=filters.RelatedFilter(userfilters.UsuarioADFilter,field_name='usuariofinal',queryset=userfilters.models.UsuarioAd.objects.all())
     class Meta:
         model=models.Asociacion
-        fields="__all__"
+        fields = {
+            'fecha_alta': ['exact', 'in', 'startswith','contains','gte'],
+            'fecha_baja': ['exact', 'in', 'startswith','contains','lte'],
+            'motivo': ['exact', 'in', 'startswith','contains'],
+            'resposable': ['exact', 'in', 'startswith','contains'],
+            }
 class AuditoriaFilter(filters.FilterSet):
     user=filters.RelatedFilter(userfilters.UsuarioADFilter,field_name='usuario_ad_idusuario_ad',queryset=userfilters.models.UsuarioAd.objects.all())
     class Meta:
         model=models.Auditoria
-        fields="__all__"  
+        fields = {
+            'fecha': ['exact', 'in', 'startswith','contains','gte'],
+            'id_registro_afectado': ['exact', 'in', 'startswith','contains'],
+            'tabla_afectada': ['exact', 'in', 'startswith','contains'],
+            'accion': ['exact', 'in', 'startswith','contains'],
+            'ip': ['exact', 'in', 'startswith','contains'],
+            } 

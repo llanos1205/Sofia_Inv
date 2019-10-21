@@ -11,9 +11,7 @@ class Asociacion(models.Model):
     tipo_dispositivo=models.CharField(db_column="Tipo_Dispositivo",max_length=200,blank=True,null=True)
     class Meta:
         managed = False
-        db_table = 'asociacion'
-
-  
+        db_table = 'asociacion'  
 class Auditoria(models.Model):
     idauditoria = models.AutoField(db_column='idAuditoria', primary_key=True)  # Field name made lowercase.
     id_registro_afectado = models.IntegerField(db_column='Id_Registro_Afectado', blank=True, null=True)  # Field name made lowercase.
