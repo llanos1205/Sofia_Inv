@@ -33,3 +33,12 @@ NOTA IMPORTANTE:
 
 
     por ahora solo faltan interfaces en vba, aplicar auditoria en todas aprtes, aplicar usuarios en todos los equipos
+
+    
+You can create a ComboBox with 2 columns - value and text.
+
+In Excel, define the 2-column range and then use that as the rowsource for the control.
+
+In the combobox properties, use BoundColumn = 1 and ColumnCount = 2, with the ColumnWidths values = 0pt; 20pt.
+
+This mimicks the classic HTML 'select' control quite well I find, as you can simply call the Value from the control and as you've set the bound column to be the 'value' column, then it returns your ID for you quite easily.

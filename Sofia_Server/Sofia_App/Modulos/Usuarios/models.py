@@ -12,8 +12,6 @@ class Cuenta(models.Model):
         db_table = 'cuenta'
     def __str__(self):
         return '%d: %s' % (self.idcuenta, self.usuario)
-
-
 class UsuarioAd(models.Model):
     idusuario_ad = models.AutoField(db_column='idUsuario_AD', primary_key=True)  # Field name made lowercase.
     nombre = models.CharField(db_column='Nombre', max_length=100, blank=True, null=True)  # Field name made lowercase.
@@ -33,7 +31,6 @@ class UsuarioAd(models.Model):
         db_table = 'usuario_ad'
     def __str__(self):
         return '%d: %s' % (self.idusuario_ad, (self.nombre +"   "+ self.apellido))
-
 class UsuarioAdHasPermiso(models.Model):
     usuario_ad_idusuario_ad = models.ForeignKey(UsuarioAd, models.DO_NOTHING, db_column='Usuario_AD_idUsuario_AD',primary_key=True)  # Field name made lowercase.
     permiso_idpermiso = models.ForeignKey(Permiso, models.DO_NOTHING, db_column='Permiso_idPermiso')  # Field name made lowercase.
@@ -42,7 +39,6 @@ class UsuarioAdHasPermiso(models.Model):
         managed = False
         db_table = 'usuario_ad_has_permiso'
         unique_together = (('usuario_ad_idusuario_ad', 'permiso_idpermiso'))
-
 class UsuarioCorreo(models.Model):
     idusuario_correo = models.AutoField(db_column='idUsuario_Correo', primary_key=True)  # Field name made lowercase.
     correo = models.EmailField(db_column='Correo', max_length=45, blank=True, null=True)  # Field name made lowercase.
