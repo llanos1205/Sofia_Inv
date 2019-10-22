@@ -20,6 +20,7 @@ class EquipoSerializer(serializers.ModelSerializer):
 class OrdenadorSerializer(serializers.ModelSerializer):
     perifericos=serializers.PrimaryKeyRelatedField(many=True,read_only=True)
     os_idos=serializers.PrimaryKeyRelatedField(many=False,read_only=False,queryset=Os.objects.all())
+    usuarios=transer.AsociacionSerializer(many=True,source="asociacion_set",read_only=True)
     class Meta:
         model=Ordenador
         fields="__all__"
@@ -40,6 +41,7 @@ class LicenciaSerializer(serializers.ModelSerializer):
         fields="__all__"
 class OtroDispositivoHasAtributoSerializer(serializers.ModelSerializer):
     otro_dispositivo_idotro_dispositivo= serializers.PrimaryKeyRelatedField(many=False,read_only=False,queryset=OtroDispositivo.objects.all())
+    #otro_dispositivo_idotro_dispositivo=OtroDispositivoSerializer(read_only=True)
     class Meta:
         model=OtroDispositivoHasAtributo
         fields="__all__"
