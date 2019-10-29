@@ -15,7 +15,7 @@ class AreaSerializer(serializers.ModelSerializer):
         model=Area
         fields=['idarea','nombre','descripcion',
                 'departamento_iddepartamento','estado']
-
+        
 class RegionalSerializer(serializers.ModelSerializer):
     class Meta:
         model=Regional

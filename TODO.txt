@@ -1,0 +1,11 @@
+cosas que faltan
+1.-Interfaz de Cuentas de usuario
+2.-Interfaz de cuentas de correo
+3.-Interfaz de asociaciones de cuentas con el usuario como tal
+4.-Interfaz de Licencias
+5.-Interfaz de asociaciones de Licencias
+6.-Interfaz de cargos //OK
+7.-Interfaz asociaciones equipo usuario
+8.-INtefaz de asociacione
+9.-control de sesiones
+10.- xperiencia de ususario

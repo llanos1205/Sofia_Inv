@@ -9,7 +9,7 @@ from Sofia_Server.Sofia_App.Modulos.Usuarios.serializers import(
 from rest_framework.renderers import AdminRenderer
 from ..Usuarios import filters
 class CorreosNested_List(generics.ListAPIView):
-    queryset=UsuarioCorreo.objects.all()
+    queryset=UsuarioCorreo.objects.all().order_by("pk")
     serializer_class=CorreoNestedSerializer
     filter_class=filters.CorreoFilter
 class UsuarioAD_List(generics.ListCreateAPIView):
@@ -24,7 +24,7 @@ class UsuarioAD_Detail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class=UsuarioADSerializer
     
 class Cuenta_List(generics.ListCreateAPIView):
-    queryset=Cuenta.objects.all()
+    queryset=Cuenta.objects.all().order_by("pk")
     serializer_class=CuentaSerializer
     filter_class=filters.CuentaFilter
 class Cuenta_Detail(generics.RetrieveUpdateDestroyAPIView):
@@ -32,14 +32,14 @@ class Cuenta_Detail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class=CuentaSerializer
 
 class UsuarioCorreo_List(generics.ListCreateAPIView):
-    queryset=UsuarioCorreo.objects.all()
+    queryset=UsuarioCorreo.objects.all().order_by("pk")
     serializer_class=UsuarioCorreoSerializer
     filter_class=filters.CorreoFilter
 class UsuarioCorreo_Detail(generics.RetrieveUpdateDestroyAPIView):
     queryset=UsuarioCorreo.objects.all()
     serializer_class=UsuarioCorreoSerializer
 class Usuario_Permiso_List(generics.ListCreateAPIView):
-    queryset=UsuarioAdHasPermiso.objects.all()
+    queryset=UsuarioAdHasPermiso.objects.all().order_by("pk")
     serializer_class=Permiso_UsuarioADSerializer
     filterset_fields = ('__all__')
     

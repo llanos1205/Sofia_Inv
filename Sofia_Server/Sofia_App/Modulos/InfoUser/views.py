@@ -7,66 +7,66 @@ from Sofia_Server.Sofia_App.Modulos.InfoUser.models import (
     Empresa,Departamento,Gerencia,Cargo,Ubicacion,
     Regional,Area,Permiso
 )
-
+from Sofia_Server.Sofia_App.Modulos.InfoUser import filters
 class EmpresaList(generics.ListCreateAPIView):
-    queryset=Empresa.objects.all()
+    queryset=Empresa.objects.all().order_by("pk")
     serializer_class=EmpresaSerializer
-    filterset_fields = ('__all__')
+    filter_class=filters.EmpresaFilter
 class Empresa_Detail(generics.RetrieveUpdateDestroyAPIView):
     queryset=Empresa.objects.all()
     serializer_class=EmpresaSerializer
 
 class Departamento_List(generics.ListCreateAPIView):
-    queryset=Departamento.objects.all()
+    queryset=Departamento.objects.all().order_by("pk")
     serializer_class=DepartamentoSerializer
-    filterset_fields = ('__all__')
+    filter_class=filters.DepartamentoFilter
 class Departamento_Detail(generics.RetrieveUpdateDestroyAPIView):
     queryset=Departamento.objects.all()
     serializer_class=DepartamentoSerializer
 
 class Area_List(generics.ListCreateAPIView):
-    queryset=Area.objects.all()
+    queryset=Area.objects.all().order_by("pk")
     serializer_class=AreaSerializer
-    filterset_fields = ('__all__')
+    filter_class=filters.AreaFilter
 class Area_Detail(generics.RetrieveUpdateDestroyAPIView):
     queryset=Area.objects.all()
     serializer_class=AreaSerializer
 
 class Gerencia_List(generics.ListCreateAPIView):
-    queryset=Gerencia.objects.all()
+    queryset=Gerencia.objects.all().order_by("pk")
     serializer_class=GerenciaSerializer
-    filterset_fields = ('__all__')
+    filter_class=filters.GerenciaFilter
 class Gerencia_Detail(generics.RetrieveUpdateDestroyAPIView):
     queryset=Gerencia.objects.all()
     serializer_class=GerenciaSerializer
 
 class Regional_List(generics.ListCreateAPIView):
-    queryset=Regional.objects.all()
+    queryset=Regional.objects.all().order_by("pk")
     serializer_class=RegionalSerializer
-    filterset_fields = ('__all__')
+    filter_class=filters.RegionalFilter
 class Regional_Detail(generics.RetrieveUpdateDestroyAPIView):
     queryset=Regional.objects.all()
     serializer_class=RegionalSerializer
 
 class Ubicacion_List(generics.ListCreateAPIView):
-    queryset=Ubicacion.objects.all()
+    queryset=Ubicacion.objects.all().order_by("pk")
     serializer_class=UbicacionSerializer
-    filterset_fields = ('__all__')
+    filter_class=filters.UbicacionFilter
 class Ubicacion_Detail(generics.RetrieveUpdateDestroyAPIView):
     queryset=Ubicacion.objects.all()
     serializer_class=UbicacionSerializer
 
 class Cargo_List(generics.ListCreateAPIView):
-    queryset=Cargo.objects.all()
+    queryset=Cargo.objects.all().order_by("pk")
     serializer_class=CargoSerializer
-    filterset_fields = ('__all__')
+    filter_class=filters.CargoFilter
 class Cargo_Detail(generics.RetrieveUpdateDestroyAPIView):
     queryset=Cargo.objects.all()
     serializer_class=CargoSerializer  
 class Permiso_List(generics.ListCreateAPIView):
-    queryset=Permiso.objects.all()
+    queryset=Permiso.objects.all().order_by("pk")
     serializer_class=PermisoSerializer
-    filterset_fields = ('__all__')
+    filter_class=filters.PermisoFilter
 class Permiso_Detail(generics.RetrieveUpdateDestroyAPIView):
     queryset=Permiso.objects.all()
     serializer_class=PermisoSerializer
