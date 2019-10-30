@@ -7,6 +7,7 @@ class CuentaFilter(filters.FilterSet):
     class Meta:
         model=models.Cuenta
         fields= {
+            'idcuenta': ['exact', 'in', 'startswith','contains'],
              'usuario': ['exact', 'in', 'startswith','contains'],
              'contrasena': ['exact', 'in', 'startswith','contains'],
         }

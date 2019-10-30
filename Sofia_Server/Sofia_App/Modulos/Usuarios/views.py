@@ -15,6 +15,7 @@ class CorreosNested_List(generics.ListAPIView):
 class UsuarioAD_List(generics.ListCreateAPIView):
     queryset=UsuarioAd.objects.all()
     serializer_class=UsuarioADSerializer
+    filter_class=filters.UsuarioADFilter
 class UsuarioAD_Nested_List(generics.ListAPIView):
     queryset=UsuarioAd.objects.all().order_by("pk")
     serializer_class=UsuarioADSerializerFull
