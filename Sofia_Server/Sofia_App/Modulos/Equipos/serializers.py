@@ -8,7 +8,6 @@ class FilteredListSerializer(serializers.ListSerializer):
     def to_representation(self, data):
         data = data.filter(user=self.request.user, edition__hide=False)
         return super(FilteredListSerializer, self).to_representation(data)
-
 class AtributoSerialzier(serializers.ModelSerializer):
     class Meta:
         model=Atributo
@@ -21,17 +20,19 @@ class OrdenadorSerializer(serializers.ModelSerializer):
     perifericos=serializers.PrimaryKeyRelatedField(many=True,read_only=True)
     os_idos=serializers.PrimaryKeyRelatedField(many=False,read_only=False,queryset=Os.objects.all())
     usuarios=transer.AsociacionSerializer(many=True,source="asociacion_set",read_only=True)
+    clase=serializers.CharField(default="Ordenador",read_only=True)
     class Meta:
         model=Ordenador
         fields="__all__"
-        depth=2
-        
+        depth=2       
 class ImpresoraSerializer(serializers.ModelSerializer):
+    clase=serializers.CharField(default="Impresora",read_only=True)
     class Meta:
         model=Impresora
         fields="__all__"
 class OtroDispositivoSerializer(serializers.ModelSerializer):
     atributos= serializers.PrimaryKeyRelatedField(many=True, read_only=False, queryset=Atributo.objects.all())
+    clase=serializers.CharField(default="Otro Dispositivo",read_only=True)
     class Meta:
         model=OtroDispositivo
         fields="__all__"
@@ -59,20 +60,22 @@ class OrdenadorNestedSerializer(serializers.ModelSerializer):
     perifericos=serializers.PrimaryKeyRelatedField(many=True,read_only=True)
     usuarios=transer.AsociacionSerializer(many=True,source="asociacion_set",read_only=True)
     #usuarios=Userser.UsuarioMinisSerializer(many=True,read_only=True)
+    clase=serializers.CharField(default="Ordenador",read_only=True)
     class Meta:
         model=Ordenador
         fields="__all__"
         depth=2
 class ImpresoraNestedSerializer(serializers.ModelSerializer):
     usuarios=transer.AsociacionSerializer(many=True,source="asociacion_set",read_only=True)
+    clase=serializers.CharField(default="Impresora",read_only=True)
     class Meta:
         model=Impresora
         fields="__all__"
         depth=2
-
 class OtrosDispositivosNestedSerializer(serializers.ModelSerializer):
     atributos=OtroDispositivoHasAtributoSerializer(many=True,source="otrodispositivohasatributo_set",read_only=True)
     usuarios=transer.AsociacionSerializer(many=True,source="asociacion_set",read_only=True)
+    clase=serializers.CharField(default="Otro Dispositivo",read_only=True)
     class Meta:
         model=OtroDispositivo
         fields="__all__"
@@ -86,7 +89,6 @@ class TabletSerializer(serializers.ModelSerializer):
     class Meta:
         model=Tablet
         fields="__all__"
-
 class OrdenadorHasLicenciaNestedSerializer(serializers.ModelSerializer):
     class Meta:
         model=OrdenadorHasLicencia
