@@ -6,9 +6,10 @@ class Asociacion(models.Model):
     fecha_baja = models.DateField(db_column='Fecha_Baja', blank=True, null=True)  # Field name made lowercase.
     motivo = models.CharField(db_column='Motivo', max_length=75, blank=True, null=True)  # Field name made lowercase.
     equipo_idequipo = models.ForeignKey('Equipo', models.DO_NOTHING,db_column='Equipo_idEquipo')  # Field name made lowercase.
-    usuariofinal = models.ForeignKey('UsuarioAd', models.DO_NOTHING,related_name='final', db_column='UsuarioFInal', blank=True)  # Field name made lowercase.
+    usuariofinal = models.ForeignKey('UsuarioAd', models.DO_NOTHING,related_name='final', db_column='UsuarioFInal')  # Field name made lowercase.
     resposable=models.IntegerField(db_column='EsResponsable', blank=True, null=True)
     tipo_dispositivo=models.CharField(db_column="Tipo_Dispositivo",max_length=200,blank=True,null=True)
+    cuenta_idcuenta=models.ForeignKey('Cuenta', models.DO_NOTHING,related_name='cuenta', db_column='Cuenta_idCuenta')
     class Meta:
         managed = False
         db_table = 'asociacion'  

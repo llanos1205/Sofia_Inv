@@ -8,4 +8,6 @@ cosas que faltan
 7.-Interfaz asociaciones equipo usuario
 8.-INtefaz de asociacione
 9.-control de sesiones
+
 10.- xperiencia de ususario
+11.- baja en usuario deberia eliminar todas asociaciones

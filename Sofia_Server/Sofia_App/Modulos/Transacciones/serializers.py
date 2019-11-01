@@ -12,14 +12,14 @@ class AuditoriaNestedSerializer(serializers.ModelSerializer):
         fields="__all__"
         depth=1
 class AsociacionSerializer(serializers.ModelSerializer):
-    usuariofinal=userser.UsuarioMinisSerializer()
+    #usuariofinal=userser.UsuarioMinisSerializer(read_only=True)
     class Meta:
         model=Asociacion
-        fields=['idasociacion','usuariofinal','resposable']
+        fields="__all__"
         
 class AsociacionesNestedSerializer(serializers.ModelSerializer):
     usuariofinal=userser.UsuarioMinisSerializer()
     class Meta:
         model=Asociacion
         fields="__all__"
-        depth=1
+        depth=2

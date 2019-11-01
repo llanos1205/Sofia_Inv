@@ -58,7 +58,7 @@ class EquipoNestedSerializer(serializers.ModelSerializer):
         depth=2
 class OrdenadorNestedSerializer(serializers.ModelSerializer):
     perifericos=serializers.PrimaryKeyRelatedField(many=True,read_only=True)
-    usuarios=transer.AsociacionSerializer(many=True,source="asociacion_set",read_only=True)
+    usuarios=transer.AsociacionesNestedSerializer(many=True,source="asociacion_set",read_only=True)
     #usuarios=Userser.UsuarioMinisSerializer(many=True,read_only=True)
     clase=serializers.CharField(default="Ordenador",read_only=True)
     class Meta:
@@ -66,7 +66,7 @@ class OrdenadorNestedSerializer(serializers.ModelSerializer):
         fields="__all__"
         depth=2
 class ImpresoraNestedSerializer(serializers.ModelSerializer):
-    usuarios=transer.AsociacionSerializer(many=True,source="asociacion_set",read_only=True)
+    usuarios=transer.AsociacionesNestedSerializer(many=True,source="asociacion_set",read_only=True)
     clase=serializers.CharField(default="Impresora",read_only=True)
     class Meta:
         model=Impresora
@@ -74,7 +74,7 @@ class ImpresoraNestedSerializer(serializers.ModelSerializer):
         depth=2
 class OtrosDispositivosNestedSerializer(serializers.ModelSerializer):
     atributos=OtroDispositivoHasAtributoSerializer(many=True,source="otrodispositivohasatributo_set",read_only=True)
-    usuarios=transer.AsociacionSerializer(many=True,source="asociacion_set",read_only=True)
+    usuarios=transer.AsociacionesNestedSerializer(many=True,source="asociacion_set",read_only=True)
     clase=serializers.CharField(default="Otro Dispositivo",read_only=True)
     class Meta:
         model=OtroDispositivo
@@ -85,7 +85,7 @@ class OrdenadorHasLicenciaSerializer(serializers.ModelSerializer):
         model=OrdenadorHasLicencia
         fields="__all__"
 class TabletSerializer(serializers.ModelSerializer):
-    usuarios=transer.AsociacionSerializer(many=True,source="asociacion_set",read_only=True)
+    usuarios=transer.AsociacionesNestedSerializer(many=True,source="asociacion_set",read_only=True)
     class Meta:
         model=Tablet
         fields="__all__"
