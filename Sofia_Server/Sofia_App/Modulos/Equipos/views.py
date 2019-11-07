@@ -107,12 +107,7 @@ class OrdenadorHasLicencia_List(generics.ListCreateAPIView):
 class OrdenadorHasLicencia_Detail(generics.RetrieveUpdateDestroyAPIView):
     queryset=OrdenadorHasLicencia.objects.all()
     serializer_class=OrdenadorHasLicenciaSerializer
-    lookup_url_kwarg=['pk2,pk3']
-   
-    def get_object(self):
-        pk2=self.kwargs['pk2']
-        pk3=self.kwargs['pk3']
-        return OrdenadorHasLicencia.objects.get(ordenador_idordenador=pk2,licencia_idlicencia=pk3)
+
 class Tablet_List(generics.ListCreateAPIView):
     queryset=Tablet.objects.all().order_by("imei")
     serializer_class=TabletSerializer

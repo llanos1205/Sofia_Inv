@@ -22,4 +22,4 @@ class AsociacionesNestedSerializer(serializers.ModelSerializer):
     class Meta:
         model=Asociacion
         fields="__all__"
-        depth=2
+        depth=1

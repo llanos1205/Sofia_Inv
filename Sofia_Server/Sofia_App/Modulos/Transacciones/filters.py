@@ -5,6 +5,7 @@ from Sofia_Server.Sofia_App.Modulos.Usuarios import filters as userfilters
 class AsociacionFilter(filters.FilterSet):
     equipo=filters.RelatedFilter(eqfilters.EquipoFilter,field_name='equipo_idequipo',queryset=eqfilters.models.Equipo.objects.all())
     user=filters.RelatedFilter(userfilters.UsuarioADFilter,field_name='usuariofinal',queryset=userfilters.models.UsuarioAd.objects.all())
+    cuenta=filters.RelatedFilter(userfilters.CuentaFilter,field_name='cuenta_idcuenta',queryset=userfilters.models.Cuenta.objects.all())
     class Meta:
         model=models.Asociacion
         fields = {

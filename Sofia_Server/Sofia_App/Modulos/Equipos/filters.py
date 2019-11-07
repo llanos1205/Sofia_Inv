@@ -38,6 +38,7 @@ class OrdenadorFilter(filters.FilterSet):
     class Meta:
         model=models.Ordenador
         fields = {            
+            'idequipo': ['exact', 'in', 'startswith','contains'],
             'marca': ['exact', 'in', 'startswith','contains'],
             'modelo': ['exact', 'in', 'startswith','contains'],
             'nro_serie': ['exact', 'in', 'startswith','contains'],
