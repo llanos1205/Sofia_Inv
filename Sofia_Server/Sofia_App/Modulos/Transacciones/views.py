@@ -21,7 +21,7 @@ class Auditoria_List(generics.ListCreateAPIView):
     queryset=Auditoria.objects.all()
     serializer_class=AuditoriaSerializer
     #renderer_classes = [AdminRenderer,JSONRenderer]
-    filterset_fields = ('__all__')
+    filter_class=filters.AuditoriaFilter
 class Auditoria_Detail(generics.RetrieveUpdateDestroyAPIView):
     queryset=Auditoria.objects.all()
     serializer_class=AuditoriaSerializer

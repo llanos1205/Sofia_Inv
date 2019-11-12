@@ -20,6 +20,7 @@ class EquipoFilter(filters.FilterSet):
     class Meta:
         model=models.Equipo
         fields = {
+            'idequipo':['exact'],
             'marca': ['exact', 'in', 'startswith','contains'],
             'modelo': ['exact', 'in', 'startswith','contains'],
             'nro_serie': ['exact', 'in', 'startswith','contains'],

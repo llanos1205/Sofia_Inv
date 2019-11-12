@@ -25,7 +25,7 @@ class Equipo(models.Model):
     def __str__(self):
         return '%d:%s'%(self.idequipo,self.nro_serie)    
 class Impresora(Equipo):
-    idimpresora = models.OneToOneField(Equipo, models.DO_NOTHING,  primary_key=True,db_column='idImpresora', parent_link=True)  # Field name made lowercase.
+    idimpresora = models.OneToOneField(Equipo, models.CASCADE,  primary_key=True,db_column='idImpresora', parent_link=True)  # Field name made lowercase.
     tipo = models.CharField(db_column='Tipo', max_length=45, blank=True, null=True)  # Field name made lowercase.
     tinta = models.CharField(db_column='Tinta', max_length=45, blank=True, null=True)  # Field name made lowercase.
     class Meta:
@@ -79,7 +79,7 @@ class Os(models.Model):
     def __str__(self):
         return '%d: %s' % (self.idos, self.nombre)
 class OtroDispositivo(Equipo):
-    idotro_dispositivo = models.OneToOneField(Equipo, models.DO_NOTHING,parent_link=True, db_column='idOtro_Dispositivo', primary_key=True)  # Field name made lowercase.
+    idotro_dispositivo = models.OneToOneField(Equipo, models.CASCADE,parent_link=True, db_column='idOtro_Dispositivo', primary_key=True)  # Field name made lowercase.
     nombre = models.CharField(db_column='Nombre', max_length=45, blank=True, null=True)  # Field name made lowercase.
     ordenador_idordenador = models.ForeignKey(Ordenador, models.DO_NOTHING, db_column='Ordenador_idOrdenador', blank=True, null=True,related_name='perifericos')  # Field name made lowercase.
     atributos=models.ManyToManyField(Atributo,related_name='atributos',through='OtroDispositivoHasAtributo',blank=True,null=True)
