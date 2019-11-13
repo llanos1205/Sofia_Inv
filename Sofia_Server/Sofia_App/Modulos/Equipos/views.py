@@ -14,24 +14,24 @@ from Sofia_Server.Sofia_App.Modulos.Equipos.serializers import (
 import Sofia_Server.Sofia_App.Modulos.Equipos.filters as EquiposFilter
 from rest_framework.renderers import AdminRenderer
 class OrdenadorNested_List(generics.ListAPIView):
-    queryset=Ordenador.objects.all()
+    queryset=Ordenador.objects.all().order_by("pk")
     serializer_class=OrdenadorNestedSerializer
     #renderer_classes=[AdminRenderer]
     filter_class=EquiposFilter.OrdenadorFilter
 class ImpresoraNested_List(generics.ListAPIView):
-    queryset=Impresora.objects.all()
+    queryset=Impresora.objects.all().order_by("pk")
     serializer_class=ImpresoraNestedSerializer
     filter_class=EquiposFilter.ImpresoraFilter
 class OtroDispositivosNested_List(generics.ListAPIView):
-    queryset=OtroDispositivo.objects.all()
+    queryset=OtroDispositivo.objects.all().order_by("pk")
     serializer_class=OtrosDispositivosNestedSerializer  
     filter_class=EquiposFilter.OtroDispositivoFilter 
 class EquipoNested_List(generics.ListAPIView):
-    queryset=Equipo.objects.all()
+    queryset=Equipo.objects.all().order_by("pk")
     serializer_class=EquipoNestedSerializer  
     filter_class=EquiposFilter.EquipoFilter
 class Equipo_List(generics.ListCreateAPIView):
-    queryset=Equipo.objects.all()
+    queryset=Equipo.objects.all().order_by("pk")
     serializer_class=EquipoSerializer
     filterset_fields = ('__all__')
 class Equipo_Detail(generics.RetrieveUpdateDestroyAPIView):
@@ -39,7 +39,7 @@ class Equipo_Detail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class=EquipoSerializer
 
 class Ordenador_List(generics.ListCreateAPIView):
-    queryset=Ordenador.objects.all()
+    queryset=Ordenador.objects.all().order_by("pk")
     filterset_fields = ('__all__')
     
     serializer_class=OrdenadorSerializer
@@ -49,7 +49,7 @@ class Ordenador_Detail(generics.RetrieveUpdateDestroyAPIView):
     
 
 class OtroDispositivo_List(generics.ListCreateAPIView):
-    queryset=OtroDispositivo.objects.all()
+    queryset=OtroDispositivo.objects.all().order_by("pk")
     serializer_class=OtroDispositivoSerializer
     filterset_fields = ('__all__')
 class OtroDispositivo_Detail(generics.RetrieveUpdateDestroyAPIView):
@@ -57,7 +57,7 @@ class OtroDispositivo_Detail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class=OtroDispositivoSerializer
 
 class Impresora_List(generics.ListCreateAPIView):
-    queryset=Impresora.objects.all()
+    queryset=Impresora.objects.all().order_by("pk")
     serializer_class=ImpresoraSerializer
     filterset_fields = ('__all__')
 class Impresora_Detail(generics.RetrieveUpdateDestroyAPIView):
@@ -65,7 +65,7 @@ class Impresora_Detail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class=ImpresoraSerializer
 
 class Licencia_List(generics.ListCreateAPIView):
-    queryset=Licencia.objects.all()
+    queryset=Licencia.objects.all().order_by("pk")
     serializer_class=LicenciaSerializer
     filterset_fields = ('__all__')
 class Licencia_Detail(generics.RetrieveUpdateDestroyAPIView):
@@ -73,7 +73,7 @@ class Licencia_Detail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class=LicenciaSerializer
 
 class Atributo_List(generics.ListCreateAPIView):
-    queryset=Atributo.objects.all()
+    queryset=Atributo.objects.all().order_by("pk")
     serializer_class=AtributoSerialzier
     filterset_fields = ('__all__')
 class Atributo_Detail(generics.RetrieveUpdateDestroyAPIView):
@@ -81,7 +81,7 @@ class Atributo_Detail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class=AtributoSerialzier
 
 class Equipo_Atributo_List(generics.ListCreateAPIView):
-    queryset=OtroDispositivoHasAtributo.objects.all()
+    queryset=OtroDispositivoHasAtributo.objects.all().order_by("pk")
     serializer_class=OtroDispositivoHasAtributoSerializer
     filterset_fields = ('__all__')
 class Equipo_Atributo_Detail(generics.RetrieveUpdateDestroyAPIView):
@@ -93,14 +93,14 @@ class Equipo_Atributo_Detail(generics.RetrieveUpdateDestroyAPIView):
         pk3=self.kwargs['pk3']
         return OtroDispositivoHasAtributo.objects.get(otro_dispositivo_idotro_dispositivo=pk2,atributo_idatributo=pk3)
 class Os_List(generics.ListCreateAPIView):
-    queryset=Os.objects.all()
+    queryset=Os.objects.all().order_by("pk")
     serializer_class=OsSerializer
     filterset_fields = ('__all__')
 class Os_Detail(generics.RetrieveUpdateDestroyAPIView):
     queryset=Os.objects.all()
     serializer_class=OsSerializer
 class OrdenadorHasLicencia_List(generics.ListCreateAPIView):
-    queryset=OrdenadorHasLicencia.objects.all()
+    queryset=OrdenadorHasLicencia.objects.all().order_by("pk")
     serializer_class=OrdenadorHasLicenciaSerializer
     filterset_fields = ('__all__')
    
@@ -109,7 +109,7 @@ class OrdenadorHasLicencia_Detail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class=OrdenadorHasLicenciaSerializer
 
 class Tablet_List(generics.ListCreateAPIView):
-    queryset=Tablet.objects.all().order_by("imei")
+    queryset=Tablet.objects.all().order_by("pk")
     serializer_class=TabletSerializer
     filterset_fields = ('__all__')
 class Tablet_Detail(generics.RetrieveUpdateDestroyAPIView):
@@ -117,6 +117,6 @@ class Tablet_Detail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class=TabletSerializer
 
 class OrdenadorHasLicenciaNested_List(generics.ListAPIView):
-    queryset=OrdenadorHasLicencia.objects.all()
+    queryset=OrdenadorHasLicencia.objects.all().order_by("pk")
     serializer_class=OrdenadorHasLicenciaNestedSerializer
     filter_class=EquiposFilter.OrdenadorHasLicenciaFilter
