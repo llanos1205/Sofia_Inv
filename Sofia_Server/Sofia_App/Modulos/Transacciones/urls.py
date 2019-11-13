@@ -6,7 +6,7 @@ urlpatterns = [
     path('Auditorias/<int:pk>/',views.Auditoria_Detail.as_view()),
     path('Auditorias/Nested/',views.AuditoriaNested_List.as_view()),
     path('Asociaciones/',views.Asociacion_List.as_view()),
-    path('Asociaciones/<int:pk>',views.Asociacion_Detail.as_view()),
+    path('Asociaciones/<int:pk>/',views.Asociacion_Detail.as_view()),
     path('Asociaciones/Nested/',views.AsociacionNested_List.as_view()),
 ]
 urlpatterns=format_suffix_patterns(urlpatterns)

@@ -89,13 +89,14 @@ class OtroDispositivo(Equipo):
     def __str__(self):
         return '(otro dispositivo) %s: %s' % (self.idotro_dispositivo, self.nombre)
 class OtroDispositivoHasAtributo(models.Model):
-    otro_dispositivo_idotro_dispositivo = models.ForeignKey(OtroDispositivo, models.DO_NOTHING, db_column='Otro_Dispositivo_idOtro_Dispositivo', primary_key=True)  # Field name made lowercase.
+    idotro_dispositivo_has_atributo=models.AutoField(db_column="idOtro_Dispositivo_has_Atributo",primary_key=True)
+    otro_dispositivo_idotro_dispositivo = models.ForeignKey(OtroDispositivo, models.DO_NOTHING, db_column='Otro_Dispositivo_idOtro_Dispositivo')  # Field name made lowercase.
     atributo_idatributo = models.ForeignKey(Atributo, models.DO_NOTHING, db_column='Atributo_idAtributo')  # Field name made lowercase.
     detalle = models.CharField(db_column='Detalle', max_length=200, blank=True, null=True)  # Field name made lowercase.
     class Meta:
         managed = False
         db_table = 'otro_dispositivo_has_atributo'
-        unique_together = (('otro_dispositivo_idotro_dispositivo', 'atributo_idatributo'),)
+
 class Tablet(Equipo):
     idtablet = models.OneToOneField(Equipo, models.DO_NOTHING, db_column='idTablet',parent_link=True, primary_key=True)  # Field name made lowercase.
     memoria_interna = models.CharField(db_column='Memoria_Interna', max_length=200, blank=True, null=True)  # Field name made lowercase.

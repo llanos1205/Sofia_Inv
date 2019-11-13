@@ -22,7 +22,7 @@ urlpatterns = [
     path('Oss/',views.Os_List.as_view()),
     path('Oss/<int:pk>/',views.Os_Detail.as_view()),
     path('Equipos_Atributos/',views.Equipo_Atributo_List.as_view()),
-    path('Equipos_Atributos/<int:pk2>/<int:pk3>/',views.Equipo_Atributo_Detail.as_view()),
+    path('Equipos_Atributos/<int:pk>/',views.Equipo_Atributo_Detail.as_view()),
     path('Ordenador_Licencias/',views.OrdenadorHasLicencia_List.as_view()),
     path('Ordenador_Licencias/Nested/',views.OrdenadorHasLicenciaNested_List.as_view()),
     path('Ordenador_Licencias/<int:pk>/',views.OrdenadorHasLicencia_Detail.as_view()),

@@ -87,11 +87,6 @@ class Equipo_Atributo_List(generics.ListCreateAPIView):
 class Equipo_Atributo_Detail(generics.RetrieveUpdateDestroyAPIView):
     queryset=OtroDispositivoHasAtributo.objects.all()
     serializer_class=OtroDispositivoHasAtributoSerializer
-    lookup_url_kwarg=['pk2,pk3']
-    def get_object(self):
-        pk2=self.kwargs['pk2']
-        pk3=self.kwargs['pk3']
-        return OtroDispositivoHasAtributo.objects.get(otro_dispositivo_idotro_dispositivo=pk2,atributo_idatributo=pk3)
 class Os_List(generics.ListCreateAPIView):
     queryset=Os.objects.all().order_by("pk")
     serializer_class=OsSerializer
