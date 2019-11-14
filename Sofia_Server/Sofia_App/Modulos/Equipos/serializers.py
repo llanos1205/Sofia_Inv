@@ -31,7 +31,7 @@ class ImpresoraSerializer(serializers.ModelSerializer):
         model=Impresora
         fields="__all__"
 class OtroDispositivoSerializer(serializers.ModelSerializer):
-    atributos= serializers.PrimaryKeyRelatedField(many=True, read_only=False, queryset=Atributo.objects.all())
+    atributos= serializers.PrimaryKeyRelatedField(many=True, read_only=True)
     clase=serializers.CharField(default="Otro Dispositivo",read_only=True)
     class Meta:
         model=OtroDispositivo

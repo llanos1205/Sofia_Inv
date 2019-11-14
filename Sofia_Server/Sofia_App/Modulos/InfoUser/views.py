@@ -70,3 +70,4 @@ class Permiso_List(generics.ListCreateAPIView):
 class Permiso_Detail(generics.RetrieveUpdateDestroyAPIView):
     queryset=Permiso.objects.all()
     serializer_class=PermisoSerializer
+

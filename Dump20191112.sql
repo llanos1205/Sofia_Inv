@@ -31,7 +31,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `asociacion` WRITE;
 /*!40000 ALTER TABLE `asociacion` DISABLE KEYS */;
-INSERT INTO `asociacion` VALUES (1,'2019-10-31',NULL,'asdasd',1,5,1,NULL,1);
+INSERT INTO `asociacion` VALUES (1,'2019-10-31',NULL,'asdasd',1,5,1,1);
 /*!40000 ALTER TABLE `asociacion` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -180,7 +180,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `otro_dispositivo_has_atributo` WRITE;
 /*!40000 ALTER TABLE `otro_dispositivo_has_atributo` DISABLE KEYS */;
-INSERT INTO `otro_dispositivo_has_atributo` VALUES (6,1,'tiene 20 puertos');
+INSERT INTO `otro_dispositivo_has_atributo` VALUES (1,6,1,'tiene 20 puertos');
 /*!40000 ALTER TABLE `otro_dispositivo_has_atributo` ENABLE KEYS */;
 UNLOCK TABLES;
 
