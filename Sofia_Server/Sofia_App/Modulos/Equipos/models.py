@@ -51,7 +51,7 @@ class Ordenador(Equipo):
     ram = models.CharField(db_column='RAM', max_length=10, blank=True, null=True)  # Field name made lowercase.
     almacenamiento = models.CharField(db_column='Almacenamiento', max_length=45, blank=True, null=True)  # Field name made lowercase.
     tipo_almacenamiento = models.CharField(db_column='Tipo_Almacenamiento', max_length=10, blank=True, null=True)  # Field name made lowercase.
-    os_idos = models.ForeignKey('Os', models.DO_NOTHING, db_column='OS_idOS',related_name='Sistema_Operativo')  # Field name made lowercase.
+    os_idos = models.ForeignKey('Os', models.SET_NULL, db_column='OS_idOS',related_name='Sistema_Operativo',null=True)  # Field name made lowercase.
     class Meta:
         managed = False
         db_table = 'ordenador'
@@ -61,8 +61,8 @@ class OrdenadorHasLicencia(models.Model):
     idordenador_has_licencia = models.AutoField(db_column='idOrdenador_Has_Licencia', primary_key=True)  # Field name made lowercase.
     llave = models.CharField(db_column='Llave', max_length=100, blank=True, null=True)  # Field name made lowercase.
     version = models.CharField(max_length=45, blank=True, null=True)
-    licencia_idlicencia = models.ForeignKey(Licencia, models.DO_NOTHING, db_column='Licencia_idLicencia')  # Field name made lowercase.
-    ordenador_idordenador = models.ForeignKey(Ordenador, models.DO_NOTHING, db_column='Ordenador_idOrdenador',blank=True,null=True)  # Field name made lowercase.
+    licencia_idlicencia = models.ForeignKey(Licencia, models.SET_NULL, db_column='Licencia_idLicencia',null=True)  # Field name made lowercase.
+    ordenador_idordenador = models.ForeignKey(Ordenador, models.SET_NULL, db_column='Ordenador_idOrdenador',blank=True,null=True)  # Field name made lowercase.
     fecha_instalacion = models.DateField(db_column='Fecha_Instalacion', blank=True, null=True)  # Field name made lowercase.
     class Meta:
         managed = False
@@ -81,7 +81,7 @@ class Os(models.Model):
 class OtroDispositivo(Equipo):
     idotro_dispositivo = models.OneToOneField(Equipo, models.CASCADE,parent_link=True, db_column='idOtro_Dispositivo', primary_key=True)  # Field name made lowercase.
     nombre = models.CharField(db_column='Nombre', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    ordenador_idordenador = models.ForeignKey(Ordenador, models.DO_NOTHING, db_column='Ordenador_idOrdenador', blank=True, null=True,related_name='perifericos')  # Field name made lowercase.
+    ordenador_idordenador = models.ForeignKey(Ordenador, models.SET_NULL, db_column='Ordenador_idOrdenador', blank=True, null=True,related_name='perifericos')  # Field name made lowercase.
     atributos=models.ManyToManyField(Atributo,related_name='atributos',through='OtroDispositivoHasAtributo',blank=True,null=True)
     class Meta:
         managed = False
@@ -98,7 +98,7 @@ class OtroDispositivoHasAtributo(models.Model):
         db_table = 'otro_dispositivo_has_atributo'
 
 class Tablet(Equipo):
-    idtablet = models.OneToOneField(Equipo, models.DO_NOTHING, db_column='idTablet',parent_link=True, primary_key=True)  # Field name made lowercase.
+    idtablet = models.OneToOneField(Equipo, models.CASCADE, db_column='idTablet',parent_link=True, primary_key=True)  # Field name made lowercase.
     memoria_interna = models.CharField(db_column='Memoria_Interna', max_length=200, blank=True, null=True)  # Field name made lowercase.
     ram = models.CharField(db_column='Ram', max_length=200, blank=True, null=True)  # Field name made lowercase.
     imei = models.CharField(db_column='IMEI', unique=True, max_length=200, blank=True, null=True)  # Field name made lowercase.

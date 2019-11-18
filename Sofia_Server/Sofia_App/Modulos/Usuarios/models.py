@@ -17,13 +17,13 @@ class UsuarioAd(models.Model):
     nombre = models.CharField(db_column='Nombre', max_length=100, blank=True, null=True)  # Field name made lowercase.
     apellido = models.CharField(db_column='Apellido', max_length=100, blank=True, null=True)  # Field name made lowercase.
     ci = models.CharField(db_column='Ci', max_length=45)  # Field name made lowercase.
-    area_idarea = models.ForeignKey(Area, models.DO_NOTHING, db_column='Area_idArea')  # Field name made lowercase.
-    empresa_idempresa = models.ForeignKey(Empresa, models.DO_NOTHING, db_column='Empresa_idEmpresa')  # Field name made lowercase.
-    gerencia_idgerencia = models.ForeignKey(Gerencia, models.DO_NOTHING, db_column='Gerencia_idGerencia')  # Field name made lowercase.
-    regional_idregional = models.ForeignKey(Regional, models.DO_NOTHING, db_column='Regional_idRegional')  # Field name made lowercase.
-    ubicacion_idubicacion = models.ForeignKey(Ubicacion, models.DO_NOTHING, db_column='Ubicacion_idUbicacion')  # Field name made lowercase.
-    cuenta_idcuenta = models.ForeignKey(Cuenta, models.DO_NOTHING, db_column='Cuenta_idCuenta',null=True,related_name="Usuarios")  # Field name made lowercase.
-    cargo_idcargo = models.ForeignKey(Cargo, models.DO_NOTHING, db_column='Cargo_idCargo')  # Field name made lowercase.
+    area_idarea = models.ForeignKey(Area, models.SET_NULL, db_column='Area_idArea',null=True)  # Field name made lowercase.
+    empresa_idempresa = models.ForeignKey(Empresa, models.SET_NULL, db_column='Empresa_idEmpresa',null=True)  # Field name made lowercase.
+    gerencia_idgerencia = models.ForeignKey(Gerencia, models.SET_NULL, db_column='Gerencia_idGerencia',null=True)  # Field name made lowercase.
+    regional_idregional = models.ForeignKey(Regional, models.SET_NULL, db_column='Regional_idRegional',null=True)  # Field name made lowercase.
+    ubicacion_idubicacion = models.ForeignKey(Ubicacion, models.SET_NULL, db_column='Ubicacion_idUbicacion',null=True)  # Field name made lowercase.
+    cuenta_idcuenta = models.ForeignKey(Cuenta, models.SET_NULL, db_column='Cuenta_idCuenta',null=True,related_name="Usuarios")  # Field name made lowercase.
+    cargo_idcargo = models.ForeignKey(Cargo, models.SET_NULL, db_column='Cargo_idCargo',null=True)  # Field name made lowercase.
     estado = models.IntegerField(db_column='Estado')  # Field name made lowercase.
     permisos=models.ManyToManyField(Permiso,related_name='Permisos',through='UsuarioAdHasPermiso')
     class Meta:
@@ -44,7 +44,7 @@ class UsuarioCorreo(models.Model):
     correo = models.EmailField(db_column='Correo', max_length=45, blank=True, null=True)  # Field name made lowercase.
     contrasena = models.CharField(db_column='Contrasena', max_length=45, blank=True, null=True)  # Field name made lowercase.
     tipo = models.CharField(db_column='Tipo', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    usuario_ad_idusuario_ad1 = models.ForeignKey(UsuarioAd, models.DO_NOTHING, db_column='Usuario_AD_idUsuario_AD1')  # Field name made lowercase.
+    usuario_ad_idusuario_ad1 = models.ForeignKey(UsuarioAd, models.SET_NULL, db_column='Usuario_AD_idUsuario_AD1',null=True)  # Field name made lowercase.
     estado = models.IntegerField(db_column='Estado')  # Field name made lowercase.
 
     class Meta:

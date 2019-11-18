@@ -3,7 +3,7 @@ class Area(models.Model):
     idarea = models.AutoField(db_column='idArea', primary_key=True)  # Field name made lowercase.
     nombre = models.CharField(db_column='Nombre', max_length=45, blank=True, null=True)  # Field name made lowercase.
     descripcion = models.CharField(db_column='Descripcion', max_length=100, blank=True, null=True)  # Field name made lowercase.
-    departamento_iddepartamento = models.ForeignKey('Departamento', models.DO_NOTHING, db_column='Departamento_idDepartamento',related_name='areas')  # Field name made lowercase.
+    departamento_iddepartamento = models.ForeignKey('Departamento', models.SET_NULL, db_column='Departamento_idDepartamento',related_name='areas',null=True)  # Field name made lowercase.
     estado = models.IntegerField(db_column='Estado')  # Field name made lowercase.
 
     class Meta:

@@ -13,7 +13,7 @@ class CorreosNested_List(generics.ListAPIView):
     serializer_class=CorreoNestedSerializer
     filter_class=filters.CorreoFilter
 class UsuarioAD_List(generics.ListCreateAPIView):
-    queryset=UsuarioAd.objects.all()
+    queryset=UsuarioAd.objects.all().order_by('pk')
     serializer_class=UsuarioADSerializer
     filter_class=filters.UsuarioADFilter
 class UsuarioAD_Nested_List(generics.ListAPIView):
