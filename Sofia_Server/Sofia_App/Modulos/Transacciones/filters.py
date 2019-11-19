@@ -15,7 +15,7 @@ class AsociacionFilter(filters.FilterSet):
             'resposable': ['exact', 'in', 'startswith','contains'],
             }
 class AuditoriaFilter(filters.FilterSet):
-    user=filters.RelatedFilter(userfilters.UsuarioADFilter,field_name='usuario_ad_idusuario_ad',queryset=userfilters.models.UsuarioAd.objects.all())
+    user=filters.RelatedFilter(userfilters.CuentaFilter,field_name='usuario_ad_idusuario_ad',queryset=userfilters.models.Cuenta.objects.all())
     class Meta:
         model=models.Auditoria
         fields = {

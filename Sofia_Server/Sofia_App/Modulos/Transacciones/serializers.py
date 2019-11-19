@@ -6,7 +6,7 @@ class AuditoriaSerializer(serializers.ModelSerializer):
         model=Auditoria
         fields="__all__"
 class AuditoriaNestedSerializer(serializers.ModelSerializer):
-    usuario_ad_idusuario_ad=userser.UsuarioMinisSerializer()
+    usuario_ad_idusuario_ad=userser.CuentaSerializer()
     class Meta:
         model=Auditoria
         fields="__all__"

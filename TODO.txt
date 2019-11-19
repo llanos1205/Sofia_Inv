@@ -1,9 +1,11 @@
 cosas que faltan
 
-9.-control de sesiones
-10.- xperiencia de usuario
-11.- eliminacione
-12.-bajas
-14.-existen 51 puntos donde poner el registro auditorio
 
+->añadir el control auditorio en todas partes
+->posiblemente hacer todo persistente y sobrecargar el patch
+    para que cuando se cambie el estado a 0(inhabilitado) borre todas las relaciones 
+    correspondientes en la db
+->migration foundation
 https://stackoverflow.com/questions/886221/does-django-scale?rq=1
+https://blog.newrelic.com/engineering/aws-certified-solutions-architect-associate-exam-prep/
+https://blog.newrelic.com/engineering/aws-cloud-certifications-explained/

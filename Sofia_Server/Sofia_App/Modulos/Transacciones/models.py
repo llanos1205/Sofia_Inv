@@ -19,7 +19,7 @@ class Auditoria(models.Model):
     accion = models.CharField(db_column='Accion', max_length=45, blank=True, null=True)  # Field name made lowercase.
     fecha = models.DateField(db_column='Fecha', blank=True, null=True)  # Field name made lowercase.
     ip = models.CharField(db_column='Ip', max_length=18, blank=True, null=True)  # Field name made lowercase.
-    usuario_ad_idusuario_ad = models.ForeignKey('UsuarioAd', models.SET_NULL, db_column='Usuario_AD_idUsuario_AD',null=True)  # Field name made lowercase.
+    usuario_ad_idusuario_ad = models.ForeignKey('Cuenta', models.SET_NULL, db_column='Usuario_AD_idUsuario_AD',null=True)  # Field name made lowercase.
     class Meta:
         managed = False
         db_table = 'auditoria'

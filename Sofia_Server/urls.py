@@ -31,5 +31,6 @@ urlpatterns = [
     path('',include("Sofia_Server.Sofia_App.Modulos.Usuarios.urls")),
     path('',include("Sofia_Server.Sofia_App.Modulos.Transacciones.urls")),
     path('',include('Sofia_Server.core.urls')),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    path('release/<int:pk>/<int:side>/',views.EquiposRelease.as_view())
 ]
