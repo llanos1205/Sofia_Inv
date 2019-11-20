@@ -1,8 +1,8 @@
 from django.db import models
 class Area(models.Model):
     idarea = models.AutoField(db_column='idArea', primary_key=True)  # Field name made lowercase.
-    nombre = models.CharField(db_column='Nombre', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    descripcion = models.CharField(db_column='Descripcion', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    nombre = models.CharField(default="",db_column='Nombre', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    descripcion = models.CharField(default="",db_column='Descripcion', max_length=100, blank=True, null=True)  # Field name made lowercase.
     departamento_iddepartamento = models.ForeignKey('Departamento', models.SET_NULL, db_column='Departamento_idDepartamento',related_name='areas',null=True)  # Field name made lowercase.
     estado = models.IntegerField(db_column='Estado')  # Field name made lowercase.
 
@@ -13,8 +13,8 @@ class Area(models.Model):
         return '%d: %s' % (self.idarea, self.nombre)
 class Cargo(models.Model):
     idcargo = models.AutoField(db_column='idCargo', primary_key=True)  # Field name made lowercase.
-    nombre = models.CharField(db_column='Nombre', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    descripcion = models.CharField(db_column='Descripcion', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    nombre = models.CharField(default="",db_column='Nombre', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    descripcion = models.CharField(default="",db_column='Descripcion', max_length=100, blank=True, null=True)  # Field name made lowercase.
     estado = models.IntegerField(db_column='Estado')  # Field name made lowercase.
 
     class Meta:
@@ -24,8 +24,8 @@ class Cargo(models.Model):
         return '%d: %s' % (self.idcargo, self.nombre)
 class Departamento(models.Model):
     iddepartamento = models.AutoField(db_column='idDepartamento', primary_key=True)  # Field name made lowercase.
-    nombre = models.CharField(db_column='Nombre', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    descripcion = models.CharField(db_column='Descripcion', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    nombre = models.CharField(default="",db_column='Nombre', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    descripcion = models.CharField(default="",db_column='Descripcion', max_length=100, blank=True, null=True)  # Field name made lowercase.
     estado = models.IntegerField(db_column='Estado')  # Field name made lowercase.
 
     class Meta:
@@ -35,8 +35,8 @@ class Departamento(models.Model):
         return '%d: %s' % (self.iddepartamento, self.nombre)
 class Empresa(models.Model):
     idempresa = models.AutoField(db_column='idEmpresa', primary_key=True)  # Field name made lowercase.
-    nombre = models.CharField(db_column='Nombre', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    descripcion = models.CharField(db_column='Descripcion', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    nombre = models.CharField(default="",db_column='Nombre', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    descripcion = models.CharField(default="",db_column='Descripcion', max_length=100, blank=True, null=True)  # Field name made lowercase.
     estado = models.IntegerField(db_column='Estado')  # Field name made lowercase.
 
     class Meta:
@@ -46,8 +46,8 @@ class Empresa(models.Model):
         return '%d:%s'%(self.idempresa,self.nombre)
 class Gerencia(models.Model):
     idgerencia = models.AutoField(db_column='idGerencia', primary_key=True)  # Field name made lowercase.
-    nombre = models.CharField(db_column='Nombre', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    descripcion = models.CharField(db_column='Descripcion', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    nombre = models.CharField(default="",db_column='Nombre', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    descripcion = models.CharField(default="",db_column='Descripcion', max_length=100, blank=True, null=True)  # Field name made lowercase.
     estado = models.IntegerField(db_column='Estado')  # Field name made lowercase.
 
     class Meta:
@@ -57,7 +57,7 @@ class Gerencia(models.Model):
         return '%d: %s' % (self.idgerencia, self.nombre)
 class Permiso(models.Model):
     idpermiso = models.AutoField(db_column='idPermiso', primary_key=True)  # Field name made lowercase.
-    nombre = models.CharField(db_column='Nombre', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    nombre = models.CharField(default="",db_column='Nombre', max_length=100, blank=True, null=True)  # Field name made lowercase.
     estado = models.IntegerField(db_column='Estado')  # Field name made lowercase.
     class Meta:
         managed = False
@@ -66,7 +66,7 @@ class Permiso(models.Model):
         return '%d: %s' % (self.idpermiso, self.nombre)
 class Regional(models.Model):
     idregional = models.AutoField(db_column='idRegional', primary_key=True)  # Field name made lowercase.
-    nombre = models.CharField(db_column='Nombre', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    nombre = models.CharField(default="",db_column='Nombre', max_length=45, blank=True, null=True)  # Field name made lowercase.
     estado = models.IntegerField(db_column='Estado')  # Field name made lowercase.
     class Meta:
         managed = False
@@ -75,8 +75,8 @@ class Regional(models.Model):
         return '%d: %s' % (self.idregional, self.nombre)
 class Ubicacion(models.Model):
     idubicacion = models.AutoField(db_column='idUbicacion', primary_key=True)  # Field name made lowercase.
-    direccion = models.CharField(db_column='Direccion', max_length=200, blank=True, null=True)  # Field name made lowercase.
-    edificio = models.CharField(db_column='Edificio', max_length=200, blank=True, null=True)  # Field name made lowercase.
+    direccion = models.CharField(default="",db_column='Direccion', max_length=200, blank=True, null=True)  # Field name made lowercase.
+    edificio = models.CharField(default="",db_column='Edificio', max_length=200, blank=True, null=True)  # Field name made lowercase.
     estado = models.IntegerField(db_column='Estado')  # Field name made lowercase.
 
     class Meta:
