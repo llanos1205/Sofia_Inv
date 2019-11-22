@@ -1,12 +1,12 @@
 cosas que faltan
 
 
-->añadir el control auditorio en todas partes
-->posiblemente hacer todo persistente y sobrecargar el patch
-    para que cuando se cambie el estado a 0(inhabilitado) borre todas las relaciones 
-    correspondientes en la db
 ->null control en los mapas de mapas
 ->migration foundation
+    ->terminar migracion de ordenadores con relacioones, faltarn las relacioes
+    ->reparar todas las migracione previas por el cambio de parametros en la funcion de getvecinoid
+    ->hacer notas de formato del doc para buena migracion
+    ->hacer migracion de tablets
 https://stackoverflow.com/questions/886221/does-django-scale?rq=1
 https://blog.newrelic.com/engineering/aws-certified-solutions-architect-associate-exam-prep/
 https://blog.newrelic.com/engineering/aws-cloud-certifications-explained/

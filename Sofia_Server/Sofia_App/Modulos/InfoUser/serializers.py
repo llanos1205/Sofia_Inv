@@ -1,21 +1,19 @@
-from Sofia_Server.Sofia_App.Modulos.InfoUser.models import Empresa,Cargo,Area,Gerencia,Ubicacion,Departamento,Permiso,Regional
+from Sofia_Server.Sofia_App.Modulos.InfoUser.models import Empresa,Cargo,Area,Gerencia,Ubicacion,Permiso,Regional
 from rest_framework import serializers
 class EmpresaSerializer(serializers.ModelSerializer):
     class Meta:
         model=Empresa
         fields=['idempresa','nombre','descripcion','estado']
-class DepartamentoSerializer(serializers.ModelSerializer):
-    areas=serializers.PrimaryKeyRelatedField(many=True,read_only=True)
-    class Meta:
-        model=Departamento
-        fields=['iddepartamento','nombre',
-                'descripcion','estado','areas']
+
 class AreaSerializer(serializers.ModelSerializer):
     class Meta:
         model=Area
-        fields=['idarea','nombre','descripcion',
-                'departamento_iddepartamento','estado']
-        
+        fields='__all__'
+class AreaNestedSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=Area
+        fields='__all__'
+        depth=1        
 class RegionalSerializer(serializers.ModelSerializer):
     class Meta:
         model=Regional

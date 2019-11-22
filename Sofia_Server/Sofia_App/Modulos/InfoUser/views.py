@@ -1,10 +1,10 @@
 from rest_framework import viewsets,status,generics
 from Sofia_Server.Sofia_App.Modulos.InfoUser.serializers import (
-    EmpresaSerializer,DepartamentoSerializer,AreaSerializer,GerenciaSerializer,
-    RegionalSerializer,UbicacionSerializer,CargoSerializer,PermisoSerializer
+    EmpresaSerializer,AreaSerializer,GerenciaSerializer,
+    RegionalSerializer,UbicacionSerializer,CargoSerializer,PermisoSerializer,AreaNestedSerializer
 )
 from Sofia_Server.Sofia_App.Modulos.InfoUser.models import (
-    Empresa,Departamento,Gerencia,Cargo,Ubicacion,
+    Empresa,Gerencia,Cargo,Ubicacion,
     Regional,Area,Permiso
 )
 from Sofia_Server.Sofia_App.Modulos.InfoUser import filters
@@ -16,17 +16,13 @@ class Empresa_Detail(generics.RetrieveUpdateDestroyAPIView):
     queryset=Empresa.objects.all()
     serializer_class=EmpresaSerializer
 
-class Departamento_List(generics.ListCreateAPIView):
-    queryset=Departamento.objects.all().order_by("pk")
-    serializer_class=DepartamentoSerializer
-    filter_class=filters.DepartamentoFilter
-class Departamento_Detail(generics.RetrieveUpdateDestroyAPIView):
-    queryset=Departamento.objects.all()
-    serializer_class=DepartamentoSerializer
-
 class Area_List(generics.ListCreateAPIView):
     queryset=Area.objects.all().order_by("pk")
     serializer_class=AreaSerializer
+    filter_class=filters.AreaFilter
+class AreaNested_List(generics.ListCreateAPIView):
+    queryset=Area.objects.all().order_by("pk")
+    serializer_class=AreaNestedSerializer
     filter_class=filters.AreaFilter
 class Area_Detail(generics.RetrieveUpdateDestroyAPIView):
     queryset=Area.objects.all()

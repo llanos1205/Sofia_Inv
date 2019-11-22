@@ -5,10 +5,8 @@ urlpatterns = [
      path('Empresas/',views.EmpresaList.as_view()),
     path('Empresas/<int:pk>/',views.Empresa_Detail.as_view()),
    
-    path('Departamentos/',views.Departamento_List.as_view()),
-    path('Departamentos/<int:pk>/',views.Departamento_Detail.as_view()),
-   
     path('Areas/',views.Area_List.as_view()),
+     path('Areas/Nested/',views.AreaNested_List.as_view()),
     path('Areas/<int:pk>/',views.Area_Detail.as_view()),
    
     path('Regionales/',views.Regional_List.as_view()),

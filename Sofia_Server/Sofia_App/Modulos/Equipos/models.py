@@ -2,7 +2,7 @@ from django.db import models
 
 class Atributo(models.Model):
     idatributo = models.AutoField(db_column='idAtributo', primary_key=True)  # Field name made lowercase.
-    nombre = models.CharField(db_column='Nombre', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    nombre = models.CharField(db_column='Nombre', max_length=200, blank=True, null=True)  # Field name made lowercase.
     estado = models.IntegerField(db_column='Estado')  # Field name made lowercase.
     class Meta:
         managed = False
@@ -11,12 +11,12 @@ class Atributo(models.Model):
         return '%d: %s' % (self.idatributo, self.nombre)
 class Equipo(models.Model):
     idequipo = models.AutoField(db_column='idEquipo',primary_key=True)  # Field name made lowercase.
-    marca = models.CharField(db_column='Marca', max_length=100, blank=True, null=True)  # Field name made lowercase.
-    modelo = models.CharField(db_column='Modelo', max_length=100, blank=True, null=True)  # Field name made lowercase.
-    nro_serie = models.CharField(db_column='Nro_Serie', max_length=100, blank=True, null=True)  # Field name made lowercase.
-    nro_activo_fijo = models.CharField(db_column='Nro_Activo_Fijo', max_length=100, blank=True, null=True)  # Field name made lowercase.
-    ip = models.CharField(db_column='Ip', max_length=50, blank=True, null=True)  # Field name made lowercase.
-    ultima_observacion = models.CharField(db_column='Ultima_Observacion', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    marca = models.CharField(db_column='Marca', max_length=200, blank=True, null=True)  # Field name made lowercase.
+    modelo = models.CharField(db_column='Modelo', max_length=200, blank=True, null=True)  # Field name made lowercase.
+    nro_serie = models.CharField(db_column='Nro_Serie', max_length=200, blank=True, null=True)  # Field name made lowercase.
+    nro_activo_fijo = models.CharField(db_column='Nro_Activo_Fijo', max_length=200, blank=True, null=True)  # Field name made lowercase.
+    ip = models.CharField(db_column='Ip', max_length=200, blank=True, null=True)  # Field name made lowercase.
+    ultima_observacion = models.CharField(db_column='Ultima_Observacion', max_length=200, blank=True, null=True)  # Field name made lowercase.
     usuarios=models.ManyToManyField('UsuarioAd',related_name='usuarios',through='Asociacion',through_fields=('equipo_idequipo','usuariofinal'))
     estado = models.IntegerField(db_column='Estado')  # Field name made lowercase.
     class Meta:
@@ -42,16 +42,28 @@ class Licencia(models.Model):
         db_table = 'licencia'
     def __str__(self):
         return '%d: %s' % (self.idlicencia, self.producto)
+class Os(models.Model):
+    idos = models.AutoField(db_column='idOS', primary_key=True)  # Field name made lowercase.
+    nombre = models.CharField(db_column='Nombre', max_length=200, blank=True, null=True)  # Field name made lowercase.
+    servicio = models.CharField(db_column='Servicio', max_length=200, blank=True, null=True)  # Field name made lowercase.
+    arquitectura = models.CharField(db_column='Arquitectura', max_length=200, blank=True, null=True)  # Field name made lowercase.
+    estado = models.IntegerField(db_column='Estado')  # Field name made lowercase.
+    class Meta:
+        managed = False
+        db_table = 'os'
+    def __str__(self):
+        return '%d: %s' % (self.idos, self.nombre)
+
 class Ordenador(Equipo):
     idordenador = models.OneToOneField(Equipo, models.CASCADE,parent_link=True, db_column='idOrdenador',primary_key=True,related_name='ordenadores')  # Field name made lowercase.
-    tipo = models.CharField(db_column='Tipo', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    mac = models.CharField(db_column='MAC', max_length=100, blank=True, null=True)  # Field name made lowercase.
-    hostname = models.CharField(db_column='HostName', max_length=100, blank=True, null=True)  # Field name made lowercase.
-    procesador = models.CharField(db_column='Procesador', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    ram = models.CharField(db_column='RAM', max_length=10, blank=True, null=True)  # Field name made lowercase.
-    almacenamiento = models.CharField(db_column='Almacenamiento', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    tipo_almacenamiento = models.CharField(db_column='Tipo_Almacenamiento', max_length=10, blank=True, null=True)  # Field name made lowercase.
-    os_idos = models.ForeignKey('Os', models.SET_NULL, db_column='OS_idOS',related_name='Sistema_Operativo',null=True)  # Field name made lowercase.
+    tipo = models.CharField(db_column='Tipo', max_length=200, blank=True, null=True)  # Field name made lowercase.
+    mac = models.CharField(db_column='MAC', max_length=200, blank=True, null=True)  # Field name made lowercase.
+    hostname = models.CharField(db_column='HostName', max_length=200, blank=True, null=True)  # Field name made lowercase.
+    procesador = models.CharField(db_column='Procesador', max_length=200, blank=True, null=True)  # Field name made lowercase.
+    ram = models.CharField(db_column='RAM', max_length=200, blank=True, null=True)  # Field name made lowercase.
+    almacenamiento = models.CharField(db_column='Almacenamiento', max_length=200, blank=True, null=True)  # Field name made lowercase.
+    tipo_almacenamiento = models.CharField(db_column='Tipo_Almacenamiento', max_length=200, blank=True, null=True)  # Field name made lowercase.
+    os_idos = models.ForeignKey(Os, models.SET_NULL, db_column='OS_idOS',null=True)  # Field name made lowercase.
     class Meta:
         managed = False
         db_table = 'ordenador'
@@ -59,28 +71,17 @@ class Ordenador(Equipo):
         return '(ordenador) %s: %s' % (self.idordenador, self.tipo)
 class OrdenadorHasLicencia(models.Model):
     idordenador_has_licencia = models.AutoField(db_column='idOrdenador_Has_Licencia', primary_key=True)  # Field name made lowercase.
-    llave = models.CharField(db_column='Llave', max_length=100, blank=True, null=True)  # Field name made lowercase.
-    version = models.CharField(max_length=45, blank=True, null=True)
+    llave = models.CharField(db_column='Llave', max_length=200, blank=True, null=True)  # Field name made lowercase.
+    version = models.CharField(max_length=200, blank=True, null=True)
     licencia_idlicencia = models.ForeignKey(Licencia, models.SET_NULL, db_column='Licencia_idLicencia',null=True)  # Field name made lowercase.
     ordenador_idordenador = models.ForeignKey(Ordenador, models.SET_NULL, db_column='Ordenador_idOrdenador',blank=True,null=True)  # Field name made lowercase.
     fecha_instalacion = models.DateField(db_column='Fecha_Instalacion', blank=True, null=True)  # Field name made lowercase.
     class Meta:
         managed = False
         db_table = 'ordenador_has_licencia'
-class Os(models.Model):
-    idos = models.AutoField(db_column='idOS', primary_key=True)  # Field name made lowercase.
-    nombre = models.CharField(db_column='Nombre', max_length=25, blank=True, null=True)  # Field name made lowercase.
-    servicio = models.CharField(db_column='Servicio', max_length=20, blank=True, null=True)  # Field name made lowercase.
-    arquitectura = models.CharField(db_column='Arquitectura', max_length=5, blank=True, null=True)  # Field name made lowercase.
-    estado = models.IntegerField(db_column='Estado')  # Field name made lowercase.
-    class Meta:
-        managed = False
-        db_table = 'os'
-    def __str__(self):
-        return '%d: %s' % (self.idos, self.nombre)
 class OtroDispositivo(Equipo):
     idotro_dispositivo = models.OneToOneField(Equipo, models.CASCADE,parent_link=True, db_column='idOtro_Dispositivo', primary_key=True)  # Field name made lowercase.
-    nombre = models.CharField(db_column='Nombre', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    nombre = models.CharField(db_column='Nombre', max_length=200, blank=True, null=True)  # Field name made lowercase.
     ordenador_idordenador = models.ForeignKey(Ordenador, models.SET_NULL, db_column='Ordenador_idOrdenador', blank=True, null=True,related_name='perifericos')  # Field name made lowercase.
     atributos=models.ManyToManyField(Atributo,related_name='atributos',through='OtroDispositivoHasAtributo',blank=True,null=True)
     class Meta:

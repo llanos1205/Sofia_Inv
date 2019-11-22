@@ -8,7 +8,7 @@ class UsuarioMinisSerializer(serializers.ModelSerializer):
         depth=1
 
 class UsuarioADSerializer(serializers.ModelSerializer):
-    permisos= serializers.PrimaryKeyRelatedField(many=True, read_only=False, queryset=Permiso.objects.all())
+    permisos= serializers.PrimaryKeyRelatedField(many=True, read_only=True)
     class Meta:
         model=UsuarioAd
         fields="__all__"

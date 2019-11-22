@@ -1,15 +1,14 @@
 import Sofia_Server.Sofia_App.Modulos.InfoUser.models as models
 import rest_framework_filters as filters
-
-class DepartamentoFilter(filters.FilterSet):
+class GerenciaFilter(filters.FilterSet):
     class Meta:
-        model=models.Departamento
+        model=models.Gerencia
         fields= {
              'nombre': ['exact', 'in', 'startswith','contains'],
              'descripcion': ['exact', 'in', 'startswith','contains'],
         }
 class AreaFilter(filters.FilterSet):
-    departamento=filters.RelatedFilter(DepartamentoFilter,field_name="departamento_iddepartamento",queryset=models.Departamento.objects.all())
+    gerencia=filters.RelatedFilter(GerenciaFilter,field_name="gerencia_idgerencia",queryset=models.Gerencia.objects.all())
     class Meta:
         model=models.Area
         fields= {
@@ -23,13 +22,7 @@ class EmpresaFilter(filters.FilterSet):
              'nombre': ['exact', 'in', 'startswith','contains'],
              'descripcion': ['exact', 'in', 'startswith','contains'],
         }
-class GerenciaFilter(filters.FilterSet):
-    class Meta:
-        model=models.Gerencia
-        fields= {
-             'nombre': ['exact', 'in', 'startswith','contains'],
-             'descripcion': ['exact', 'in', 'startswith','contains'],
-        }
+
 class RegionalFilter(filters.FilterSet):
     class Meta:
         model=models.Regional
