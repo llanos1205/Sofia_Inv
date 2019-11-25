@@ -23,7 +23,7 @@ NOTA IMPORTANTE:
     http://example.com/api/products/4675/?category=clothing&max_price=10.00
     https://pypi.org/project/djangorestframework-filters/
 
-    agregar filter_fileds o algo x el estilo a TODOS los modelos
+    
 
     aunque el nivel de profundidad de filtrado en la interfaz grafica es de 2
     el nivel de profundidad de filtrado usando el url parece ser infinito (probado hasta nivel 4) lo que es bastante intenso la dvd
@@ -31,8 +31,6 @@ NOTA IMPORTANTE:
     https://sunscrapers.com/blog/the-ultimate-tutorial-for-django-rest-framework-filtering-part-5/
     https://www.thesmallman.com/link-hyperlink-to-excel-macro
 
-
-    por ahora solo faltan interfaces en vba, aplicar auditoria en todas aprtes, aplicar usuarios en todos los equipos
 
     
 You can create a ComboBox with 2 columns - value and text.

@@ -7,9 +7,6 @@ cosas que faltan
     ->reparar todas las migracione previas por el cambio de parametros en la funcion de getvecinoid
     ->hacer notas de formato del doc para buena migracion
     ->hacer migracion de tablets
-https://stackoverflow.com/questions/886221/does-django-scale?rq=1
-https://blog.newrelic.com/engineering/aws-certified-solutions-architect-associate-exam-prep/
-https://blog.newrelic.com/engineering/aws-cloud-certifications-explained/
 
 
 django-admin startproject --template=https://github.com/Mischback/django-project-skeleton/archive/development.zip [projectname]

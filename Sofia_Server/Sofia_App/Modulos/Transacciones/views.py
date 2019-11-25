@@ -16,6 +16,7 @@ class AuditoriaNested_List(generics.ListAPIView):
     filter_class=filters.AuditoriaFilter
 class AsociacionNested_List(generics.ListAPIView):
     queryset=Asociacion.objects.all().order_by('pk')
+    
     serializer_class=AsociacionesNestedSerializer
     filter_class=filters.AsociacionFilter
 class Auditoria_List(generics.ListCreateAPIView):
@@ -29,9 +30,11 @@ class Auditoria_Detail(generics.RetrieveUpdateDestroyAPIView):
 class Asociacion_List(generics.ListCreateAPIView):
     queryset=Asociacion.objects.all().order_by('pk')
     serializer_class=AsociacionSerializer
+  
     filterset_fields = ('__all__')
 class Asociacion_Detail(generics.RetrieveUpdateDestroyAPIView):
     queryset=Asociacion.objects.all()
+    
     serializer_class=AsociacionSerializer
 
 
