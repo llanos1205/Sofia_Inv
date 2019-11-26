@@ -52,4 +52,19 @@ class Usuario_Permiso_Detail(generics.RetrieveUpdateDestroyAPIView):
         pk=self.kwargs['pk']
         pk2=self.kwargs['pk2']
         return UsuarioAdHasPermiso.objects.get(usuario_ad_idusuario_ad=pk,permiso_idpermiso=pk2)
-    
+
+# #ejemplo de front end web basico"
+#NOTA debe existir un .html con el nombre de la funcion dentro de la carpeta templates
+# from django.http import HttpResponse
+# from django.template import loader
+
+# from .models import Question
+
+
+# def index(request):
+#     latest_question_list = Question.objects.order_by('-pub_date')[:5]
+#     template = loader.get_template('polls/index.html')
+#     context = {
+#         'latest_question_list': latest_question_list,
+#     }
+#     return HttpResponse(template.render(context, request))
