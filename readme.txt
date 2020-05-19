@@ -1,10 +1,5 @@
-se necesita:
-        python 3.7.4
-        un ambiente virtual
-                django
-                djangorestframework
-                mysqclient(nota si se ejecuta en un win 7 se necesita descargar por whls no por pip)
+Storage System for Support team
+DJango based rest api for centralized usage in a company 
+basic mysql database
 
-
-si es posible solo usar:
-pip install requirements.txt
+Consumed by excel interface made with VBA
