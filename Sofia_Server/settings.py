@@ -49,8 +49,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Sofia_Server.Sofia_App',
     'rest_framework',
-    'Sofia_Server.core',
-    #'django_filters',
     'rest_framework.authtoken',
     'rest_framework_filters',
 ]
